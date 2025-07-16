@@ -70,3 +70,35 @@ export function filterJournalEntries(entries, search, weekFilter) {
         (!weekFilter || entry.weekData.week === parseInt(weekFilter))
     );
 }
+
+export function getTopTags(notes, topN = 3) {
+    const tagCount = {};
+    notes.forEach(note => {
+        (note.keywords || []).forEach(tag => {
+            tagCount[tag] = (tagCount[tag] || 0) + 1;
+        });
+    });
+    return Object.entries(tagCount)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, topN)
+        .map(([tag, count]) => ({ tag, count }));
+}
+
+export function getStats(notes, journalEntries) {
+    return {
+        notesCount: notes.length,
+        journalCount: journalEntries.length,
+        topTags: getTopTags(notes)
+    };
+}
+
+export function exportNoteAsMarkdown(note, lang = 'ar') {
+    let md = `# ${note.title}\n`;
+    if (note.keywords && note.keywords.length)
+        md += `\n**Tags:** ${note.keywords.join(', ')}\n`;
+    if (note.taskData && note.taskData.title)
+        md += `\n**Task:** ${note.taskData.title[lang] || note.taskData.title}\n`;
+    md += `\n---\n`;
+    md += note.content;
+    return md;
+}

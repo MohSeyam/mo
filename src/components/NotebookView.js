@@ -4,6 +4,7 @@ import NoteEditor from './components/NoteEditor';
 import TaskNotesList from './components/TaskNotesList';
 import JournalEntriesList from './components/JournalEntriesList';
 import { useAppContext } from '../context/AppContext';
+import { getStats } from '../utils/noteUtils';
 
 function NotebookView() {
     const { lang, appState, setModal, planData, translations, updateNote, deleteNote, showToast } = useAppContext();
@@ -66,6 +67,8 @@ function NotebookView() {
         return tasks;
     }, [planData]);
 
+    const stats = useMemo(() => getStats(allTaskNotes, allJournalEntries), [allTaskNotes, allJournalEntries]);
+
     const openNoteModal = (note) => {
         const currentIndex = allTaskNotes.findIndex(n => n.updatedAt === note.updatedAt);
         setModal({
@@ -94,6 +97,23 @@ function NotebookView() {
 
     return (
         <div className="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-2xl h-full flex flex-col border border-gray-100 dark:border-gray-800">
+            {/* لوحة الإحصائيات */}
+            <div className="mb-6 flex flex-wrap gap-6 items-center justify-start">
+                <div className="bg-blue-50 dark:bg-blue-900/30 rounded-lg px-4 py-2 text-blue-900 dark:text-blue-100 font-semibold">
+                    📝 {t.notesCount || 'عدد الملاحظات'}: {stats.notesCount}
+                </div>
+                <div className="bg-green-50 dark:bg-green-900/30 rounded-lg px-4 py-2 text-green-900 dark:text-green-100 font-semibold">
+                    📔 {t.journalCount || 'عدد التدوينات'}: {stats.journalCount}
+                </div>
+                <div className="bg-yellow-50 dark:bg-yellow-900/30 rounded-lg px-4 py-2 text-yellow-900 dark:text-yellow-100 font-semibold flex items-center gap-2">
+                    <span>🏷️ {t.topTags || 'أكثر التاجات'}:</span>
+                    {stats.topTags.map(tagObj => (
+                        <span key={tagObj.tag} className="bg-yellow-200 dark:bg-yellow-700 text-yellow-900 dark:text-yellow-100 rounded px-2 mx-1">
+                            {tagObj.tag} ({tagObj.count})
+                        </span>
+                    ))}
+                </div>
+            </div>
             <div className="border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
                 <nav className="-mb-px flex space-x-8 rtl:space-x-reverse" aria-label="Tabs">
                     <button onClick={() => setActiveTab('tasks')} className={`whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm ${activeTab === 'tasks' ? 'border-blue-500 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'}`}>
