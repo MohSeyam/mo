@@ -44,6 +44,69 @@ function WeekTemplate({ week, progress, totalTime, notesCount, journalCount, res
     }],
   };
 
+  // رسم بياني دائري لتوزيع وقت البومودورو على مهام الأسبوع
+  let pomodoroPieData = null;
+  let pomodoroPieOptions = null;
+  if (pomodoro && completedTasks && completedTasks.length > 0) {
+    const taskMap = {};
+    completedTasks.forEach(task => { taskMap[task.id] = task; });
+    const filteredPomodoro = Object.keys(pomodoro).filter(id => taskMap[id]);
+    if (filteredPomodoro.length > 0) {
+      const labels = filteredPomodoro.map(id => {
+        const task = taskMap[id];
+        const name = (task.description?.[i18n.language] || task.description?.en || '').slice(0, 30) + (task.description?.[i18n.language]?.length > 30 ? '…' : '');
+        return `${name} (${task.type})`;
+      });
+      const data = filteredPomodoro.map(id => Math.floor((pomodoro[id].totalSeconds || 0) / 60));
+      const sectionColors = {
+        'Blue Team': '#2563eb',
+        'Red Team': '#ef4444',
+        'Policies': '#a21caf',
+        'Practical': '#22c55e',
+        'Soft Skills': '#f59e42',
+      };
+      const bgColors = filteredPomodoro.map(id => {
+        const task = taskMap[id];
+        return sectionColors[task?.type] || '#6366F1';
+      });
+      pomodoroPieData = {
+        labels,
+        datasets: [
+          {
+            label: i18n.language === 'ar' ? 'دقائق بومودورو لكل مهمة' : 'Pomodoro Minutes per Task',
+            data,
+            backgroundColor: bgColors,
+            borderWidth: 2,
+          },
+        ],
+      };
+      pomodoroPieOptions = {
+        responsive: true,
+        plugins: {
+          legend: { position: 'bottom', labels: { font: { size: 13 } } },
+          title: { display: true, text: i18n.language==='ar'?'توزيع وقت بومودورو على مهام الأسبوع':'Pomodoro Time Distribution (Week)', font: { size: 16 } },
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                const idx = context.dataIndex;
+                const id = filteredPomodoro[idx];
+                const task = taskMap[id];
+                const minutes = data[idx];
+                const sessions = pomodoro[id]?.count || 0;
+                return [
+                  `${i18n.language==='ar'?'المهمة':'Task'}: ${task?.description?.[i18n.language] || task?.description?.en || id}`,
+                  `${i18n.language==='ar'?'القسم':'Section'}: ${task?.type || ''}`,
+                  `${i18n.language==='ar'?'الجلسات':'Sessions'}: ${sessions}`,
+                  `${i18n.language==='ar'?'الدقائق':'Minutes'}: ${minutes}`
+                ];
+              }
+            }
+          }
+        }
+      };
+    }
+  }
+
   return (
     <div ref={templateRef} className="max-w-4xl mx-auto bg-white dark:bg-gray-900 rounded-2xl shadow-2xl border border-blue-200 dark:border-blue-800 p-6 print:p-2 animate-fade-in">
       <div className="flex items-center justify-between mb-4">
@@ -81,6 +144,8 @@ function WeekTemplate({ week, progress, totalTime, notesCount, journalCount, res
         <div className="bg-white dark:bg-gray-800 rounded-xl shadow p-4 border border-gray-200 dark:border-gray-700">
           <h3 className="font-semibold text-purple-700 dark:text-purple-300 mb-2">{t('Tags Usage')}</h3>
           <Doughnut data={tagChart} options={{responsive:true, plugins:{legend:{position:'bottom'}}}} />
+          {/* رسم بياني توزيع وقت البومودورو */}
+          {pomodoroPieData && <Doughnut data={pomodoroPieData} options={pomodoroPieOptions} />}
         </div>
       </div>
       <div className="mb-6">
