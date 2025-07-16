@@ -3,6 +3,7 @@ import { AppContext } from '../components/App';
 import NoteEditor from './components/NoteEditor';
 import TaskNotesList from './components/TaskNotesList';
 import JournalEntriesList from './components/JournalEntriesList';
+import { extractAllTaskNotes, extractAllJournalEntries } from '../utils/noteUtils';
 
 function NotebookView() {
     const { lang, appState, setModal, planData, translations, showToast } = useContext(AppContext);
@@ -10,43 +11,8 @@ function NotebookView() {
     const [activeTab, setActiveTab] = useState('tasks');
     const [showGraph, setShowGraph] = useState(false);
 
-    const allTaskNotes = useMemo(() => {
-        if (!appState || !appState.notes) return [];
-        const notesList = [];
-        Object.keys(appState.notes).forEach(weekKey => {
-            Object.keys(appState.notes[weekKey].days).forEach(dayIdx => {
-                const dayNotes = appState.notes[weekKey].days[dayIdx];
-                Object.keys(dayNotes).forEach(taskId => {
-                    const note = dayNotes[taskId];
-                    const weekData = planData.find(w => w.week === parseInt(weekKey));
-                    const dayData = weekData?.days[parseInt(dayIdx)];
-                    const taskData = dayData?.tasks.find(t => t.id === taskId);
-                    if (weekData && dayData && taskData) {
-                        notesList.push({ ...note, weekData, dayData, taskData });
-                    }
-                });
-            });
-        });
-        return notesList.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
-    }, [appState.notes, planData]);
-    
-    const allJournalEntries = useMemo(() => {
-        if (!appState || !appState.journal) return [];
-        const entriesList = [];
-        Object.keys(appState.journal).forEach(weekKey => {
-            Object.keys(appState.journal[weekKey].days).forEach(dayIdx => {
-                const entry = appState.journal[weekKey].days[dayIdx];
-                if(entry) {
-                    const weekData = planData.find(w => w.week === parseInt(weekKey));
-                    const dayData = weekData?.days[parseInt(dayIdx)];
-                    if (weekData && dayData) {
-                        entriesList.push({ ...entry, weekData, dayData });
-                    }
-                }
-            });
-        });
-        return entriesList.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
-    }, [appState.journal, planData]);
+    const allTaskNotes = useMemo(() => extractAllTaskNotes(appState, planData), [appState.notes, planData]);
+    const allJournalEntries = useMemo(() => extractAllJournalEntries(appState, planData), [appState.journal, planData]);
 
     const openNoteModal = (note) => {
         setModal({
