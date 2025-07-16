@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import ProgressCircle from './ProgressCircle';
 import NoteEditor from './NoteEditor';
 import JournalEditor from './JournalEditor';
@@ -24,6 +24,7 @@ function DayView({
   const [remainingTime, setRemainingTime] = useState(timerSettings.work * 60);
   const [expandedTask, setExpandedTask] = useState(null);
   const [showTemplate, setShowTemplate] = useState(false);
+  const templateRef = useRef();
 
   // حساب التقدم اليومي
   const totalTasks = dayData.tasks.length;
@@ -161,6 +162,18 @@ function DayView({
     return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
   };
 
+  function handlePrint() {
+    if (templateRef.current) {
+      const printContents = templateRef.current.innerHTML;
+      const printWindow = window.open('', '', 'height=600,width=800');
+      printWindow.document.write('<html><head><title>Print</title></head><body>' + printContents + '</body></html>');
+      printWindow.document.close();
+      printWindow.focus();
+      printWindow.print();
+      printWindow.close();
+    }
+  }
+
   return (
     <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 border border-gray-200 dark:border-gray-700">
       <div className="flex justify-end mb-4">
@@ -168,7 +181,7 @@ function DayView({
           onClick={() => setShowTemplate(true)}
           className="px-4 py-2 rounded bg-gradient-to-r from-blue-600 via-purple-600 to-green-500 text-white font-bold shadow hover:scale-105 transition"
         >
-          عرض قالب اليوم
+          {i18n.language === 'ar' ? 'عرض قالب اليوم' : 'Show Day Template'}
         </button>
       </div>
       {showTemplate && (
@@ -178,19 +191,32 @@ function DayView({
               onClick={() => setShowTemplate(false)}
               className="absolute top-2 end-2 text-2xl text-gray-400 hover:text-red-500"
             >&times;</button>
-            <DayTemplate
-              day={dayData}
-              progress={{ completed: completedTasks, total: totalTasks, percentage: progress.percentage }}
-              totalTime={dayData.tasks.reduce((sum, t) => sum + t.duration, 0)}
-              notesCount={appState.notes[weekId]?.days[dayIndex] ? Object.keys(appState.notes[weekId].days[dayIndex]).length : 0}
-              journalCount={appState.journal[weekId]?.days[dayIndex] ? 1 : 0}
-              resourcesCount={dayData.resources ? dayData.resources.length : 0}
-              tags={tagsArr}
-              completedTasks={completedTasksList}
-              allTasks={dayData.tasks}
-              sectionStats={sectionStats}
-              rating={null}
-            />
+            <div ref={templateRef}>
+              <DayTemplate
+                day={dayData}
+                progress={{ completed: completedTasks, total: totalTasks, percentage: progress.percentage }}
+                totalTime={dayData.tasks.reduce((sum, t) => sum + t.duration, 0)}
+                notesCount={appState.notes[weekId]?.days[dayIndex] ? Object.keys(appState.notes[weekId].days[dayIndex]).length : 0}
+                journalCount={appState.journal[weekId]?.days[dayIndex] ? 1 : 0}
+                resourcesCount={dayData.resources ? dayData.resources.length : 0}
+                tags={tagsArr}
+                completedTasks={completedTasksList}
+                allTasks={dayData.tasks}
+                sectionStats={sectionStats}
+                rating={null}
+                rtl={rtl}
+                lang={i18n.language}
+              />
+            </div>
+            {progress.completed === progress.total && progress.total > 0 ? (
+              <button onClick={handlePrint} className="mt-4 bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-700 print:hidden">
+                {i18n.language === 'ar' ? 'طباعة' : 'Print'}
+              </button>
+            ) : (
+              <div className="mt-4 bg-yellow-100 text-yellow-800 p-3 rounded">
+                {i18n.language === 'ar' ? 'لم تكتمل جميع المهام بعد.' : 'Not all tasks are complete.'}
+              </div>
+            )}
           </div>
         </div>
       )}
