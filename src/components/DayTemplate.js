@@ -10,7 +10,7 @@ import { Bar, Doughnut } from 'react-chartjs-2';
 
 
 
-function DayTemplate({ day, progress, totalTime, notesCount, journalCount, resourcesCount, tags, completedTasks, allTasks, sectionStats, rating }) {
+function DayTemplate({ day, progress, totalTime, notesCount, journalCount, resourcesCount, tags, completedTasks, allTasks, sectionStats, rating, pomodoro }) {
 
   const { i18n, t } = useTranslation();
 
@@ -181,6 +181,18 @@ function DayTemplate({ day, progress, totalTime, notesCount, journalCount, resou
               <span className="inline-block w-2 h-2 rounded-full" style={{background: sectionColors[task.type] || '#64748b'}}></span>
 
               {task.description[i18n.language]} <span className="text-xs text-gray-400">({task.type})</span>
+
+              {/* إحصائيات بومودورو */}
+
+              {pomodoro && pomodoro[task.id] && (
+
+                <span className="text-xs text-orange-600 font-bold ms-2">
+
+                  {isAr ? `جلسات بومودورو: ${pomodoro[task.id].count}، المدة: ${Math.floor((pomodoro[task.id].totalSeconds||0)/60)} دقيقة` : `Pomodoro: ${pomodoro[task.id].count} sessions, ${Math.floor((pomodoro[task.id].totalSeconds||0)/60)} min`}
+
+                </span>
+
+              )}
 
             </li>
 

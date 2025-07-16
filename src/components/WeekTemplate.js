@@ -4,7 +4,7 @@ import LogoArabic from './LogoArabic';
 import Logo from './Logo';
 import { Bar, Doughnut } from 'react-chartjs-2';
 
-function WeekTemplate({ week, progress, totalTime, notesCount, journalCount, resourcesCount, tags, completedTasks, allTasks, sectionStats }) {
+function WeekTemplate({ week, progress, totalTime, notesCount, journalCount, resourcesCount, tags, completedTasks, allTasks, sectionStats, pomodoro }) {
   const { i18n, t } = useTranslation();
   const isAr = i18n.language === 'ar';
   const now = new Date();
@@ -90,6 +90,12 @@ function WeekTemplate({ week, progress, totalTime, notesCount, journalCount, res
             <li key={i} className="text-gray-800 dark:text-gray-100 font-medium flex items-center gap-2">
               <span className="inline-block w-2 h-2 rounded-full" style={{background: sectionColors[task.type] || '#64748b'}}></span>
               {task.description[i18n.language]} <span className="text-xs text-gray-400">({task.type})</span>
+              {/* إحصائيات بومودورو */}
+              {pomodoro && pomodoro[task.id] && (
+                <span className="text-xs text-orange-600 font-bold ms-2">
+                  {isAr ? `جلسات بومودورو: ${pomodoro[task.id].count}، المدة: ${Math.floor((pomodoro[task.id].totalSeconds||0)/60)} دقيقة` : `Pomodoro: ${pomodoro[task.id].count} sessions, ${Math.floor((pomodoro[task.id].totalSeconds||0)/60)} min`}
+                </span>
+              )}
             </li>
           ))}
         </ul>

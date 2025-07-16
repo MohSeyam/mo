@@ -3,7 +3,7 @@ import { AppContext } from '../components/App';
 import DayView from './components/DayView';
 import PlanTemplate from '../components/PlanTemplate';
 
-function WeekCard({ week }) {
+function WeekCard({ week, rtl, pomodoro }) {
   const { lang, appState, setAppState, translations, Icons, setModal, showToast, rtl } = useContext(AppContext);
   const t = translations[lang];
   const [activeDayKey, setActiveDayKey] = useState(week.days[0].key);
@@ -108,10 +108,13 @@ function WeekCard({ week }) {
             setModal={setModal}
             rtl={rtl}
             showToast={showToast}
+            pomodoro={pomodoro}
           />
         </div>
       </div>
       <Modal open={modal.open} content={modal.content} onClose={() => setLocalModal({ open: false, content: null })} />
+      {/* تمرير pomodoro لملخص الأسبوع إذا لزم */}
+      {/* <WeekTemplate ... pomodoro={pomodoro} /> */}
     </div>
   );
 }

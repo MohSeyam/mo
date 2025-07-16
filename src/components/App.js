@@ -65,6 +65,14 @@ function App() {
   const charts = null; // ضع هنا رسم بياني مناسب
   const lang = i18n.language;
 
+  // حساب ملخص بومودورو لجميع المهام
+  const pomodoro = appState?.pomodoro || {};
+  const pomodoroStats = Object.values(pomodoro).reduce((acc, v) => {
+    acc.totalSessions += v.count || 0;
+    acc.totalMinutes += (v.totalSeconds || 0) / 60;
+    return acc;
+  }, { totalSessions: 0, totalMinutes: 0 });
+
   function handlePrint(ref) {
     if (ref && ref.current) {
       const printContents = ref.current.innerHTML;
@@ -80,7 +88,7 @@ function App() {
   function openMonthTemplate() {
     setModal({
       open: true,
-      content: <MonthTemplate logo={logo} stats={stats} charts={charts} isAllComplete={isAllComplete} rtl={rtl} lang={lang} onPrint={handlePrint} />
+      content: <MonthTemplate logo={logo} stats={{...stats, pomodoroStats}} charts={charts} isAllComplete={isAllComplete} rtl={rtl} lang={lang} onPrint={handlePrint} />
     });
   }
   function openPhaseTemplate() {
@@ -142,7 +150,7 @@ function App() {
                 <div className="space-y-6">
                   <SkillMatrix planData={planData} />
                   {planData.map(week => (
-                    <WeekCard key={week.week} week={week} rtl={rtl} />
+                    <WeekCard key={week.week} week={week} rtl={rtl} pomodoro={pomodoro} />
                   ))}
                 </div>
               )}

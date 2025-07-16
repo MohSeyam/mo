@@ -136,6 +136,14 @@ export default function MonthTemplate({
           <div className="font-semibold">{lang === 'ar' ? 'عدد الملاحظات' : 'Notes'}: {stats.notesCount}</div>
           <div className="font-semibold">{lang === 'ar' ? 'عدد التدوينات' : 'Journals'}: {stats.journalCount}</div>
           <div className="font-semibold">{lang === 'ar' ? 'عدد الموارد' : 'Resources'}: {stats.resourcesCount}</div>
+          {/* ملخص بومودورو */}
+          {stats.pomodoroStats && (
+            <div className="font-semibold text-orange-600 mt-2">
+              {lang === 'ar'
+                ? `إجمالي جلسات بومودورو: ${stats.pomodoroStats.totalSessions}، المدة: ${Math.floor(stats.pomodoroStats.totalMinutes)} دقيقة`
+                : `Total Pomodoro: ${stats.pomodoroStats.totalSessions} sessions, ${Math.floor(stats.pomodoroStats.totalMinutes)} min`}
+            </div>
+          )}
         </div>
         <div className="flex flex-col gap-4">
           <Bar data={barData} options={barOptions} />

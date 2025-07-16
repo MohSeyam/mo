@@ -9,13 +9,15 @@ const DEFAULTS = {
   sessionsBeforeLong: 4,
 };
 
-function PomodoroTimer({ task, onSessionComplete, rtl }) {
+function PomodoroTimer({ task, onSessionComplete, rtl, onTaskDone, onClose }) {
   const { t, i18n } = useTranslation();
   const [mode, setMode] = useState('work'); // work | short | long
   const [secondsLeft, setSecondsLeft] = useState(DEFAULTS.work);
   const [isRunning, setIsRunning] = useState(false);
   const [sessionCount, setSessionCount] = useState(0);
   const intervalRef = useRef();
+  const [showExtraInput, setShowExtraInput] = useState(false);
+  const [extraMinutes, setExtraMinutes] = useState(5);
 
   useEffect(() => {
     if (!isRunning) return;
@@ -82,6 +84,22 @@ function PomodoroTimer({ task, onSessionComplete, rtl }) {
     long: { en: 'Long Break', ar: 'استراحة طويلة' },
   };
 
+  function handleTaskDone() {
+    if (onTaskDone && task?.id) onTaskDone(task.id);
+    if (onClose) onClose();
+  }
+
+  function handleExtraTime() {
+    setShowExtraInput(true);
+  }
+
+  function confirmExtraTime() {
+    setMode('work');
+    setSecondsLeft(extraMinutes * 60);
+    setIsRunning(true);
+    setShowExtraInput(false);
+  }
+
   return (
     <div className={`flex flex-col items-center justify-center p-6 rounded-2xl shadow-xl border-2 border-${color}-300 bg-white dark:bg-gray-900 w-full max-w-xs mx-auto`} dir={rtl ? 'rtl' : 'ltr'}>
       <div className="flex items-center gap-2 mb-2">
@@ -104,16 +122,20 @@ function PomodoroTimer({ task, onSessionComplete, rtl }) {
         <button onClick={handleReset} className={`p-3 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 text-xl`}><FaRedo /></button>
         <button onClick={handleSkip} className={`p-3 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 text-xl`}><FaForward /></button>
       </div>
-      <div className="text-sm text-gray-500 dark:text-gray-400 mt-2">
-        {i18n.language === 'ar' ? `عدد الجلسات: ${sessionCount}` : `Sessions: ${sessionCount}`}
+      <div className="flex gap-2 mt-2">
+        <button onClick={handleTaskDone} className="px-4 py-1 rounded bg-green-600 text-white font-bold hover:bg-green-700">
+          {i18n.language === 'ar' ? 'تم' : 'Done'}
+        </button>
+        <button onClick={handleExtraTime} className="px-4 py-1 rounded bg-orange-500 text-white font-bold hover:bg-orange-600">
+          {i18n.language === 'ar' ? 'وقت إضافي' : 'Extra Time'}
+        </button>
       </div>
-      {task && (
-        <div className="mt-2 text-center text-xs text-gray-600 dark:text-gray-300">
-          <span className="font-bold">{i18n.language === 'ar' ? 'المهمة:' : 'Task:'}</span> {task.description?.[i18n.language] || task.description?.en || ''}
+      {showExtraInput && (
+        <div className="flex flex-col items-center gap-2 mt-3">
+          <label className="text-sm text-gray-700 dark:text-gray-200">{i18n.language === 'ar' ? 'حدد الدقائق:' : 'Set minutes:'}</label>
+          <input type="number" min={1} max={120} value={extraMinutes} onChange={e => setExtraMinutes(Number(e.target.value))} className="w-20 px-2 py-1 rounded border" />
+          <button onClick={confirmExtraTime} className="px-3 py-1 rounded bg-blue-600 text-white font-bold hover:bg-blue-700">{i18n.language === 'ar' ? 'ابدأ' : 'Start'}</button>
         </div>
       )}
-    </div>
-  );
-}
-
-export default PomodoroTimer;
+      <div className="text-sm text-gray-500 dark:text-gray-400 mt-2">
+        {i18n.language === 'ar' ? `عدد الجلسات: ${sessionCount}` : `

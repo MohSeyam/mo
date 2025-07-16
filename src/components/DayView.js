@@ -16,7 +16,8 @@ function DayView({
   Icons,
   setModal,
   rtl,
-  showToast
+  showToast,
+  pomodoro
 }) {
   const { t, i18n } = useTranslation();
   const [timerSettings, setTimerSettings] = useState({ work: 25, break: 5 });
@@ -210,6 +211,20 @@ function DayView({
     });
   }
 
+  function handleTaskDone(taskId) {
+    // تحديث حالة المهمة في appState إلى 'completed'
+    setAppState(prev => {
+      const newState = JSON.parse(JSON.stringify(prev));
+      const week = newState.progress[weekId];
+      if (week && week.days[dayIndex] && week.days[dayIndex].tasks) {
+        const idx = dayData.tasks.findIndex(t => t.id === taskId);
+        if (idx !== -1) newState.progress[weekId].days[dayIndex].tasks[idx] = 'completed';
+      }
+      return newState;
+    });
+    setPomodoroModal({ open: false, task: null });
+  }
+
   return (
     <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 border border-gray-200 dark:border-gray-700">
       <div className="flex justify-end mb-4">
@@ -242,6 +257,7 @@ function DayView({
                 rating={null}
                 rtl={rtl}
                 lang={i18n.language}
+                pomodoro={pomodoro}
               />
             </div>
             {progress.completed === progress.total && progress.total > 0 ? (
@@ -345,7 +361,13 @@ function DayView({
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
           <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-2xl max-w-md w-full p-6 relative animate-fade-in">
             <button onClick={() => setPomodoroModal({ open: false, task: null })} className="absolute top-2 end-2 text-2xl text-gray-400 hover:text-red-500">&times;</button>
-            <PomodoroTimer task={pomodoroModal.task} onSessionComplete={id => handlePomodoroSessionComplete(id)} rtl={rtl} />
+            <PomodoroTimer
+              task={pomodoroModal.task}
+              onSessionComplete={id => handlePomodoroSessionComplete(id)}
+              rtl={rtl}
+              onTaskDone={handleTaskDone}
+              onClose={() => setPomodoroModal({ open: false, task: null })}
+            />
           </div>
         </div>
       )}
