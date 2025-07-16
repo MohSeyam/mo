@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 import TagInput from './components/TagInput';
-import SimpleEditor from './components/SimpleEditor';
+import ReactMde from 'react-mde';
+import Showdown from 'showdown';
+import 'react-mde/lib/styles/css/react-mde-all.css';
 import { AppContext } from '../components/App';
 
 function NoteEditor({ note, taskDescription, onSave, onDelete, currentIndex, notes, onNavigate, allTasks }) {
@@ -11,6 +13,8 @@ function NoteEditor({ note, taskDescription, onSave, onDelete, currentIndex, not
     const [content, setContent] = useState(note.content || '');
     const [template, setTemplate] = useState('');
     const [selectedTaskId, setSelectedTaskId] = useState(note.taskData?.id || '');
+    const [selectedTab, setSelectedTab] = useState('write');
+    const converter = new Showdown.Converter({tables: true, simplifiedAutoLink: true});
     useEffect(() => {
         if (!note.title && template) {
             if (template === 'video') {
@@ -114,7 +118,24 @@ function NoteEditor({ note, taskDescription, onSave, onDelete, currentIndex, not
                 </div>
                 <div>
                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{t.noteContent}</label>
-                    <SimpleEditor content={content} onUpdate={setContent} />
+                    <ReactMde
+                        value={content}
+                        onChange={setContent}
+                        selectedTab={selectedTab}
+                        onTabChange={setSelectedTab}
+                        generateMarkdownPreview={markdown => Promise.resolve(converter.makeHtml(markdown))}
+                        childProps={{
+                            writeButton: { 'aria-label': 'Write' },
+                            previewButton: { 'aria-label': 'Preview' }
+                        }}
+                        l18n={{
+                            write: lang === 'ar' ? 'كتابة' : 'Write',
+                            preview: lang === 'ar' ? 'معاينة' : 'Preview'
+                        }}
+                        minEditorHeight={120}
+                        minPreviewHeight={120}
+                        style={{ direction: lang === 'ar' ? 'rtl' : 'ltr' }}
+                    />
                 </div>
             </div>
             <div className="bg-gray-50 dark:bg-gray-800/50 px-4 py-3 sm:px-6 flex flex-row-reverse">
