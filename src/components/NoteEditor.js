@@ -62,7 +62,7 @@ function NoteEditor({ note, taskDescription, onSave, onDelete, currentIndex, not
             return;
         }
         const selectedTask = allTasks.find(t => t.id === selectedTaskId);
-        onSave({ title, content, keywords: tags, taskId: selectedTaskId, taskData: selectedTask });
+        onSave({ title, content, keywords: tags, taskId: selectedTaskId, taskData: selectedTask, templateType: template });
     };
     // زر رفع صورة
     const handleImageUpload = (e) => {
@@ -79,6 +79,288 @@ function NoteEditor({ note, taskDescription, onSave, onDelete, currentIndex, not
         };
         reader.readAsDataURL(file);
     };
+    // --- قوالب احترافية مع نوع القالب ---
+    const templates = [
+        // قوالب سيبرانية
+        {
+            label: 'تقرير حادث أمني',
+            templateType: 'cyber',
+            content: `# تقرير حادث أمني
+
+| العنصر              | التفاصيل                |
+|---------------------|-------------------------|
+| التاريخ             |                         |
+| الموقع/النظام       |                         |
+| نوع الحادث          |                         |
+| مستوى الخطورة       | منخفض/متوسط/مرتفع       |
+| وصف الحادث          |                         |
+| الإجراءات المتخذة   |                         |
+| الجهات المشاركة     |                         |
+| التوصيات            |                         |
+| التاريخ/الوقت       |                         |
+`
+        },
+        {
+            label: 'تحليل ثغرة أمنية',
+            templateType: 'cyber',
+            content: `# تحليل ثغرة أمنية
+
+**اسم الثغرة:**
+**الرقم المرجعي (CVE):**
+**الوصف:**
+**تأثيرها:**
+**كيفية الاستغلال:**
+**الأنظمة المتأثرة:**
+**درجة الخطورة:**
+**طرق الكشف:**
+**طرق الحماية/الترقيع:**
+**مصادر:**
+`
+        },
+        {
+            label: 'مذكرة اختبار اختراق',
+            templateType: 'cyber',
+            content: `# مذكرة اختبار اختراق
+
+## النطاق
+- الأنظمة/العناوين:
+- الأدوات المستخدمة:
+
+## خطوات التنفيذ
+1. 
+2. 
+
+## النتائج
+- الثغرات المكتشفة:
+- توصيات:
+
+## ملاحظات إضافية
+`
+        },
+        {
+            label: 'ملخص دورة/شهادة',
+            templateType: 'cyber',
+            content: `# ملخص دورة/شهادة
+
+| العنصر            | التفاصيل         |
+|-------------------|------------------|
+| اسم الدورة/الشهادة|                  |
+| الجهة             |                  |
+| المحتوى الأساسي   |                  |
+| المهارات المكتسبة |                  |
+| ملاحظات           |                  |
+`
+        },
+        {
+            label: 'مراجعة أداة أمنية',
+            templateType: 'cyber',
+            content: `# مراجعة أداة أمنية
+
+**اسم الأداة:**
+**الغرض:**
+**المميزات:**
+**العيوب:**
+**أوامر مهمة:**
+**رابط رسمي:**
+`
+        },
+        {
+            label: 'خطة استجابة للحوادث',
+            templateType: 'cyber',
+            content: `# خطة استجابة للحوادث
+
+1. التحضير (تدريب، تجهيز الأدوات)
+2. الكشف والتحليل (تحديد الحادث، جمع الأدلة)
+3. الاحتواء (عزل الأنظمة المتأثرة)
+4. الاستئصال (إزالة التهديد)
+5. الاستعادة (إرجاع الأنظمة للعمل)
+6. الدروس المستفادة (تحديث السياسات)
+`
+        },
+        {
+            label: 'مذكرة تحليل برمجية خبيثة',
+            templateType: 'cyber',
+            content: `# مذكرة تحليل برمجية خبيثة
+
+| العنصر         | التفاصيل         |
+|----------------|------------------|
+| اسم الملف      |                  |
+| نوع البرمجية   |                  |
+| سلوكها         |                  |
+| طرق الانتشار   |                  |
+| طرق الحماية    |                  |
+| أدوات التحليل  |                  |
+`
+        },
+        {
+            label: 'مخطط اختبار اجتماعي',
+            templateType: 'cyber',
+            content: `# مخطط اختبار اجتماعي
+
+**الهدف:**
+**السيناريوهات:**
+**النتائج المتوقعة:**
+**الملاحظات:**
+`
+        },
+        {
+            label: 'مذكرة تحليل شبكة',
+            templateType: 'cyber',
+            content: `# مذكرة تحليل شبكة
+
+| العنصر      | التفاصيل         |
+|-------------|------------------|
+| النطاق      |                  |
+| الأدوات     |                  |
+| النتائج     |                  |
+| الملاحظات   |                  |
+`
+        },
+        {
+            label: 'مذكرة مراجعة كود',
+            templateType: 'cyber',
+            content: `# مذكرة مراجعة كود
+
+**المشروع:**
+**النطاق:**
+**الثغرات المحتملة:**
+**التوصيات:**
+**ملاحظات:**
+`
+        },
+        // قوالب سياسات أمنية
+        {
+            label: 'سياسة كلمة المرور',
+            templateType: 'policy',
+            content: `# سياسة كلمة المرور
+
+- يجب أن تتكون كلمة المرور من 12 حرفًا على الأقل.
+- يجب أن تحتوي على أحرف كبيرة وصغيرة وأرقام ورموز.
+- تغيير كلمة المرور كل 90 يومًا.
+- عدم مشاركة كلمة المرور مع أي شخص.
+- تفعيل المصادقة الثنائية إن أمكن.
+`
+        },
+        {
+            label: 'سياسة استخدام البريد الإلكتروني',
+            templateType: 'policy',
+            content: `# سياسة استخدام البريد الإلكتروني
+
+- يمنع فتح الروابط المشبوهة.
+- يمنع تحميل المرفقات من مصادر غير موثوقة.
+- الإبلاغ عن أي رسائل تصيد.
+- استخدام البريد الرسمي فقط للأعمال.
+`
+        },
+        {
+            label: 'سياسة الأجهزة المحمولة',
+            templateType: 'policy',
+            content: `# سياسة الأجهزة المحمولة
+
+- تفعيل القفل التلقائي للجهاز.
+- استخدام التشفير.
+- عدم تثبيت تطبيقات غير موثوقة.
+- الإبلاغ عن فقدان الجهاز فورًا.
+- تحديث النظام والتطبيقات باستمرار.
+`
+        },
+        {
+            label: 'سياسة الوصول للأنظمة',
+            templateType: 'policy',
+            content: `# سياسة الوصول للأنظمة
+
+- منح الصلاحيات حسب الحاجة فقط (Least Privilege).
+- مراجعة الصلاحيات بشكل دوري.
+- إلغاء صلاحيات الموظفين المنتهية خدمتهم فورًا.
+- تسجيل الدخول والخروج من الأنظمة.
+`
+        },
+        // قوالب مهارات ناعمة
+        {
+            label: 'تقييم مهارة التواصل',
+            templateType: 'soft',
+            content: `# تقييم مهارة التواصل
+
+**الموقف:**
+**ما الذي سار بشكل جيد؟**
+**ما الذي يمكن تحسينه؟**
+**خطة التحسين:**
+**أمثلة عملية:**
+`
+        },
+        {
+            label: 'خطة تطوير مهارة القيادة',
+            templateType: 'soft',
+            content: `# خطة تطوير مهارة القيادة
+
+- نقاط القوة الحالية:
+- نقاط الضعف:
+- أهداف التطوير:
+- خطوات عملية:
+- متابعة وتقييم:
+`
+        },
+        {
+            label: 'مذكرة إدارة الوقت',
+            templateType: 'soft',
+            content: `# مذكرة إدارة الوقت
+
+| المهمة         | الأولوية | الوقت المتوقع | الوقت الفعلي | ملاحظات |
+|---------------|----------|---------------|--------------|---------|
+|               |          |               |              |         |
+
+**العقبات:**
+**خطوات التحسين:**
+`
+        },
+        {
+            label: 'تقييم العمل الجماعي',
+            templateType: 'soft',
+            content: `# تقييم العمل الجماعي
+
+**المشروع:**
+**دورك:**
+**ما الذي نجح؟**
+**ما الذي يمكن تحسينه؟**
+**خطة التحسين:**
+`
+        },
+        {
+            label: 'خطة تطوير مهارة حل المشكلات',
+            templateType: 'soft',
+            content: `# خطة تطوير مهارة حل المشكلات
+
+- المشكلة:
+- التحليل:
+- الحلول المقترحة:
+- الخطة التنفيذية:
+- التقييم والمتابعة:
+`
+        },
+        // قالب عام
+        {
+            label: 'ملاحظة عامة',
+            templateType: 'general',
+            content: `# ملاحظة عامة
+
+- ...
+`
+        },
+    ];
+    // إدراج القالب في مكان المؤشر أو استبدال النص إذا كان فارغًا، وتعيين نوع القالب
+    const insertTemplate = (templateContent, templateType) => {
+        setContent(prev => {
+            const textarea = document.querySelector('.mde-text');
+            if (textarea && textarea.selectionStart !== undefined) {
+                const start = textarea.selectionStart;
+                const end = textarea.selectionEnd;
+                return prev.slice(0, start) + templateContent + prev.slice(end);
+            }
+            return templateContent;
+        });
+        setTemplate(templateType);
+    };
+
     // أمر مخصص للزر
     const customCommands = [
         {
@@ -196,6 +478,20 @@ function NoteEditor({ note, taskDescription, onSave, onDelete, currentIndex, not
                     </select>
                 </div>
             )}
+            <div className="mb-2 flex flex-wrap gap-2">
+                {templates.map((tpl, idx) => (
+                    <button
+                        key={idx}
+                        type="button"
+                        className={`px-2 py-1 rounded text-xs border mr-1 ${tpl.templateType === 'cyber' ? 'bg-blue-100 text-blue-800 border-blue-200' : tpl.templateType === 'policy' ? 'bg-green-100 text-green-800 border-green-200' : tpl.templateType === 'soft' ? 'bg-yellow-100 text-yellow-800 border-yellow-200' : 'bg-gray-100 text-gray-800 border-gray-200'}`}
+                        style={{direction: lang === 'ar' ? 'rtl' : 'ltr'}}
+                        onClick={() => insertTemplate(tpl.content, tpl.templateType)}
+                        title={tpl.label}
+                    >
+                        {tpl.label}
+                    </button>
+                ))}
+            </div>
         </>
     );
 }
