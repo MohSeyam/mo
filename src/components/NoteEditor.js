@@ -360,6 +360,7 @@ function NoteEditor({ note, taskDescription, onSave, onDelete, currentIndex, not
         });
         setTemplate(templateType);
     };
+
     // أمر مخصص للزر
     const customCommands = [
         {
