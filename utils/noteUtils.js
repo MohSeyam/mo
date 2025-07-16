@@ -47,3 +47,14 @@ export function filterNotes(notes, search, tagFilter) {
         (!tagFilter || (note.keywords && note.keywords.includes(tagFilter)))
     );
 }
+
+export function getAllWeeks(entries) {
+    return Array.from(new Set(entries.map(e => e.weekData.week)));
+}
+
+export function filterJournalEntries(entries, search, weekFilter) {
+    return entries.filter(entry =>
+        (!search || (entry.content && entry.content.toLowerCase().includes(search.toLowerCase()))) &&
+        (!weekFilter || entry.weekData.week === parseInt(weekFilter))
+    );
+}

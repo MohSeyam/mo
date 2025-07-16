@@ -1,16 +1,11 @@
 import React, { useState, useMemo } from 'react';
+import { getAllWeeks, filterJournalEntries } from '../utils/noteUtils';
 
 function JournalEntriesList({ entries, lang }) {
   const [search, setSearch] = useState('');
   const [weekFilter, setWeekFilter] = useState('');
-  const allWeeks = useMemo(() => Array.from(new Set(entries.map(e => e.weekData.week))), [entries]);
-
-  const filteredEntries = useMemo(() => {
-    return entries.filter(entry =>
-      (!search || (entry.content && entry.content.toLowerCase().includes(search.toLowerCase()))) &&
-      (!weekFilter || entry.weekData.week === parseInt(weekFilter))
-    );
-  }, [entries, search, weekFilter]);
+  const allWeeks = useMemo(() => getAllWeeks(entries), [entries]);
+  const filteredEntries = useMemo(() => filterJournalEntries(entries, search, weekFilter), [entries, search, weekFilter]);
 
   return (
     <div>
