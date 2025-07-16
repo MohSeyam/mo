@@ -1,4 +1,7 @@
 import React, { useRef } from 'react';
+import { Bar } from 'react-chartjs-2';
+import jsPDF from 'jspdf';
+import 'chart.js/auto';
 
 export default function MonthTemplate({
   logo,
@@ -10,15 +13,61 @@ export default function MonthTemplate({
   onPrint
 }) {
   const templateRef = useRef();
+
+  // إعداد بيانات الرسم البياني
+  const barData = {
+    labels: Object.keys(stats.sectionStats),
+    datasets: [
+      {
+        label: lang === 'ar' ? 'عدد المهام' : 'Tasks',
+        data: Object.values(stats.sectionStats),
+        backgroundColor: [
+          '#3B82F6', '#10B981', '#F59E42', '#EF4444', '#8B5CF6', '#FBBF24', '#6366F1', '#14B8A6'
+        ],
+        borderRadius: 6,
+      },
+    ],
+  };
+  const barOptions = {
+    responsive: true,
+    plugins: {
+      legend: { display: false },
+      title: { display: true, text: lang === 'ar' ? 'إحصائيات الأقسام' : 'Section Stats', font: { size: 16 } },
+    },
+    scales: {
+      x: { grid: { color: 'rgba(128,128,128,0.1)' } },
+      y: { grid: { color: 'rgba(128,128,128,0.1)' } },
+    },
+  };
+
+  // تصدير PDF
+  function handleExportPDF() {
+    if (templateRef.current) {
+      const doc = new jsPDF({ orientation: rtl ? 'rtl' : 'ltr', unit: 'pt', format: 'a4' });
+      doc.html(templateRef.current, {
+        callback: function (doc) {
+          doc.save('month-summary.pdf');
+        },
+        x: 10,
+        y: 10,
+        html2canvas: { scale: 0.7 },
+      });
+    }
+  }
+
   return (
     <div ref={templateRef} className={`bg-white p-8 rounded-xl shadow-xl border ${rtl ? 'rtl' : ''} max-w-3xl mx-auto`} dir={rtl ? 'rtl' : 'ltr'}>
       <div className="flex items-center justify-between mb-6">
-        <div>{logo}</div>
-        <h2 className="text-2xl font-bold">{lang === 'ar' ? 'ملخص الشهر' : 'Month Summary'}</h2>
+        <div className="flex items-center gap-2">{logo}<span className="text-xl font-bold">{lang === 'ar' ? 'قالب ملخص الشهر' : 'Month Summary Template'}</span></div>
         {isAllComplete && (
-          <button onClick={() => onPrint(templateRef)} className="bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-700 print:hidden">
-            {lang === 'ar' ? 'طباعة' : 'Print'}
-          </button>
+          <div className="flex gap-2">
+            <button onClick={() => onPrint(templateRef)} className="bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-700 print:hidden">
+              {lang === 'ar' ? 'طباعة' : 'Print'}
+            </button>
+            <button onClick={handleExportPDF} className="bg-green-600 text-white px-4 py-2 rounded shadow hover:bg-green-700 print:hidden">
+              {lang === 'ar' ? 'تصدير PDF' : 'Export PDF'}
+            </button>
+          </div>
         )}
       </div>
       {!isAllComplete && (
@@ -35,7 +84,7 @@ export default function MonthTemplate({
           <div className="font-semibold">{lang === 'ar' ? 'عدد التدوينات' : 'Journals'}: {stats.journalCount}</div>
           <div className="font-semibold">{lang === 'ar' ? 'عدد الموارد' : 'Resources'}: {stats.resourcesCount}</div>
         </div>
-        <div>{charts}</div>
+        <div><Bar data={barData} options={barOptions} /></div>
       </div>
       <div className="mb-4">
         <h3 className="font-bold mb-2">{lang === 'ar' ? 'إحصائيات الأقسام' : 'Section Stats'}</h3>
