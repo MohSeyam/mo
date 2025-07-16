@@ -1,12 +1,28 @@
 import React, { useState, useMemo } from 'react';
 import NoteCard from './NoteCard';
 import { getAllTags, filterNotes } from '../utils/noteUtils';
+import { FixedSizeList as List } from 'react-window';
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
-function TaskNotesList({ notes, lang, onEdit }) {
+function TaskNotesList({ notes, lang, onEdit, onReorder }) {
   const [search, setSearch] = useState('');
   const [tagFilters, setTagFilters] = useState([]);
   const allTags = useMemo(() => getAllTags(notes), [notes]);
   const filteredNotes = useMemo(() => filterNotes(notes, search, tagFilters), [notes, search, tagFilters]);
+
+  const Row = ({ index, style }) => (
+    <div style={style} className="pr-2 pb-4">
+      <NoteCard note={filteredNotes[index]} lang={lang} onClick={() => onEdit(filteredNotes[index])} />
+    </div>
+  );
+
+  const handleDragEnd = (result) => {
+    if (!result.destination) return;
+    const reordered = Array.from(filteredNotes);
+    const [removed] = reordered.splice(result.source.index, 1);
+    reordered.splice(result.destination.index, 0, removed);
+    if (onReorder) onReorder(reordered);
+  };
 
   return (
     <div>
@@ -32,14 +48,46 @@ function TaskNotesList({ notes, lang, onEdit }) {
           ))}
         </select>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredNotes.map(note => (
-          <NoteCard key={note.updatedAt} note={note} lang={lang} onClick={() => onEdit(note)} />
-        ))}
-        {filteredNotes.length === 0 && (
-          <div className="col-span-full text-center text-gray-400 py-8">{lang === 'ar' ? 'لا توجد ملاحظات مطابقة' : 'No matching notes found'}</div>
-        )}
-      </div>
+      {filteredNotes.length > 30 ? (
+        <List
+          height={600}
+          itemCount={filteredNotes.length}
+          itemSize={180}
+          width={"100%"}
+        >
+          {Row}
+        </List>
+      ) : (
+        <DragDropContext onDragEnd={handleDragEnd}>
+          <Droppable droppableId="notes-list" direction="vertical">
+            {(provided) => (
+              <div
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                ref={provided.innerRef}
+                {...provided.droppableProps}
+              >
+                {filteredNotes.map((note, idx) => (
+                  <Draggable key={note.updatedAt} draggableId={note.updatedAt} index={idx}>
+                    {(provided) => (
+                      <div
+                        ref={provided.innerRef}
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                      >
+                        <NoteCard note={note} lang={lang} onClick={() => onEdit(note)} />
+                      </div>
+                    )}
+                  </Draggable>
+                ))}
+                {provided.placeholder}
+                {filteredNotes.length === 0 && (
+                  <div className="col-span-full text-center text-gray-400 py-8">{lang === 'ar' ? 'لا توجد ملاحظات مطابقة' : 'No matching notes found'}</div>
+                )}
+              </div>
+            )}
+          </Droppable>
+        </DragDropContext>
+      )}
     </div>
   );
 }

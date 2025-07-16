@@ -102,3 +102,45 @@ export function exportNoteAsMarkdown(note, lang = 'ar') {
     md += note.content;
     return md;
 }
+
+export function exportAllData(appState) {
+    return JSON.stringify(appState, null, 2);
+}
+
+export function importAllData(currentState, importedData) {
+    // دمج الملاحظات والتدوينات مع تجنب التكرار (حسب updatedAt أو id)
+    const merged = JSON.parse(JSON.stringify(currentState));
+    // دمج الملاحظات
+    if (importedData.notes) {
+        merged.notes = merged.notes || {};
+        Object.keys(importedData.notes).forEach(weekKey => {
+            merged.notes[weekKey] = merged.notes[weekKey] || { days: {} };
+            Object.keys(importedData.notes[weekKey].days).forEach(dayIdx => {
+                merged.notes[weekKey].days[dayIdx] = merged.notes[weekKey].days[dayIdx] || {};
+                Object.keys(importedData.notes[weekKey].days[dayIdx]).forEach(taskId => {
+                    // إذا لم توجد أو كانت الملاحظة المستوردة أحدث
+                    const importedNote = importedData.notes[weekKey].days[dayIdx][taskId];
+                    const existingNote = merged.notes[weekKey].days[dayIdx][taskId];
+                    if (!existingNote || new Date(importedNote.updatedAt) > new Date(existingNote.updatedAt)) {
+                        merged.notes[weekKey].days[dayIdx][taskId] = importedNote;
+                    }
+                });
+            });
+        });
+    }
+    // دمج التدوينات
+    if (importedData.journal) {
+        merged.journal = merged.journal || {};
+        Object.keys(importedData.journal).forEach(weekKey => {
+            merged.journal[weekKey] = merged.journal[weekKey] || { days: {} };
+            Object.keys(importedData.journal[weekKey].days).forEach(dayIdx => {
+                const importedEntry = importedData.journal[weekKey].days[dayIdx];
+                const existingEntry = merged.journal[weekKey].days[dayIdx];
+                if (!existingEntry || new Date(importedEntry.updatedAt) > new Date(existingEntry.updatedAt)) {
+                    merged.journal[weekKey].days[dayIdx] = importedEntry;
+                }
+            });
+        });
+    }
+    return merged;
+}

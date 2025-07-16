@@ -1,12 +1,12 @@
-import React, { useState, useMemo, useContext } from 'react';
-import { AppContext } from '../components/App';
+import React, { useState, useMemo } from 'react';
 import NoteEditor from './components/NoteEditor';
 import TaskNotesList from './components/TaskNotesList';
 import JournalEntriesList from './components/JournalEntriesList';
-import { useAppContext } from '../context/AppContext';<<<<<<< cursor/implement-and-detail-application-features-c882
+import { useAppContext } from '../context/AppContext';
+import { getStats, exportAllData, importAllData } from '../utils/noteUtils';
 
 function NotebookView() {
-    const { lang, appState, setModal, planData, translations, updateNote, deleteNote, showToast } = useAppContext();
+    const { lang, appState, setAppState, setModal, planData, translations, updateNote, deleteNote, showToast } = useAppContext();
     const t = translations[lang];
     const [activeTab, setActiveTab] = useState('tasks');
     const [showGraph, setShowGraph] = useState(false);
@@ -28,7 +28,8 @@ function NotebookView() {
                 });
             });
         });
-        return notesList.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
+        // ترتيب حسب خاصية order إذا وجدت، وإلا حسب updatedAt
+        return notesList.sort((a, b) => (a.order ?? 0) - (b.order ?? 0) || new Date(b.updatedAt) - new Date(a.updatedAt));
     }, [appState.notes, planData]);
     
     const allJournalEntries = useMemo(() => {
@@ -94,8 +95,83 @@ function NotebookView() {
         });
     };
 
+    // دالة إعادة ترتيب الملاحظات في الحالة
+    const handleReorderNotes = (reorderedNotes) => {
+        setAppState(prev => {
+            const newState = JSON.parse(JSON.stringify(prev));
+            reorderedNotes.forEach((note, idx) => {
+                const weekKey = note.weekData.week;
+                const dayIdx = note.dayData.key;
+                const taskId = note.taskData.id;
+                const week = newState.notes[weekKey];
+                if (week && week.days[dayIdx] && week.days[dayIdx][taskId]) {
+                    newState.notes[weekKey].days[dayIdx][taskId].order = idx;
+                }
+            });
+            return newState;
+        });
+        showToast('تم تحديث ترتيب الملاحظات', 'success');
+    };
+
+    const handleExportAll = () => {
+        const data = exportAllData(appState);
+        const blob = new Blob([data], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'backup.json';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        showToast('تم تصدير جميع البيانات بنجاح', 'success');
+    };
+    const handleImportAll = (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (evt) => {
+            try {
+                const importedData = JSON.parse(evt.target.result);
+                setAppState(prev => importAllData(prev, importedData));
+                showToast('تم الاستيراد ودمج البيانات بنجاح', 'success');
+            } catch {
+                showToast('فشل الاستيراد: ملف غير صالح', 'error');
+            }
+        };
+        reader.readAsText(file);
+    };
+
+    // دالة إعادة ترتيب الملاحظات في الحالة
+    const handleReorderNotes = (reorderedNotes) => {
+        // تحديث ترتيب الملاحظات في appState.notes حسب الترتيب الجديد
+        // سنضيف خاصية order لكل ملاحظة ونرتبها بناءً عليها
+        setAppState(prev => {
+            const newState = JSON.parse(JSON.stringify(prev));
+            reorderedNotes.forEach((note, idx) => {
+                const weekKey = note.weekData.week;
+                const dayIdx = note.dayData.key;
+                const taskId = note.taskData.id;
+                const week = newState.notes[weekKey];
+                if (week && week.days[dayIdx] && week.days[dayIdx][taskId]) {
+                    newState.notes[weekKey].days[dayIdx][taskId].order = idx;
+                }
+            });
+            return newState;
+        });
+        showToast('تم تحديث ترتيب الملاحظات', 'success');
+    };
+
     return (
         <div className="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-2xl h-full flex flex-col border border-gray-100 dark:border-gray-800">
+            {/* أزرار التصدير والاستيراد */}
+            <div className="mb-4 flex gap-4">
+                <button onClick={handleExportAll} className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">تصدير الكل</button>
+                <label className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 cursor-pointer">
+                    استيراد
+                    <input type="file" accept="application/json" onChange={handleImportAll} className="hidden" />
+                </label>
+            </div>
             {/* لوحة الإحصائيات */}
             <div className="mb-6 flex flex-wrap gap-6 items-center justify-start">
                 <div className="bg-blue-50 dark:bg-blue-900/30 rounded-lg px-4 py-2 text-blue-900 dark:text-blue-100 font-semibold">
@@ -127,7 +203,7 @@ function NotebookView() {
             {/* Graph view and notes rendering would go here, omitted for brevity */}
             <div className="overflow-y-auto flex-grow mt-6">
                 {activeTab === 'tasks' && (
-                    <TaskNotesList notes={allTaskNotes} lang={lang} onEdit={openNoteModal} />
+                    <TaskNotesList notes={allTaskNotes} lang={lang} onEdit={openNoteModal} onReorder={handleReorderNotes} />
                 )}
                 {activeTab === 'journal' && (
                     <JournalEntriesList entries={allJournalEntries} lang={lang} />
