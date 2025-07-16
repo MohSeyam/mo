@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useContext } from 'react';
-import { AppContext } from '../App';
-import DayView from './DayView';
+import { AppContext } from '../components/App';
+import DayView from './components/DayView';
 
 function WeekCard({ week }) {
   const { lang, appState, setAppState, translations, Icons, setModal, showToast, rtl } = useContext(AppContext);

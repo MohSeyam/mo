@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import SimpleEditor from './SimpleEditor';
-import { AppContext } from '../App';
+import SimpleEditor from './components/SimpleEditor';
+import { AppContext } from '../components/App';
 
 function JournalEditor({ weekId, dayIndex, prompt }) {
     const { lang, appState, setAppState, translations } = useContext(AppContext);
