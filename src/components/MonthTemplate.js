@@ -93,6 +93,26 @@ export default function MonthTemplate({
     },
   };
 
+  // رسم بياني دائري لتوزيع وقت البومودورو على المهام
+  let pomodoroPieData = null;
+  if (stats.pomodoro && Object.keys(stats.pomodoro).length > 0) {
+    const labels = Object.keys(stats.pomodoro).map(id => id);
+    const data = Object.values(stats.pomodoro).map(v => Math.floor((v.totalSeconds || 0) / 60));
+    pomodoroPieData = {
+      labels,
+      datasets: [
+        {
+          label: lang === 'ar' ? 'دقائق بومودورو لكل مهمة' : 'Pomodoro Minutes per Task',
+          data,
+          backgroundColor: [
+            '#3B82F6', '#10B981', '#F59E42', '#EF4444', '#8B5CF6', '#FBBF24', '#6366F1', '#14B8A6', '#F472B6', '#FCD34D', '#A3E635', '#F87171'
+          ],
+          borderWidth: 2,
+        },
+      ],
+    };
+  }
+
   // تصدير PDF
   function handleExportPDF() {
     if (templateRef.current) {
@@ -149,6 +169,8 @@ export default function MonthTemplate({
           <Bar data={barData} options={barOptions} />
           {Object.keys(stats.tagStats).length > 0 && <Pie data={pieData} options={pieOptions} />}
           {lineLabels.length > 1 && <Line data={lineData} options={lineOptions} />}
+          {/* رسم بياني توزيع وقت البومودورو */}
+          {pomodoroPieData && <Pie data={pomodoroPieData} options={{responsive:true, plugins:{legend:{position:'bottom'}, title:{display:true, text:lang==='ar'?'توزيع وقت بومودورو على المهام':'Pomodoro Time Distribution'}}}} />}
         </div>
       </div>
       <div className="mb-4">
