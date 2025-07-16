@@ -142,6 +142,26 @@ function NotebookView() {
         reader.readAsText(file);
     };
 
+    // دالة إعادة ترتيب الملاحظات في الحالة
+    const handleReorderNotes = (reorderedNotes) => {
+        // تحديث ترتيب الملاحظات في appState.notes حسب الترتيب الجديد
+        // سنضيف خاصية order لكل ملاحظة ونرتبها بناءً عليها
+        setAppState(prev => {
+            const newState = JSON.parse(JSON.stringify(prev));
+            reorderedNotes.forEach((note, idx) => {
+                const weekKey = note.weekData.week;
+                const dayIdx = note.dayData.key;
+                const taskId = note.taskData.id;
+                const week = newState.notes[weekKey];
+                if (week && week.days[dayIdx] && week.days[dayIdx][taskId]) {
+                    newState.notes[weekKey].days[dayIdx][taskId].order = idx;
+                }
+            });
+            return newState;
+        });
+        showToast('تم تحديث ترتيب الملاحظات', 'success');
+    };
+
     return (
         <div className="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-2xl h-full flex flex-col border border-gray-100 dark:border-gray-800">
             {/* أزرار التصدير والاستيراد */}
