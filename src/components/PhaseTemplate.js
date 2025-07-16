@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import { Pie } from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
 import jsPDF from 'jspdf';
 import 'chart.js/auto';
 
@@ -60,6 +61,35 @@ export default function PhaseTemplate({
     },
   };
 
+  // إعداد بيانات الرسم البياني الخطي (مثال: المهام المنجزة لكل أسبوع في المرحلة)
+  const lineLabels = stats.timeSeriesLabels || [];
+  const lineData = {
+    labels: lineLabels,
+    datasets: [
+      {
+        label: lang === 'ar' ? 'المهام المنجزة' : 'Completed Tasks',
+        data: stats.timeSeriesData || [],
+        fill: false,
+        borderColor: '#3B82F6',
+        backgroundColor: '#3B82F6',
+        tension: 0.3,
+        pointRadius: 4,
+        pointBackgroundColor: '#3B82F6',
+      },
+    ],
+  };
+  const lineOptions = {
+    responsive: true,
+    plugins: {
+      legend: { display: true, position: 'top' },
+      title: { display: true, text: lang === 'ar' ? 'تقدم المهام عبر الأسابيع' : 'Tasks Progress Over Weeks', font: { size: 16 } },
+    },
+    scales: {
+      x: { grid: { color: 'rgba(128,128,128,0.1)' } },
+      y: { grid: { color: 'rgba(128,128,128,0.1)' } },
+    },
+  };
+
   // تصدير PDF
   function handleExportPDF() {
     if (templateRef.current) {
@@ -107,6 +137,7 @@ export default function PhaseTemplate({
         <div className="flex flex-col gap-4">
           <Doughnut data={doughnutData} options={doughnutOptions} />
           {Object.keys(stats.tagStats).length > 0 && <Pie data={pieData} options={pieOptions} />}
+          {lineLabels.length > 1 && <Line data={lineData} options={lineOptions} />}
         </div>
       </div>
       <div className="mb-4">
