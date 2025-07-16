@@ -41,11 +41,23 @@ export function getAllTags(notes) {
     return Array.from(new Set(notes.flatMap(n => n.keywords || [])));
 }
 
-export function filterNotes(notes, search, tagFilter) {
-    return notes.filter(note =>
-        (!search || note.title.toLowerCase().includes(search.toLowerCase()) || (note.content && note.content.toLowerCase().includes(search.toLowerCase()))) &&
-        (!tagFilter || (note.keywords && note.keywords.includes(tagFilter)))
-    );
+export function filterNotes(notes, search, tagFilters) {
+    return notes.filter(note => {
+        // البحث في العنوان، المحتوى، التاجات، اسم ووصف المهمة
+        const searchLower = search ? search.toLowerCase() : '';
+        const matchesSearch = !search ||
+            (note.title && note.title.toLowerCase().includes(searchLower)) ||
+            (note.content && note.content.toLowerCase().includes(searchLower)) ||
+            (note.keywords && note.keywords.some(tag => tag.toLowerCase().includes(searchLower))) ||
+            (note.taskData && (
+                (note.taskData.title && note.taskData.title.toLowerCase().includes(searchLower)) ||
+                (note.taskData.description && note.taskData.description.toLowerCase().includes(searchLower))
+            ));
+        // التصفية المتعددة للتاجات
+        const matchesTags = !tagFilters || tagFilters.length === 0 ||
+            (note.keywords && note.keywords.some(tag => tagFilters.includes(tag)));
+        return matchesSearch && matchesTags;
+    });
 }
 
 export function getAllWeeks(entries) {
@@ -57,4 +69,36 @@ export function filterJournalEntries(entries, search, weekFilter) {
         (!search || (entry.content && entry.content.toLowerCase().includes(search.toLowerCase()))) &&
         (!weekFilter || entry.weekData.week === parseInt(weekFilter))
     );
+}
+
+export function getTopTags(notes, topN = 3) {
+    const tagCount = {};
+    notes.forEach(note => {
+        (note.keywords || []).forEach(tag => {
+            tagCount[tag] = (tagCount[tag] || 0) + 1;
+        });
+    });
+    return Object.entries(tagCount)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, topN)
+        .map(([tag, count]) => ({ tag, count }));
+}
+
+export function getStats(notes, journalEntries) {
+    return {
+        notesCount: notes.length,
+        journalCount: journalEntries.length,
+        topTags: getTopTags(notes)
+    };
+}
+
+export function exportNoteAsMarkdown(note, lang = 'ar') {
+    let md = `# ${note.title}\n`;
+    if (note.keywords && note.keywords.length)
+        md += `\n**Tags:** ${note.keywords.join(', ')}\n`;
+    if (note.taskData && note.taskData.title)
+        md += `\n**Task:** ${note.taskData.title[lang] || note.taskData.title}\n`;
+    md += `\n---\n`;
+    md += note.content;
+    return md;
 }
