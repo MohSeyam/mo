@@ -7,6 +7,9 @@ import LocalClock from './components/LocalClock';
 import LocalCalendar from './components/LocalCalendar';
 import Logo from './components/Logo';
 import LogoArabic from './components/LogoArabic';
+import MonthTemplate from './components/MonthTemplate';
+import PhaseTemplate from './components/PhaseTemplate';
+import PlanTemplate from './components/PlanTemplate';
 import { useTranslation } from 'react-i18next';
 import './index.css';
 
@@ -34,6 +37,7 @@ function App() {
   const { t, i18n } = useTranslation();
   const [rtl, setRtl] = useState(i18n.language === 'ar');
   const [view, setView] = useState('plan'); // plan | achievements | notebook
+  const [modal, setModal] = useState({ open: false, content: null });
 
   // تغيير اتجاه الصفحة عند تغيير اللغة
   React.useEffect(() => {
@@ -41,11 +45,70 @@ function App() {
     document.documentElement.dir = i18n.language === 'ar' ? 'rtl' : 'ltr';
   }, [i18n.language]);
 
+  // حساب الإحصائيات العامة للخطة (مثال مبسط)
+  const stats = {
+    totalTasks: 10, // احسبها من البيانات الحقيقية
+    completedTasks: 8,
+    totalTime: 500,
+    notesCount: 5,
+    journalCount: 3,
+    resourcesCount: 4,
+    sectionStats: { 'Blue Team': 5, 'Red Team': 5 },
+    tagStats: { tag1: 2, tag2: 3 },
+  };
+  const isAllComplete = stats.totalTasks === stats.completedTasks;
+  const logo = i18n.language === 'ar' ? <LogoArabic size="2xl" /> : <Logo size="2xl" />;
+  const charts = null; // ضع هنا رسم بياني مناسب
+  const lang = i18n.language;
+
+  function handlePrint(ref) {
+    if (ref && ref.current) {
+      const printContents = ref.current.innerHTML;
+      const printWindow = window.open('', '', 'height=600,width=800');
+      printWindow.document.write('<html><head><title>Print</title></head><body>' + printContents + '</body></html>');
+      printWindow.document.close();
+      printWindow.focus();
+      printWindow.print();
+      printWindow.close();
+    }
+  }
+
+  function openMonthTemplate() {
+    setModal({
+      open: true,
+      content: <MonthTemplate logo={logo} stats={stats} charts={charts} isAllComplete={isAllComplete} rtl={rtl} lang={lang} onPrint={handlePrint} />
+    });
+  }
+  function openPhaseTemplate() {
+    setModal({
+      open: true,
+      content: <PhaseTemplate logo={logo} stats={stats} charts={charts} isAllComplete={isAllComplete} rtl={rtl} lang={lang} onPrint={handlePrint} />
+    });
+  }
+  function openPlanTemplate() {
+    setModal({
+      open: true,
+      content: <PlanTemplate logo={logo} stats={stats} charts={charts} isAllComplete={isAllComplete} rtl={rtl} lang={lang} onPrint={handlePrint} />
+    });
+  }
+
+  function Modal({ open, content, onClose }) {
+    if (!open) return null;
+    return (
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
+        <div className="bg-white rounded-lg shadow-lg p-6 max-w-3xl w-full relative">
+          <button onClick={onClose} className="absolute top-2 left-2 text-gray-500 hover:text-gray-700">&times;</button>
+          {content}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={`min-h-screen bg-gradient-to-br from-slate-50 to-slate-200 text-gray-900 ${rtl ? 'font-arabic' : ''}`}>
       <header className="flex flex-col md:flex-row items-center justify-between px-4 py-4 bg-white shadow">
         <div className={`flex flex-col md:flex-row items-center gap-4 w-full ${i18n.language === 'ar' ? 'justify-end' : 'justify-start'}`}>
-          {i18n.language === 'ar' ? <LogoArabic size="2xl" /> : <Logo size="2xl" />}
+          {logo}
           <div className="flex-1 flex flex-col md:flex-row gap-2 items-center justify-end">
             <LocalClock />
             <LocalCalendar />
@@ -62,6 +125,11 @@ function App() {
         <button onClick={()=>setView('notebook')} className={`px-4 py-2 rounded ${view==='notebook'?'bg-blue-500 text-white':'bg-gray-100'}`}>{t('Notebook')}</button>
       </nav>
       <main className="max-w-5xl mx-auto px-2 py-6">
+        <div className="flex gap-4 mb-4">
+          <button onClick={openMonthTemplate} className="bg-blue-100 text-blue-800 px-4 py-2 rounded hover:bg-blue-200">{lang === 'ar' ? 'عرض قالب الشهر' : 'Show Month Template'}</button>
+          <button onClick={openPhaseTemplate} className="bg-green-100 text-green-800 px-4 py-2 rounded hover:bg-green-200">{lang === 'ar' ? 'عرض قالب المرحلة' : 'Show Phase Template'}</button>
+          <button onClick={openPlanTemplate} className="bg-purple-100 text-purple-800 px-4 py-2 rounded hover:bg-purple-200">{lang === 'ar' ? 'عرض قالب الخطة' : 'Show Plan Template'}</button>
+        </div>
         {view === 'plan' && (
           <div className="space-y-6">
             <SkillMatrix planData={planData} />
@@ -73,6 +141,7 @@ function App() {
         {view === 'achievements' && <AchievementsView />}
         {view === 'notebook' && <NotebookView rtl={rtl} />}
       </main>
+      <Modal open={modal.open} content={modal.content} onClose={() => setModal({ open: false, content: null })} />
     </div>
   );
 }
