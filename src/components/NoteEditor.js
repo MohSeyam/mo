@@ -1,11 +1,44 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import MDEditor from '@uiw/react-md-editor';
+import { Plate, PlateProvider, createPlugins, createParagraphPlugin, createHeadingPlugin, createBlockquotePlugin, createListPlugin, createLinkPlugin, createTablePlugin, createImagePlugin, createMediaEmbedPlugin, createAlignmentPlugin, createCodeBlockPlugin, createHorizontalRulePlugin, createIndentPlugin, createLineHeightPlugin, createFontPlugin, createHighlightPlugin, createKbdPlugin, createMentionPlugin, createPlaceholderPlugin, createTrailingBlockPlugin, createAutoformatPlugin, createBreakPlugin, createResetNodePlugin, createBasicMarksPlugin, createSelectOnBackspacePlugin } from '@udecode/plate';
+import { serializeHtml } from '@udecode/plate-serializer-html';
+
+const plugins = createPlugins([
+  createParagraphPlugin(),
+  createHeadingPlugin(),
+  createBlockquotePlugin(),
+  createListPlugin(),
+  createLinkPlugin(),
+  createTablePlugin(),
+  createImagePlugin(),
+  createMediaEmbedPlugin(),
+  createAlignmentPlugin(),
+  createCodeBlockPlugin(),
+  createHorizontalRulePlugin(),
+  createIndentPlugin(),
+  createLineHeightPlugin(),
+  createFontPlugin(),
+  createHighlightPlugin(),
+  createKbdPlugin(),
+  createMentionPlugin(),
+  createPlaceholderPlugin({ placeholder: 'Start typing your note...' }),
+  createTrailingBlockPlugin(),
+  createAutoformatPlugin(),
+  createBreakPlugin(),
+  createResetNodePlugin(),
+  createBasicMarksPlugin(),
+  createSelectOnBackspacePlugin(),
+]);
 
 function NoteEditor({ note, taskDescription, onSave, onDelete }) {
   const { i18n } = useTranslation();
-  const [content, setContent] = useState(note.content || '');
   const [title, setTitle] = useState(note.title || '');
+  const [value, setValue] = useState(note.content ? JSON.parse(note.content) : [{ type: 'p', children: [{ text: '' }] }]);
+  const [showPreview, setShowPreview] = useState(false);
+
+  function handleSave() {
+    onSave({ ...note, title, content: JSON.stringify(value) });
+  }
 
   return (
     <div className="p-4 bg-white dark:bg-gray-900 rounded-xl shadow-xl max-w-lg mx-auto">
@@ -19,20 +52,14 @@ function NoteEditor({ note, taskDescription, onSave, onDelete }) {
         onChange={e => setTitle(e.target.value)}
       />
       <div className="mb-3">
-        <MDEditor
-          value={content}
-          onChange={setContent}
-          height={200}
-          preview="edit"
-          textareaProps={{
-            placeholder: i18n.language === 'ar' ? 'اكتب ملاحظتك هنا (يدعم Markdown)' : 'Write your note here (Markdown supported)'
-          }}
-        />
+        <PlateProvider initialValue={value} onChange={setValue} plugins={plugins}>
+          <Plate editable={!showPreview} plugins={plugins} />
+        </PlateProvider>
       </div>
       <div className="flex gap-2 mt-2">
         <button
           className="px-4 py-1 rounded bg-blue-600 text-white font-bold hover:bg-blue-700"
-          onClick={() => onSave({ ...note, title, content })}
+          onClick={handleSave}
         >
           {i18n.language === 'ar' ? 'حفظ' : 'Save'}
         </button>
@@ -42,11 +69,19 @@ function NoteEditor({ note, taskDescription, onSave, onDelete }) {
         >
           {i18n.language === 'ar' ? 'حذف' : 'Delete'}
         </button>
+        <button
+          className="px-4 py-1 rounded bg-gray-200 text-gray-700 font-bold hover:bg-gray-300"
+          onClick={() => setShowPreview(p => !p)}
+        >
+          {showPreview ? (i18n.language === 'ar' ? 'تحرير' : 'Edit') : (i18n.language === 'ar' ? 'معاينة' : 'Preview')}
+        </button>
       </div>
-      <div className="mt-4">
-        <div className="font-bold text-gray-700 dark:text-gray-200 mb-1">{i18n.language === 'ar' ? 'معاينة:' : 'Preview:'}</div>
-        <MDEditor.Markdown source={content} style={{ background: 'none', color: 'inherit' }} />
-      </div>
+      {showPreview && (
+        <div className="mt-4 border-t pt-4">
+          <div className="font-bold text-gray-700 dark:text-gray-200 mb-1">{i18n.language === 'ar' ? 'معاينة:' : 'Preview:'}</div>
+          <div dangerouslySetInnerHTML={{ __html: serializeHtml(value) }} />
+        </div>
+      )}
     </div>
   );
 }
