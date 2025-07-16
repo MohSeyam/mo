@@ -62,7 +62,7 @@ function NoteEditor({ note, taskDescription, onSave, onDelete, currentIndex, not
             return;
         }
         const selectedTask = allTasks.find(t => t.id === selectedTaskId);
-        onSave({ title, content, keywords: tags, taskId: selectedTaskId, taskData: selectedTask });
+        onSave({ title, content, keywords: tags, taskId: selectedTaskId, taskData: selectedTask, templateType: template });
     };
     // زر رفع صورة
     const handleImageUpload = (e) => {
@@ -347,8 +347,8 @@ function NoteEditor({ note, taskDescription, onSave, onDelete, currentIndex, not
 `
         },
     ];
-    // إدراج القالب في مكان المؤشر أو استبدال النص إذا كان فارغًا
-    const insertTemplate = (templateContent) => {
+    // إدراج القالب في مكان المؤشر أو استبدال النص إذا كان فارغًا، وتعيين نوع القالب
+    const insertTemplate = (templateContent, templateType) => {
         setContent(prev => {
             const textarea = document.querySelector('.mde-text');
             if (textarea && textarea.selectionStart !== undefined) {
@@ -358,6 +358,7 @@ function NoteEditor({ note, taskDescription, onSave, onDelete, currentIndex, not
             }
             return templateContent;
         });
+        setTemplate(templateType);
     };
     // أمر مخصص للزر
     const customCommands = [
@@ -481,9 +482,9 @@ function NoteEditor({ note, taskDescription, onSave, onDelete, currentIndex, not
                     <button
                         key={idx}
                         type="button"
-                        className="px-2 py-1 rounded bg-blue-100 hover:bg-blue-200 text-blue-800 text-xs border border-blue-200"
+                        className={`px-2 py-1 rounded text-xs border mr-1 ${tpl.templateType === 'cyber' ? 'bg-blue-100 text-blue-800 border-blue-200' : tpl.templateType === 'policy' ? 'bg-green-100 text-green-800 border-green-200' : tpl.templateType === 'soft' ? 'bg-yellow-100 text-yellow-800 border-yellow-200' : 'bg-gray-100 text-gray-800 border-gray-200'}`}
                         style={{direction: lang === 'ar' ? 'rtl' : 'ltr'}}
-                        onClick={() => insertTemplate(tpl.content)}
+                        onClick={() => insertTemplate(tpl.content, tpl.templateType)}
                         title={tpl.label}
                     >
                         {tpl.label}

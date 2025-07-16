@@ -7,8 +7,22 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 function TaskNotesList({ notes, lang, onEdit, onReorder }) {
   const [search, setSearch] = useState('');
   const [tagFilters, setTagFilters] = useState([]);
+  const [templateTypeFilter, setTemplateTypeFilter] = useState('all');
   const allTags = useMemo(() => getAllTags(notes), [notes]);
-  const filteredNotes = useMemo(() => filterNotes(notes, search, tagFilters), [notes, search, tagFilters]);
+  const templateTypeOptions = [
+    { value: 'all', label: 'كل الأنواع' },
+    { value: 'cyber', label: 'سيبراني' },
+    { value: 'policy', label: 'سياسة أمنية' },
+    { value: 'soft', label: 'مهارة ناعمة' },
+    { value: 'general', label: 'عام' },
+  ];
+  const filteredNotes = useMemo(() => {
+    let base = filterNotes(notes, search, tagFilters);
+    if (templateTypeFilter !== 'all') {
+      base = base.filter(n => n.templateType === templateTypeFilter);
+    }
+    return base;
+  }, [notes, search, tagFilters, templateTypeFilter]);
 
   const Row = ({ index, style }) => (
     <div style={style} className="pr-2 pb-4">
@@ -45,6 +59,15 @@ function TaskNotesList({ notes, lang, onEdit, onReorder }) {
         >
           {allTags.map(tag => (
             <option key={tag} value={tag}>{tag}</option>
+          ))}
+        </select>
+        <select
+          value={templateTypeFilter}
+          onChange={e => setTemplateTypeFilter(e.target.value)}
+          className="p-2 border rounded-md min-w-[120px] dark:bg-gray-700"
+        >
+          {templateTypeOptions.map(opt => (
+            <option key={opt.value} value={opt.value}>{opt.label}</option>
           ))}
         </select>
       </div>
