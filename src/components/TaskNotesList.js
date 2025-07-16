@@ -1,12 +1,19 @@
 import React, { useState, useMemo } from 'react';
 import NoteCard from './NoteCard';
 import { getAllTags, filterNotes } from '../utils/noteUtils';
+import { FixedSizeList as List } from 'react-window';
 
 function TaskNotesList({ notes, lang, onEdit }) {
   const [search, setSearch] = useState('');
   const [tagFilters, setTagFilters] = useState([]);
   const allTags = useMemo(() => getAllTags(notes), [notes]);
   const filteredNotes = useMemo(() => filterNotes(notes, search, tagFilters), [notes, search, tagFilters]);
+
+  const Row = ({ index, style }) => (
+    <div style={style} className="pr-2 pb-4">
+      <NoteCard note={filteredNotes[index]} lang={lang} onClick={() => onEdit(filteredNotes[index])} />
+    </div>
+  );
 
   return (
     <div>
@@ -32,14 +39,25 @@ function TaskNotesList({ notes, lang, onEdit }) {
           ))}
         </select>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredNotes.map(note => (
-          <NoteCard key={note.updatedAt} note={note} lang={lang} onClick={() => onEdit(note)} />
-        ))}
-        {filteredNotes.length === 0 && (
-          <div className="col-span-full text-center text-gray-400 py-8">{lang === 'ar' ? 'لا توجد ملاحظات مطابقة' : 'No matching notes found'}</div>
-        )}
-      </div>
+      {filteredNotes.length > 30 ? (
+        <List
+          height={600}
+          itemCount={filteredNotes.length}
+          itemSize={180}
+          width={"100%"}
+        >
+          {Row}
+        </List>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredNotes.map(note => (
+            <NoteCard key={note.updatedAt} note={note} lang={lang} onClick={() => onEdit(note)} />
+          ))}
+          {filteredNotes.length === 0 && (
+            <div className="col-span-full text-center text-gray-400 py-8">{lang === 'ar' ? 'لا توجد ملاحظات مطابقة' : 'No matching notes found'}</div>
+          )}
+        </div>
+      )}
     </div>
   );
 }
