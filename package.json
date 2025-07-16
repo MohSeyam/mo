@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
+    "@uiw/react-markdown-preview": "^5.1.4",
+    "@uiw/react-md-editor": "^4.0.7",
     "chart.js": "^4.0.0",
     "framer-motion": "^10.0.0",
     "react": "^18.0.0",
