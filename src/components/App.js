@@ -13,6 +13,9 @@ import PlanTemplate from './components/PlanTemplate';
 import { useTranslation } from 'react-i18next';
 import './index.css';
 import { AppContext } from './components/App';
+import { ToastProvider } from '../context/ToastContext';
+import Toast from './Toast';
+import { useToast } from '../context/ToastContext';
 
 // --- DATA & CONFIGURATION (FULL 50 WEEKS) ---
 const planData = [
@@ -40,6 +43,7 @@ function App() {
   const [view, setView] = useState('plan'); // plan | achievements | notebook
   const [modal, setModal] = useState({ open: false, content: null });
   const { appState } = useContext(AppContext);
+  const { showToast } = useToast ? useToast() : { showToast: () => {} };
 
   // تغيير اتجاه الصفحة عند تغيير اللغة
   React.useEffect(() => {
@@ -120,44 +124,47 @@ function App() {
   }
 
   return (
-    <div className={`min-h-screen bg-gradient-to-br from-slate-50 to-slate-200 text-gray-900 ${rtl ? 'font-arabic' : ''}`}>
-      <header className="flex flex-col md:flex-row items-center justify-between px-4 py-4 bg-white shadow">
-        <div className={`flex flex-col md:flex-row items-center gap-4 w-full ${i18n.language === 'ar' ? 'justify-end' : 'justify-start'}`}>
-          {logo}
-          <div className="flex-1 flex flex-col md:flex-row gap-2 items-center justify-end">
-            <LocalClock />
-            <LocalCalendar />
+    <ToastProvider>
+      <div className={`min-h-screen bg-gradient-to-br from-slate-50 to-slate-200 text-gray-900 ${rtl ? 'font-arabic' : ''}`}>
+        <header className="flex flex-col md:flex-row items-center justify-between px-4 py-4 bg-white shadow">
+          <div className={`flex flex-col md:flex-row items-center gap-4 w-full ${i18n.language === 'ar' ? 'justify-end' : 'justify-start'}`}>
+            {logo}
+            <div className="flex-1 flex flex-col md:flex-row gap-2 items-center justify-end">
+              <LocalClock />
+              <LocalCalendar />
+            </div>
           </div>
-        </div>
-        <div className="flex gap-2 items-center mt-2 md:mt-0">
-          <button onClick={() => i18n.changeLanguage('en')} className={`px-3 py-1 rounded ${i18n.language==='en'?'bg-blue-600 text-white':'bg-gray-200'}`}>EN</button>
-          <button onClick={() => i18n.changeLanguage('ar')} className={`px-3 py-1 rounded ${i18n.language==='ar'?'bg-blue-600 text-white':'bg-gray-200'}`}>العربية</button>
-        </div>
-      </header>
-      <nav className="flex justify-center gap-4 py-4">
-        <button onClick={()=>setView('plan')} className={`px-4 py-2 rounded ${view==='plan'?'bg-blue-500 text-white':'bg-gray-100'}`}>{t('Plan')}</button>
-        <button onClick={()=>setView('achievements')} className={`px-4 py-2 rounded ${view==='achievements'?'bg-blue-500 text-white':'bg-gray-100'}`}>{t('Achievements')}</button>
-        <button onClick={()=>setView('notebook')} className={`px-4 py-2 rounded ${view==='notebook'?'bg-blue-500 text-white':'bg-gray-100'}`}>{t('Notebook')}</button>
-      </nav>
-      <main className="max-w-5xl mx-auto px-2 py-6">
-        <div className="flex gap-4 mb-4">
-          <button onClick={openMonthTemplate} className="bg-blue-100 text-blue-800 px-4 py-2 rounded hover:bg-blue-200">{lang === 'ar' ? 'عرض قالب الشهر' : 'Show Month Template'}</button>
-          <button onClick={openPhaseTemplate} className="bg-green-100 text-green-800 px-4 py-2 rounded hover:bg-green-200">{lang === 'ar' ? 'عرض قالب المرحلة' : 'Show Phase Template'}</button>
-          <button onClick={openPlanTemplate} className="bg-purple-100 text-purple-800 px-4 py-2 rounded hover:bg-purple-200">{lang === 'ar' ? 'عرض قالب الخطة' : 'Show Plan Template'}</button>
-        </div>
-        {view === 'plan' && (
-          <div className="space-y-6">
-            <SkillMatrix planData={planData} />
-            {planData.map(week => (
-              <WeekCard key={week.week} week={week} rtl={rtl} />
-            ))}
+          <div className="flex gap-2 items-center mt-2 md:mt-0">
+            <button onClick={() => { i18n.changeLanguage('en'); showToast && showToast('Language changed to English', 'success'); }} className={`px-3 py-1 rounded ${i18n.language==='en'?'bg-blue-600 text-white':'bg-gray-200'}`}>EN</button>
+            <button onClick={() => { i18n.changeLanguage('ar'); showToast && showToast('تم تغيير اللغة إلى العربية', 'success'); }} className={`px-3 py-1 rounded ${i18n.language==='ar'?'bg-blue-600 text-white':'bg-gray-200'}`}>العربية</button>
           </div>
-        )}
-        {view === 'achievements' && <AchievementsView />}
-        {view === 'notebook' && <NotebookView rtl={rtl} />}
-      </main>
-      <Modal open={modal.open} content={modal.content} onClose={() => setModal({ open: false, content: null })} />
-    </div>
+        </header>
+        <nav className="flex justify-center gap-4 py-4">
+          <button onClick={()=>setView('plan')} className={`px-4 py-2 rounded ${view==='plan'?'bg-blue-500 text-white':'bg-gray-100'}`}>{t('Plan')}</button>
+          <button onClick={()=>setView('achievements')} className={`px-4 py-2 rounded ${view==='achievements'?'bg-blue-500 text-white':'bg-gray-100'}`}>{t('Achievements')}</button>
+          <button onClick={()=>setView('notebook')} className={`px-4 py-2 rounded ${view==='notebook'?'bg-blue-500 text-white':'bg-gray-100'}`}>{t('Notebook')}</button>
+        </nav>
+        <main className="max-w-5xl mx-auto px-2 py-6">
+          <div className="flex gap-4 mb-4">
+            <button onClick={openMonthTemplate} className="bg-blue-100 text-blue-800 px-4 py-2 rounded hover:bg-blue-200">{lang === 'ar' ? 'عرض قالب الشهر' : 'Show Month Template'}</button>
+            <button onClick={openPhaseTemplate} className="bg-green-100 text-green-800 px-4 py-2 rounded hover:bg-green-200">{lang === 'ar' ? 'عرض قالب المرحلة' : 'Show Phase Template'}</button>
+            <button onClick={openPlanTemplate} className="bg-purple-100 text-purple-800 px-4 py-2 rounded hover:bg-purple-200">{lang === 'ar' ? 'عرض قالب الخطة' : 'Show Plan Template'}</button>
+          </div>
+          {view === 'plan' && (
+            <div className="space-y-6">
+              <SkillMatrix planData={planData} />
+              {planData.map(week => (
+                <WeekCard key={week.week} week={week} rtl={rtl} />
+              ))}
+            </div>
+          )}
+          {view === 'achievements' && <AchievementsView />}
+          {view === 'notebook' && <NotebookView rtl={rtl} />}
+        </main>
+        <Modal open={modal.open} content={modal.content} onClose={() => setModal({ open: false, content: null })} />
+        <Toast rtl={rtl} />
+      </div>
+    </ToastProvider>
   );
 }
 
