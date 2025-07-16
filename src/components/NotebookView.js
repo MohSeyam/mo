@@ -50,6 +50,7 @@ function NotebookView() {
     }, [appState.journal, planData]);
 
     const openNoteModal = (note) => {
+        const currentIndex = allTaskNotes.findIndex(n => n.updatedAt === note.updatedAt);
         setModal({
             isOpen: true,
             content: <NoteEditor 
@@ -62,6 +63,12 @@ function NotebookView() {
                         onDelete={() => {
                             deleteNote(note);
                             setModal({ isOpen: false, content: null });
+                        }}
+                        currentIndex={currentIndex}
+                        notes={allTaskNotes}
+                        onNavigate={idx => {
+                            const nextNote = allTaskNotes[idx];
+                            if (nextNote) openNoteModal(nextNote);
                         }}
                     />
         });

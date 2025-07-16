@@ -3,7 +3,7 @@ import TagInput from './components/TagInput';
 import SimpleEditor from './components/SimpleEditor';
 import { AppContext } from '../components/App';
 
-function NoteEditor({ note, taskDescription, onSave, onDelete }) {
+function NoteEditor({ note, taskDescription, onSave, onDelete, currentIndex, notes, onNavigate }) {
     const { lang, translations, setModal, showToast } = useContext(AppContext);
     const t = translations[lang];
     const [title, setTitle] = useState(note.title || '');
@@ -21,6 +21,22 @@ function NoteEditor({ note, taskDescription, onSave, onDelete }) {
             }
         }
     }, [template]);
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+                e.preventDefault();
+                handleSave();
+            } else if (e.key === 'Escape') {
+                setModal({ isOpen: false, content: null });
+            } else if (e.key === 'ArrowRight') {
+                if (onNavigate && currentIndex < notes.length - 1) onNavigate(currentIndex + 1);
+            } else if (e.key === 'ArrowLeft') {
+                if (onNavigate && currentIndex > 0) onNavigate(currentIndex - 1);
+            }
+        };
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+    }, [title, content, tags, template, currentIndex, notes, onNavigate]);
     const handleSave = () => {
         if (!title.trim()) {
             showToast(t.titleRequired, 'error');
@@ -34,9 +50,29 @@ function NoteEditor({ note, taskDescription, onSave, onDelete }) {
     };
     return (
         <>
-            <div className="bg-white dark:bg-gray-800 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                <h3 className="text-lg leading-6 font-medium text-gray-900 dark:text-white">{t.editNote}</h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{t.noteOnTask} "{taskDescription}"</p>
+            <div className="bg-white dark:bg-gray-800 px-4 pt-5 pb-4 sm:p-6 sm:pb-4 flex items-center justify-between">
+                <div>
+                    <h3 className="text-lg leading-6 font-medium text-gray-900 dark:text-white">{t.editNote}</h3>
+                    <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{t.noteOnTask} "{taskDescription}"</p>
+                </div>
+                <div className="flex gap-2">
+                    <button
+                        onClick={() => onNavigate && currentIndex > 0 && onNavigate(currentIndex - 1)}
+                        disabled={!onNavigate || currentIndex === 0}
+                        className="px-2 py-1 rounded bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 disabled:opacity-50"
+                        title={lang === 'ar' ? 'السابق' : 'Previous'}
+                    >
+                        ◀
+                    </button>
+                    <button
+                        onClick={() => onNavigate && currentIndex < notes.length - 1 && onNavigate(currentIndex + 1)}
+                        disabled={!onNavigate || currentIndex === notes.length - 1}
+                        className="px-2 py-1 rounded bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 disabled:opacity-50"
+                        title={lang === 'ar' ? 'التالي' : 'Next'}
+                    >
+                        ▶
+                    </button>
+                </div>
             </div>
             <div className="px-4 sm:px-6 py-4 space-y-4 max-h-[60vh] overflow-y-auto">
                 <div>
