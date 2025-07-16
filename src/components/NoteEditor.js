@@ -1,46 +1,14 @@
-import React, 'react';
-import { useState, useEffect, useContext, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useContext, useRef, useCallback } from 'react';
 import ReactMde from 'react-mde';
 import Showdown from 'showdown';
 import 'react-mde/lib/styles/css/react-mde-all.css';
-
-// --- افتراض وجود AppContext ---
-// For demonstration, we'll create a mock context.
-// في تطبيقك الحقيقي، ستقوم باستيراده من موقعه الصحيح
-// import { AppContext } from '../components/App';
-const AppContext = React.createContext();
-const mockTranslations = {
-    ar: {
-        editNote: 'تعديل الملاحظة',
-        noteOnTask: 'ملاحظة على المهمة:',
-        previous: 'السابق',
-        next: 'التالي',
-        noteTitle: 'عنوان الملاحظة',
-        keywords: 'الكلمات المفتاحية',
-        addNewTag: 'أضف تاجًا جديدًا',
-        linkedTask: 'المهمة المرتبطة',
-        noteContent: 'محتوى الملاحظة',
-        saveNote: 'حفظ الملاحظة',
-        cancel: 'إلغاء',
-        deleteNote: 'حذف الملاحظة',
-        chooseTemplate: 'اختر قالب:',
-        noTemplate: 'بدون قالب',
-        videoSummary: 'ملخص فيديو',
-        toolAnalysis: 'تحليل أداة',
-        titleRequired: 'العنوان مطلوب.',
-        contentRequired: 'المحتوى مطلوب.',
-        write: 'كتابة',
-        preview: 'معاينة',
-    }
-};
-
-// --- المكون الرئيسي ---
+import { AppContext } from '../components/App';
+import noteTemplates from './NoteTemplates';
 
 function NoteEditor({ note, taskDescription, onSave, onDelete, currentIndex, notes, onNavigate, allTasks }) {
     // --- Context and State Hooks ---
-    // In a real app, you would get these from your actual context provider.
-    const { lang = 'ar', setModal = () => {}, showToast = (msg) => console.log(msg) } = useContext(AppContext);
-    const t = mockTranslations[lang]; // Using mock translations
+    const { lang, translations, setModal, showToast } = useContext(AppContext);
+    const t = translations[lang];
 
     const [title, setTitle] = useState(note?.title || '');
     const [tags, setTags] = useState(note?.keywords || []);
@@ -132,11 +100,9 @@ function NoteEditor({ note, taskDescription, onSave, onDelete, currentIndex, not
         };
         reader.readAsDataURL(file);
     };
-
-    /**
-     * [FIXED] The conflicting `useEffect` that watched `template` was removed.
-     * This function now correctly inserts template content without side effects.
-     */
+    // القوالب أصبحت في ملف منفصل
+    const templates = noteTemplates;
+    // إدراج القالب في مكان المؤشر أو استبدال النص إذا كان فارغًا، وتعيين نوع القالب
     const insertTemplate = (templateContent, templateType) => {
         setContent(prev => {
             const textarea = document.querySelector('.mde-text');
@@ -170,15 +136,6 @@ function NoteEditor({ note, taskDescription, onSave, onDelete, currentIndex, not
             setContent('');
         }
     };
-
-    // --- Template Definitions ---
-    const templates = [
-        { label: 'تقرير حادث أمني', templateType: 'cyber', content: `# تقرير حادث أمني\n\n| العنصر | التفاصيل |\n|---|---|\n| التاريخ | |\n| الموقع/النظام | |\n| نوع الحادث | |\n| مستوى الخطورة | منخفض/متوسط/مرتفع |\n| وصف الحادث | |\n| الإجراءات المتخذة | |\n| التوصيات | |` },
-        { label: 'تحليل ثغرة أمنية', templateType: 'cyber', content: `# تحليل ثغرة أمنية\n\n**اسم الثغرة:**\n**الرقم المرجعي (CVE):**\n**الوصف:**\n**تأثيرها:**\n**الأنظمة المتأثرة:**\n**درجة الخطورة:**\n**طرق الحماية/الترقيع:**` },
-        { label: 'سياسة كلمة المرور', templateType: 'policy', content: `# سياسة كلمة المرور\n\n- يجب أن تتكون كلمة المرور من 12 حرفًا على الأقل.\n- يجب أن تحتوي على أحرف كبيرة وصغيرة وأرقام ورموز.\n- تغيير كلمة المرور كل 90 يومًا.\n- تفعيل المصادقة الثنائية.` },
-        { label: 'تقييم مهارة التواصل', templateType: 'soft', content: `# تقييم مهارة التواصل\n\n**الموقف:**\n**ما الذي سار بشكل جيد؟**\n**ما الذي يمكن تحسينه؟**\n**خطة التحسين:**` },
-        { label: 'ملاحظة عامة', templateType: 'general', content: `# ملاحظة عامة\n\n- ` },
-    ];
 
     // --- Custom Command for ReactMde ---
     const customCommands = [
@@ -326,7 +283,7 @@ function App() {
     };
 
     return (
-        <AppContext.Provider value={{ lang: 'ar', translations: mockTranslations, setModal, showToast }}>
+        <AppContext.Provider value={{ lang: 'ar', translations: { ar: { editNote: 'تعديل الملاحظة', noteOnTask: 'ملاحظة على المهمة:', previous: 'السابق', next: 'التالي', noteTitle: 'عنوان الملاحظة', keywords: 'الكلمات المفتاحية', addNewTag: 'أضف تاجًا جديدًا', linkedTask: 'المهمة المرتبطة', noteContent: 'محتوى الملاحظة', saveNote: 'حفظ الملاحظة', cancel: 'إلغاء', deleteNote: 'حذف الملاحظة', chooseTemplate: 'اختر قالب:', noTemplate: 'بدون قالب', videoSummary: 'ملخص فيديو', toolAnalysis: 'تحليل أداة', titleRequired: 'العنوان مطلوب.', contentRequired: 'المحتوى مطلوب.', write: 'كتابة', preview: 'معاينة' } }, setModal, showToast }}>
             <div className="w-full max-w-4xl mx-auto my-8 bg-white dark:bg-gray-900 shadow-lg rounded-lg overflow-hidden">
                 <NoteEditor
                     note={sampleNote}

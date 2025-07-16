@@ -203,7 +203,7 @@ function NotebookView() {
             {/* Graph view and notes rendering would go here, omitted for brevity */}
             <div className="overflow-y-auto flex-grow mt-6">
                 {activeTab === 'tasks' && (
-                    <TaskNotesList notes={allTaskNotes} lang={lang} onEdit={openNoteModal} onReorder={handleReorderNotes} />
+                    <TaskNotesList notes={allTaskNotes} lang={lang} onEdit={openNoteModal} onReorder={handleReorderNotes} onDelete={(note) => { deleteNote(note); showToast('تم حذف الملاحظة', 'success'); }} />
                 )}
                 {activeTab === 'journal' && (
                     <JournalEntriesList entries={allJournalEntries} lang={lang} />
