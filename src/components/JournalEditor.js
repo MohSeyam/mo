@@ -1,19 +1,17 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import SimpleEditor from './components/SimpleEditor';
-import { AppContext } from '../components/App';
+import { useAppContext } from '../context/AppContext';
 
 function JournalEditor({ weekId, dayIndex, prompt }) {
-    const { lang, appState, setAppState, translations } = useContext(AppContext);
+    const { lang, appState, updateJournalEntryContext, translations, showToast } = useAppContext();
     const journalEntry = appState.journal[weekId]?.days[dayIndex];
     const handleContentChange = (newContent) => {
-        setAppState(prev => {
-            const newState = JSON.parse(JSON.stringify(prev));
-            newState.journal[weekId].days[dayIndex] = {
-                content: newContent,
-                updatedAt: new Date().toISOString()
-            };
-            return newState;
-        });
+        try {
+            updateJournalEntryContext(weekId, dayIndex, newContent);
+            showToast('تم الحفظ بنجاح', 'success');
+        } catch (e) {
+            showToast('حدث خطأ ما', 'error');
+        }
     };
     return (
         <div className="mt-8 p-4 bg-blue-50 dark:bg-blue-900/30 rounded-lg border border-blue-200 dark:border-blue-800">

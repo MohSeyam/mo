@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
 import { useToast } from './ToastContext';
-import { updateNoteInState, deleteNoteInState } from '../utils/stateUtils';
+import { updateNoteInState, deleteNoteInState, updateJournalEntry } from '../utils/stateUtils';
 
 const AppContext = createContext();
 
@@ -28,8 +28,18 @@ export function AppProvider({ children, planData }) {
     }
   };
 
+  // تحديث تدوينة يومية
+  const updateJournalEntryContext = (weekId, dayIndex, newContent) => {
+    try {
+      setAppState(prev => updateJournalEntry(prev, weekId, dayIndex, newContent));
+      showToast('تم الحفظ بنجاح', 'success');
+    } catch (e) {
+      showToast('حدث خطأ ما', 'error');
+    }
+  };
+
   return (
-    <AppContext.Provider value={{ appState, setAppState, updateNote, deleteNote, showToast }}>
+    <AppContext.Provider value={{ appState, setAppState, updateNote, deleteNote, updateJournalEntryContext, showToast }}>
       {children}
     </AppContext.Provider>
   );
