@@ -4,9 +4,9 @@ import { getAllTags, filterNotes } from '../utils/noteUtils';
 
 function TaskNotesList({ notes, lang, onEdit }) {
   const [search, setSearch] = useState('');
-  const [tagFilter, setTagFilter] = useState('');
+  const [tagFilters, setTagFilters] = useState([]);
   const allTags = useMemo(() => getAllTags(notes), [notes]);
-  const filteredNotes = useMemo(() => filterNotes(notes, search, tagFilter), [notes, search, tagFilter]);
+  const filteredNotes = useMemo(() => filterNotes(notes, search, tagFilters), [notes, search, tagFilters]);
 
   return (
     <div>
@@ -19,11 +19,14 @@ function TaskNotesList({ notes, lang, onEdit }) {
           className="p-2 border rounded-md flex-1 dark:bg-gray-700"
         />
         <select
-          value={tagFilter}
-          onChange={e => setTagFilter(e.target.value)}
-          className="p-2 border rounded-md min-w-[120px] dark:bg-gray-700"
+          multiple
+          value={tagFilters}
+          onChange={e => {
+            const selected = Array.from(e.target.selectedOptions).map(opt => opt.value);
+            setTagFilters(selected);
+          }}
+          className="p-2 border rounded-md min-w-[120px] dark:bg-gray-700 h-24"
         >
-          <option value="">{lang === 'ar' ? 'كل التاجات' : 'All tags'}</option>
           {allTags.map(tag => (
             <option key={tag} value={tag}>{tag}</option>
           ))}

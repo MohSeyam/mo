@@ -41,11 +41,23 @@ export function getAllTags(notes) {
     return Array.from(new Set(notes.flatMap(n => n.keywords || [])));
 }
 
-export function filterNotes(notes, search, tagFilter) {
-    return notes.filter(note =>
-        (!search || note.title.toLowerCase().includes(search.toLowerCase()) || (note.content && note.content.toLowerCase().includes(search.toLowerCase()))) &&
-        (!tagFilter || (note.keywords && note.keywords.includes(tagFilter)))
-    );
+export function filterNotes(notes, search, tagFilters) {
+    return notes.filter(note => {
+        // البحث في العنوان، المحتوى، التاجات، اسم ووصف المهمة
+        const searchLower = search ? search.toLowerCase() : '';
+        const matchesSearch = !search ||
+            (note.title && note.title.toLowerCase().includes(searchLower)) ||
+            (note.content && note.content.toLowerCase().includes(searchLower)) ||
+            (note.keywords && note.keywords.some(tag => tag.toLowerCase().includes(searchLower))) ||
+            (note.taskData && (
+                (note.taskData.title && note.taskData.title.toLowerCase().includes(searchLower)) ||
+                (note.taskData.description && note.taskData.description.toLowerCase().includes(searchLower))
+            ));
+        // التصفية المتعددة للتاجات
+        const matchesTags = !tagFilters || tagFilters.length === 0 ||
+            (note.keywords && note.keywords.some(tag => tagFilters.includes(tag)));
+        return matchesSearch && matchesTags;
+    });
 }
 
 export function getAllWeeks(entries) {
