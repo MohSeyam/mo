@@ -1,5 +1,6 @@
 import React from 'react';
-import SimpleEditor from './components/SimpleEditor';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 import { useAppContext } from '../context/AppContext';
 
 function JournalEditor({ weekId, dayIndex, prompt }) {
@@ -20,9 +21,12 @@ function JournalEditor({ weekId, dayIndex, prompt }) {
                 {prompt.points.map((point, i) => <li key={i}>{point[lang]}</li>)}
             </ul>
             <div className="mt-4">
-                <SimpleEditor 
-                    content={journalEntry?.content || ''}
-                    onUpdate={handleContentChange}
+                <ReactQuill
+                    theme="snow"
+                    value={journalEntry?.content || ''}
+                    onChange={handleContentChange}
+                    dir={lang === 'ar' ? 'rtl' : 'ltr'}
+                    style={{ direction: lang === 'ar' ? 'rtl' : 'ltr', background: 'white', borderRadius: 8 }}
                 />
             </div>
         </div>
