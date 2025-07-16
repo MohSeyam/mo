@@ -5,6 +5,7 @@ import JournalEditor from './JournalEditor';
 import { useTranslation } from 'react-i18next';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import DayTemplate from './DayTemplate';
+import PomodoroTimer from './PomodoroTimer';
 
 function DayView({
   weekId,
@@ -25,6 +26,8 @@ function DayView({
   const [expandedTask, setExpandedTask] = useState(null);
   const [showTemplate, setShowTemplate] = useState(false);
   const templateRef = useRef();
+  const [pomodoroModal, setPomodoroModal] = useState({ open: false, task: null });
+  const [pomodoroSessions, setPomodoroSessions] = useState({}); // {taskId: count}
 
   // حساب التقدم اليومي
   const totalTasks = dayData.tasks.length;
@@ -174,6 +177,11 @@ function DayView({
     }
   }
 
+  function handlePomodoroSessionComplete(taskId) {
+    setPomodoroSessions(prev => ({ ...prev, [taskId]: (prev[taskId] || 0) + 1 }));
+    // يمكن هنا أيضًا تحديث appState إذا أردت حفظ عدد الجلسات في الحالة العامة
+  }
+
   return (
     <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 border border-gray-200 dark:border-gray-700">
       <div className="flex justify-end mb-4">
@@ -274,7 +282,12 @@ function DayView({
                           <button onClick={() => openNoteModal(task.id, task.description[i18n.language])} className="flex items-center gap-1 px-3 py-1 rounded-lg bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200"><Icons.noteIcon className="w-4 h-4" />{t('Note')}</button>
                           <button onClick={() => addToCalendar(task)} className="flex items-center gap-1 px-3 py-1 rounded-lg bg-green-100 hover:bg-green-200 text-green-700"><Icons.calendar className="w-4 h-4" />{t('Calendar')}</button>
                           <button onClick={() => setExpandedTask(expandedTask === idx ? null : idx)} className="flex items-center gap-1 px-2 py-1 rounded-lg bg-gray-50 hover:bg-gray-100 text-gray-500"><Icons.chevronDown className={`w-4 h-4 transform transition-transform ${expandedTask === idx ? 'rotate-180' : ''}`} /></button>
+                          <button onClick={() => setPomodoroModal({ open: true, task })} className="flex items-center gap-1 px-3 py-1 rounded-lg bg-orange-100 hover:bg-orange-200 text-orange-700"><svg xmlns='http://www.w3.org/2000/svg' className='w-4 h-4' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z' /></svg>{i18n.language === 'ar' ? 'مؤقت بومودورو' : 'Pomodoro'}</button>
                         </div>
+                        {/* عرض عدد الجلسات المنجزة لهذه المهمة */}
+                        {pomodoroSessions[task.id] && (
+                          <div className="mt-2 text-xs text-orange-600 font-bold">{i18n.language === 'ar' ? `جلسات بومودورو: ${pomodoroSessions[task.id]}` : `Pomodoro Sessions: ${pomodoroSessions[task.id]}`}</div>
+                        )}
                         {expandedTask === idx && (
                           <div className="mt-3 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg text-sm text-gray-700 dark:text-gray-300 animate-fade-in">
                             <div>{t('Task Details')}:</div>
@@ -295,6 +308,15 @@ function DayView({
           )}
         </Droppable>
       </DragDropContext>
+      {/* نافذة مؤقت بومودورو */}
+      {pomodoroModal.open && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
+          <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-2xl max-w-md w-full p-6 relative animate-fade-in">
+            <button onClick={() => setPomodoroModal({ open: false, task: null })} className="absolute top-2 end-2 text-2xl text-gray-400 hover:text-red-500">&times;</button>
+            <PomodoroTimer task={pomodoroModal.task} onSessionComplete={handlePomodoroSessionComplete} rtl={rtl} />
+          </div>
+        </div>
+      )}
       <div className="mt-8">
         {dayData.resources && dayData.resources.length > 0 && (
           <div className="mb-8 p-4 bg-gray-50 dark:bg-gray-900/30 rounded-xl border border-gray-200 dark:border-gray-700 animate-fade-in">
