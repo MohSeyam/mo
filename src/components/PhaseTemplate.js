@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { Doughnut } from 'react-chartjs-2';
+import { Pie } from 'react-chartjs-2';
 import jsPDF from 'jspdf';
 import 'chart.js/auto';
 
@@ -37,6 +38,28 @@ export default function PhaseTemplate({
     cutout: '60%',
   };
 
+  // إعداد بيانات الرسم البياني للوسوم
+  const pieData = {
+    labels: Object.keys(stats.tagStats),
+    datasets: [
+      {
+        label: lang === 'ar' ? 'عدد الوسوم' : 'Tags',
+        data: Object.values(stats.tagStats),
+        backgroundColor: [
+          '#3B82F6', '#10B981', '#F59E42', '#EF4444', '#8B5CF6', '#FBBF24', '#6366F1', '#14B8A6', '#F472B6', '#FCD34D', '#A3E635', '#F87171'
+        ],
+        borderWidth: 2,
+      },
+    ],
+  };
+  const pieOptions = {
+    responsive: true,
+    plugins: {
+      legend: { position: 'bottom', labels: { font: { size: 14 } } },
+      title: { display: true, text: lang === 'ar' ? 'إحصائيات الوسوم' : 'Tag Stats', font: { size: 16 } },
+    },
+  };
+
   // تصدير PDF
   function handleExportPDF() {
     if (templateRef.current) {
@@ -72,7 +95,7 @@ export default function PhaseTemplate({
           {lang === 'ar' ? 'لم تكتمل جميع المهام بعد.' : 'Not all tasks are complete.'}
         </div>
       )}
-      <div className="grid grid-cols-2 gap-4 mb-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
         <div>
           <div className="font-semibold">{lang === 'ar' ? 'عدد المهام' : 'Total Tasks'}: {stats.totalTasks}</div>
           <div className="font-semibold">{lang === 'ar' ? 'المهام المنجزة' : 'Completed Tasks'}: {stats.completedTasks}</div>
@@ -81,7 +104,10 @@ export default function PhaseTemplate({
           <div className="font-semibold">{lang === 'ar' ? 'عدد التدوينات' : 'Journals'}: {stats.journalCount}</div>
           <div className="font-semibold">{lang === 'ar' ? 'عدد الموارد' : 'Resources'}: {stats.resourcesCount}</div>
         </div>
-        <div><Doughnut data={doughnutData} options={doughnutOptions} /></div>
+        <div className="flex flex-col gap-4">
+          <Doughnut data={doughnutData} options={doughnutOptions} />
+          {Object.keys(stats.tagStats).length > 0 && <Pie data={pieData} options={pieOptions} />}
+        </div>
       </div>
       <div className="mb-4">
         <h3 className="font-bold mb-2">{lang === 'ar' ? 'إحصائيات الأقسام' : 'Section Stats'}</h3>
