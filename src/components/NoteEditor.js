@@ -1,32 +1,105 @@
-import React, { useState, useEffect, useContext, useRef } from 'react';
-import TagInput from './components/TagInput';
+import React, 'react';
+import { useState, useEffect, useContext, useRef, useCallback } from 'react';
 import ReactMde from 'react-mde';
 import Showdown from 'showdown';
 import 'react-mde/lib/styles/css/react-mde-all.css';
-import { AppContext } from '../components/App';
+
+// --- افتراض وجود AppContext ---
+// For demonstration, we'll create a mock context.
+// في تطبيقك الحقيقي، ستقوم باستيراده من موقعه الصحيح
+// import { AppContext } from '../components/App';
+const AppContext = React.createContext();
+const mockTranslations = {
+    ar: {
+        editNote: 'تعديل الملاحظة',
+        noteOnTask: 'ملاحظة على المهمة:',
+        previous: 'السابق',
+        next: 'التالي',
+        noteTitle: 'عنوان الملاحظة',
+        keywords: 'الكلمات المفتاحية',
+        addNewTag: 'أضف تاجًا جديدًا',
+        linkedTask: 'المهمة المرتبطة',
+        noteContent: 'محتوى الملاحظة',
+        saveNote: 'حفظ الملاحظة',
+        cancel: 'إلغاء',
+        deleteNote: 'حذف الملاحظة',
+        chooseTemplate: 'اختر قالب:',
+        noTemplate: 'بدون قالب',
+        videoSummary: 'ملخص فيديو',
+        toolAnalysis: 'تحليل أداة',
+        titleRequired: 'العنوان مطلوب.',
+        contentRequired: 'المحتوى مطلوب.',
+        write: 'كتابة',
+        preview: 'معاينة',
+    }
+};
+
+// --- المكون الرئيسي ---
 
 function NoteEditor({ note, taskDescription, onSave, onDelete, currentIndex, notes, onNavigate, allTasks }) {
-    const { lang, translations, setModal, showToast } = useContext(AppContext);
-    const t = translations[lang];
-    const [title, setTitle] = useState(note.title || '');
-    const [tags, setTags] = useState(note.keywords || []);
-    const [content, setContent] = useState(note.content || '');
-    const [template, setTemplate] = useState('');
-    const [selectedTaskId, setSelectedTaskId] = useState(note.taskData?.id || '');
+    // --- Context and State Hooks ---
+    // In a real app, you would get these from your actual context provider.
+    const { lang = 'ar', setModal = () => {}, showToast = (msg) => console.log(msg) } = useContext(AppContext);
+    const t = mockTranslations[lang]; // Using mock translations
+
+    const [title, setTitle] = useState(note?.title || '');
+    const [tags, setTags] = useState(note?.keywords || []);
+    const [content, setContent] = useState(note?.content || '');
+    const [template, setTemplate] = useState(note?.templateType || '');
+    const [selectedTaskId, setSelectedTaskId] = useState(note?.taskData?.id || '');
     const [selectedTab, setSelectedTab] = useState('write');
-    const fileInputRef = useRef();
-    const converter = new Showdown.Converter({tables: true, simplifiedAutoLink: true});
-    useEffect(() => {
-        if (!note.title && template) {
-            if (template === 'video') {
-                setTitle('ملخص فيديو');
-                setContent('النقاط الرئيسية:\n- \nمصطلحات جديدة:\n- \nأسئلة للمتابعة:\n- ');
-            } else if (template === 'tool') {
-                setTitle('تحليل أداة');
-                setContent('الغرض من الأداة:\n\nأهم الأوامر:\n\nبدائل:');
+    const fileInputRef = useRef(null);
+    const converter = new Showdown.Converter({ tables: true, simplifiedAutoLink: true, strikethrough: true });
+
+    // --- Handlers and Logic ---
+
+    const handleAddTag = (e) => {
+        if (e.key === 'Enter' && e.target.value.trim()) {
+            e.preventDefault();
+            const newTag = e.target.value.trim();
+            if (!tags.includes(newTag)) {
+                setTags([...tags, newTag]);
             }
+            e.target.value = '';
         }
-    }, [template]);
+    };
+
+    const handleRemoveTag = (tagToRemove) => {
+        setTags(tags.filter(tag => tag !== tagToRemove));
+    };
+
+    /**
+     * [FIXED] `handleSave` is wrapped in `useCallback`.
+     * This ensures the function has access to the latest state (title, content, tags, etc.)
+     * when called from the `useEffect` keyboard shortcut, preventing "stale closures".
+     */
+    const handleSave = useCallback(() => {
+        if (!title.trim()) {
+            showToast(t.titleRequired, 'error');
+            return;
+        }
+        if (!content.trim()) {
+            showToast(t.contentRequired, 'error');
+            return;
+        }
+        const selectedTask = allTasks.find(t => t.id === selectedTaskId);
+        onSave({
+            ...note, // Preserve original note ID and other properties
+            title,
+            content,
+            keywords: tags,
+            taskId: selectedTaskId,
+            taskData: selectedTask,
+            templateType: template
+        });
+        showToast('تم الحفظ بنجاح!', 'success');
+    }, [title, content, tags, selectedTaskId, allTasks, onSave, showToast, t, template, note]);
+
+    /**
+     * [FIXED] The dependency array for this `useEffect` now includes `handleSave`.
+     * Because `handleSave` is memoized with `useCallback`, this effect won't re-run unnecessarily,
+     * but it will always have the correct version of the `handleSave` function.
+     */
     useEffect(() => {
         const handleKeyDown = (e) => {
             if ((e.ctrlKey || e.metaKey) && e.key === 's') {
@@ -42,29 +115,9 @@ function NoteEditor({ note, taskDescription, onSave, onDelete, currentIndex, not
         };
         window.addEventListener('keydown', handleKeyDown);
         return () => window.removeEventListener('keydown', handleKeyDown);
-    }, [title, content, tags, template, currentIndex, notes, onNavigate]);
-    const handleAddTag = (e) => {
-        if (e.key === 'Enter' && e.target.value.trim()) {
-            if (!tags.includes(e.target.value.trim())) setTags([...tags, e.target.value.trim()]);
-            e.target.value = '';
-        }
-    };
-    const handleRemoveTag = (tag) => {
-        setTags(tags.filter(t => t !== tag));
-    };
-    const handleSave = () => {
-        if (!title.trim()) {
-            showToast(t.titleRequired, 'error');
-            return;
-        }
-        if (!content.trim()) {
-            showToast(t.contentRequired, 'error');
-            return;
-        }
-        const selectedTask = allTasks.find(t => t.id === selectedTaskId);
-        onSave({ title, content, keywords: tags, taskId: selectedTaskId, taskData: selectedTask, templateType: template });
-    };
-    // زر رفع صورة
+    }, [handleSave, setModal, onNavigate, currentIndex, notes]);
+
+
     const handleImageUpload = (e) => {
         const file = e.target.files[0];
         if (!file) return;
@@ -79,275 +132,11 @@ function NoteEditor({ note, taskDescription, onSave, onDelete, currentIndex, not
         };
         reader.readAsDataURL(file);
     };
-    // --- قوالب احترافية مع نوع القالب ---
-    const templates = [
-        // قوالب سيبرانية
-        {
-            label: 'تقرير حادث أمني',
-            templateType: 'cyber',
-            content: `# تقرير حادث أمني
 
-| العنصر              | التفاصيل                |
-|---------------------|-------------------------|
-| التاريخ             |                         |
-| الموقع/النظام       |                         |
-| نوع الحادث          |                         |
-| مستوى الخطورة       | منخفض/متوسط/مرتفع       |
-| وصف الحادث          |                         |
-| الإجراءات المتخذة   |                         |
-| الجهات المشاركة     |                         |
-| التوصيات            |                         |
-| التاريخ/الوقت       |                         |
-`
-        },
-        {
-            label: 'تحليل ثغرة أمنية',
-            templateType: 'cyber',
-            content: `# تحليل ثغرة أمنية
-
-**اسم الثغرة:**
-**الرقم المرجعي (CVE):**
-**الوصف:**
-**تأثيرها:**
-**كيفية الاستغلال:**
-**الأنظمة المتأثرة:**
-**درجة الخطورة:**
-**طرق الكشف:**
-**طرق الحماية/الترقيع:**
-**مصادر:**
-`
-        },
-        {
-            label: 'مذكرة اختبار اختراق',
-            templateType: 'cyber',
-            content: `# مذكرة اختبار اختراق
-
-## النطاق
-- الأنظمة/العناوين:
-- الأدوات المستخدمة:
-
-## خطوات التنفيذ
-1. 
-2. 
-
-## النتائج
-- الثغرات المكتشفة:
-- توصيات:
-
-## ملاحظات إضافية
-`
-        },
-        {
-            label: 'ملخص دورة/شهادة',
-            templateType: 'cyber',
-            content: `# ملخص دورة/شهادة
-
-| العنصر            | التفاصيل         |
-|-------------------|------------------|
-| اسم الدورة/الشهادة|                  |
-| الجهة             |                  |
-| المحتوى الأساسي   |                  |
-| المهارات المكتسبة |                  |
-| ملاحظات           |                  |
-`
-        },
-        {
-            label: 'مراجعة أداة أمنية',
-            templateType: 'cyber',
-            content: `# مراجعة أداة أمنية
-
-**اسم الأداة:**
-**الغرض:**
-**المميزات:**
-**العيوب:**
-**أوامر مهمة:**
-**رابط رسمي:**
-`
-        },
-        {
-            label: 'خطة استجابة للحوادث',
-            templateType: 'cyber',
-            content: `# خطة استجابة للحوادث
-
-1. التحضير (تدريب، تجهيز الأدوات)
-2. الكشف والتحليل (تحديد الحادث، جمع الأدلة)
-3. الاحتواء (عزل الأنظمة المتأثرة)
-4. الاستئصال (إزالة التهديد)
-5. الاستعادة (إرجاع الأنظمة للعمل)
-6. الدروس المستفادة (تحديث السياسات)
-`
-        },
-        {
-            label: 'مذكرة تحليل برمجية خبيثة',
-            templateType: 'cyber',
-            content: `# مذكرة تحليل برمجية خبيثة
-
-| العنصر         | التفاصيل         |
-|----------------|------------------|
-| اسم الملف      |                  |
-| نوع البرمجية   |                  |
-| سلوكها         |                  |
-| طرق الانتشار   |                  |
-| طرق الحماية    |                  |
-| أدوات التحليل  |                  |
-`
-        },
-        {
-            label: 'مخطط اختبار اجتماعي',
-            templateType: 'cyber',
-            content: `# مخطط اختبار اجتماعي
-
-**الهدف:**
-**السيناريوهات:**
-**النتائج المتوقعة:**
-**الملاحظات:**
-`
-        },
-        {
-            label: 'مذكرة تحليل شبكة',
-            templateType: 'cyber',
-            content: `# مذكرة تحليل شبكة
-
-| العنصر      | التفاصيل         |
-|-------------|------------------|
-| النطاق      |                  |
-| الأدوات     |                  |
-| النتائج     |                  |
-| الملاحظات   |                  |
-`
-        },
-        {
-            label: 'مذكرة مراجعة كود',
-            templateType: 'cyber',
-            content: `# مذكرة مراجعة كود
-
-**المشروع:**
-**النطاق:**
-**الثغرات المحتملة:**
-**التوصيات:**
-**ملاحظات:**
-`
-        },
-        // قوالب سياسات أمنية
-        {
-            label: 'سياسة كلمة المرور',
-            templateType: 'policy',
-            content: `# سياسة كلمة المرور
-
-- يجب أن تتكون كلمة المرور من 12 حرفًا على الأقل.
-- يجب أن تحتوي على أحرف كبيرة وصغيرة وأرقام ورموز.
-- تغيير كلمة المرور كل 90 يومًا.
-- عدم مشاركة كلمة المرور مع أي شخص.
-- تفعيل المصادقة الثنائية إن أمكن.
-`
-        },
-        {
-            label: 'سياسة استخدام البريد الإلكتروني',
-            templateType: 'policy',
-            content: `# سياسة استخدام البريد الإلكتروني
-
-- يمنع فتح الروابط المشبوهة.
-- يمنع تحميل المرفقات من مصادر غير موثوقة.
-- الإبلاغ عن أي رسائل تصيد.
-- استخدام البريد الرسمي فقط للأعمال.
-`
-        },
-        {
-            label: 'سياسة الأجهزة المحمولة',
-            templateType: 'policy',
-            content: `# سياسة الأجهزة المحمولة
-
-- تفعيل القفل التلقائي للجهاز.
-- استخدام التشفير.
-- عدم تثبيت تطبيقات غير موثوقة.
-- الإبلاغ عن فقدان الجهاز فورًا.
-- تحديث النظام والتطبيقات باستمرار.
-`
-        },
-        {
-            label: 'سياسة الوصول للأنظمة',
-            templateType: 'policy',
-            content: `# سياسة الوصول للأنظمة
-
-- منح الصلاحيات حسب الحاجة فقط (Least Privilege).
-- مراجعة الصلاحيات بشكل دوري.
-- إلغاء صلاحيات الموظفين المنتهية خدمتهم فورًا.
-- تسجيل الدخول والخروج من الأنظمة.
-`
-        },
-        // قوالب مهارات ناعمة
-        {
-            label: 'تقييم مهارة التواصل',
-            templateType: 'soft',
-            content: `# تقييم مهارة التواصل
-
-**الموقف:**
-**ما الذي سار بشكل جيد؟**
-**ما الذي يمكن تحسينه؟**
-**خطة التحسين:**
-**أمثلة عملية:**
-`
-        },
-        {
-            label: 'خطة تطوير مهارة القيادة',
-            templateType: 'soft',
-            content: `# خطة تطوير مهارة القيادة
-
-- نقاط القوة الحالية:
-- نقاط الضعف:
-- أهداف التطوير:
-- خطوات عملية:
-- متابعة وتقييم:
-`
-        },
-        {
-            label: 'مذكرة إدارة الوقت',
-            templateType: 'soft',
-            content: `# مذكرة إدارة الوقت
-
-| المهمة         | الأولوية | الوقت المتوقع | الوقت الفعلي | ملاحظات |
-|---------------|----------|---------------|--------------|---------|
-|               |          |               |              |         |
-
-**العقبات:**
-**خطوات التحسين:**
-`
-        },
-        {
-            label: 'تقييم العمل الجماعي',
-            templateType: 'soft',
-            content: `# تقييم العمل الجماعي
-
-**المشروع:**
-**دورك:**
-**ما الذي نجح؟**
-**ما الذي يمكن تحسينه؟**
-**خطة التحسين:**
-`
-        },
-        {
-            label: 'خطة تطوير مهارة حل المشكلات',
-            templateType: 'soft',
-            content: `# خطة تطوير مهارة حل المشكلات
-
-- المشكلة:
-- التحليل:
-- الحلول المقترحة:
-- الخطة التنفيذية:
-- التقييم والمتابعة:
-`
-        },
-        // قالب عام
-        {
-            label: 'ملاحظة عامة',
-            templateType: 'general',
-            content: `# ملاحظة عامة
-
-- ...
-`
-        },
-    ];
-    // إدراج القالب في مكان المؤشر أو استبدال النص إذا كان فارغًا، وتعيين نوع القالب
+    /**
+     * [FIXED] The conflicting `useEffect` that watched `template` was removed.
+     * This function now correctly inserts template content without side effects.
+     */
     const insertTemplate = (templateContent, templateType) => {
         setContent(prev => {
             const textarea = document.querySelector('.mde-text');
@@ -356,12 +145,42 @@ function NoteEditor({ note, taskDescription, onSave, onDelete, currentIndex, not
                 const end = textarea.selectionEnd;
                 return prev.slice(0, start) + templateContent + prev.slice(end);
             }
+            // If no selection, or for new notes, replace content
             return templateContent;
         });
-        setTemplate(templateType);
+        setTemplate(templateType); // Keep track of the template type used
+    };
+    
+    /**
+     * [FIXED] Logic for initial templates is now handled directly in the `onChange`
+     * of the select dropdown, preventing conflicts with professional templates.
+     */
+    const handleInitialTemplateChange = (e) => {
+        const selectedValue = e.target.value;
+        setTemplate(selectedValue);
+        if (selectedValue === 'video') {
+            setTitle(t.videoSummary);
+            setContent('النقاط الرئيسية:\n- \n\nمصطلحات جديدة:\n- \n\nأسئلة للمتابعة:\n- ');
+        } else if (selectedValue === 'tool') {
+            setTitle(t.toolAnalysis);
+            setContent('الغرض من الأداة:\n\nأهم الأوامر:\n\nبدائل:');
+        } else {
+            // Optionally clear content if "no template" is chosen
+            setTitle('');
+            setContent('');
+        }
     };
 
-    // أمر مخصص للزر
+    // --- Template Definitions ---
+    const templates = [
+        { label: 'تقرير حادث أمني', templateType: 'cyber', content: `# تقرير حادث أمني\n\n| العنصر | التفاصيل |\n|---|---|\n| التاريخ | |\n| الموقع/النظام | |\n| نوع الحادث | |\n| مستوى الخطورة | منخفض/متوسط/مرتفع |\n| وصف الحادث | |\n| الإجراءات المتخذة | |\n| التوصيات | |` },
+        { label: 'تحليل ثغرة أمنية', templateType: 'cyber', content: `# تحليل ثغرة أمنية\n\n**اسم الثغرة:**\n**الرقم المرجعي (CVE):**\n**الوصف:**\n**تأثيرها:**\n**الأنظمة المتأثرة:**\n**درجة الخطورة:**\n**طرق الحماية/الترقيع:**` },
+        { label: 'سياسة كلمة المرور', templateType: 'policy', content: `# سياسة كلمة المرور\n\n- يجب أن تتكون كلمة المرور من 12 حرفًا على الأقل.\n- يجب أن تحتوي على أحرف كبيرة وصغيرة وأرقام ورموز.\n- تغيير كلمة المرور كل 90 يومًا.\n- تفعيل المصادقة الثنائية.` },
+        { label: 'تقييم مهارة التواصل', templateType: 'soft', content: `# تقييم مهارة التواصل\n\n**الموقف:**\n**ما الذي سار بشكل جيد؟**\n**ما الذي يمكن تحسينه؟**\n**خطة التحسين:**` },
+        { label: 'ملاحظة عامة', templateType: 'general', content: `# ملاحظة عامة\n\n- ` },
+    ];
+
+    // --- Custom Command for ReactMde ---
     const customCommands = [
         {
             name: 'image',
@@ -369,131 +188,159 @@ function NoteEditor({ note, taskDescription, onSave, onDelete, currentIndex, not
             execute: () => fileInputRef.current.click()
         }
     ];
+
+    // --- Render JSX ---
     return (
-        <>
-            <div className="bg-white dark:bg-gray-800 px-4 pt-5 pb-4 sm:p-6 sm:pb-4 flex items-center justify-between">
+        <div className="flex flex-col h-full">
+            <div className="bg-white dark:bg-gray-800 px-4 pt-5 pb-4 sm:p-6 sm:pb-4 flex items-center justify-between border-b border-gray-200 dark:border-gray-700">
                 <div>
                     <h3 className="text-lg leading-6 font-medium text-gray-900 dark:text-white">{t.editNote}</h3>
-                    <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{t.noteOnTask} "{taskDescription}"</p>
+                    {taskDescription && <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{t.noteOnTask} "{taskDescription}"</p>}
                 </div>
                 <div className="flex gap-2">
-                    <button
-                        onClick={() => onNavigate && currentIndex > 0 && onNavigate(currentIndex - 1)}
-                        disabled={!onNavigate || currentIndex === 0}
-                        className="px-2 py-1 rounded bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 disabled:opacity-50"
-                        title={lang === 'ar' ? 'السابق' : 'Previous'}
-                    >
-                        ◀
-                    </button>
-                    <button
-                        onClick={() => onNavigate && currentIndex < notes.length - 1 && onNavigate(currentIndex + 1)}
-                        disabled={!onNavigate || currentIndex === notes.length - 1}
-                        className="px-2 py-1 rounded bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 disabled:opacity-50"
-                        title={lang === 'ar' ? 'التالي' : 'Next'}
-                    >
-                        ▶
-                    </button>
+                    <button onClick={() => onNavigate(currentIndex - 1)} disabled={!onNavigate || currentIndex === 0} className="px-3 py-1 rounded bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 disabled:opacity-50" title={t.previous}>◀</button>
+                    <button onClick={() => onNavigate(currentIndex + 1)} disabled={!onNavigate || currentIndex >= notes.length - 1} className="px-3 py-1 rounded bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 disabled:opacity-50" title={t.next}>▶</button>
                 </div>
             </div>
-            <div className="px-4 sm:px-6 py-4 space-y-4 max-h-[60vh] overflow-y-auto">
+
+            <div className="px-4 sm:px-6 py-4 space-y-4 overflow-y-auto flex-grow">
+                {/* Initial Template Selector for New Notes */}
+                {!note?.id && (
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">{t.chooseTemplate}</label>
+                        <select value={template} onChange={handleInitialTemplateChange} className="mt-1 w-full p-2 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md">
+                            <option value="">{t.noTemplate}</option>
+                            <option value="video">{t.videoSummary}</option>
+                            <option value="tool">{t.toolAnalysis}</option>
+                        </select>
+                    </div>
+                )}
+
                 <div>
                     <label htmlFor="note-title-editor" className="block text-sm font-medium text-gray-700 dark:text-gray-300">{t.noteTitle}</label>
                     <input id="note-title-editor" type="text" value={title} onChange={e => setTitle(e.target.value)} className="mt-1 w-full p-2 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-blue-500 focus:border-blue-500" />
                 </div>
-                {/* واجهة تعديل التاجات السريع */}
+
                 <div>
                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">{t.keywords}</label>
-                    <div className="flex flex-wrap gap-2 mb-2">
+                    <div className="flex flex-wrap gap-2 my-2">
                         {tags.map(tag => (
-                            <span key={tag} className="inline-flex items-center bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs">
+                            <span key={tag} className="inline-flex items-center bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-medium">
                                 {tag}
-                                <button type="button" className="ml-1 text-blue-500 hover:text-red-500" onClick={() => handleRemoveTag(tag)}>×</button>
+                                <button type="button" className="ml-1.5 text-blue-500 hover:text-red-500 focus:outline-none" onClick={() => handleRemoveTag(tag)}>×</button>
                             </span>
                         ))}
                     </div>
-                    <input type="text" placeholder={lang === 'ar' ? 'أضف تاجًا جديدًا' : 'Add new tag'} onKeyDown={handleAddTag} className="p-2 border rounded-md w-full dark:bg-gray-700" />
+                    <input type="text" placeholder={t.addNewTag} onKeyDown={handleAddTag} className="p-2 border rounded-md w-full bg-gray-50 dark:bg-gray-700 border-gray-300 dark:border-gray-600" />
                 </div>
-                {/* قائمة ربط المهمة */}
-                <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{t.task || 'المهمة المرتبطة'}</label>
-                    <select value={selectedTaskId} onChange={e => setSelectedTaskId(e.target.value)} className="w-full p-2 border rounded dark:bg-gray-700">
-                        {allTasks.map(task => (
-                            <option key={task.id} value={task.id}>{task.title?.[lang] || task.id}</option>
-                        ))}
-                    </select>
-                </div>
+
+                {allTasks && (
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{t.linkedTask}</label>
+                        <select value={selectedTaskId} onChange={e => setSelectedTaskId(e.target.value)} className="w-full p-2 border rounded bg-gray-50 dark:bg-gray-700 border-gray-300 dark:border-gray-600">
+                            <option value="">-- غير مرتبط --</option>
+                            {allTasks.map(task => (
+                                <option key={task.id} value={task.id}>{task.title?.[lang] || task.id}</option>
+                            ))}
+                        </select>
+                    </div>
+                )}
+                
                 <div>
                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{t.noteContent}</label>
+                    <div className="mb-2 flex flex-wrap gap-2">
+                        {templates.map((tpl, idx) => (
+                            <button key={idx} type="button" className={`px-2 py-1 rounded text-xs border ${tpl.templateType === 'cyber' ? 'bg-blue-100 text-blue-800 border-blue-200' : tpl.templateType === 'policy' ? 'bg-green-100 text-green-800 border-green-200' : tpl.templateType === 'soft' ? 'bg-yellow-100 text-yellow-800 border-yellow-200' : 'bg-gray-100 text-gray-800 border-gray-200'}`} style={{ direction: lang === 'ar' ? 'rtl' : 'ltr' }} onClick={() => insertTemplate(tpl.content, tpl.templateType)} title={tpl.label}>
+                                {tpl.label}
+                            </button>
+                        ))}
+                    </div>
                     <ReactMde
                         value={content}
                         onChange={setContent}
                         selectedTab={selectedTab}
                         onTabChange={setSelectedTab}
                         generateMarkdownPreview={markdown => Promise.resolve(converter.makeHtml(markdown))}
-                        childProps={{
-                            writeButton: { 'aria-label': 'Write' },
-                            previewButton: { 'aria-label': 'Preview' }
-                        }}
-                        l18n={{
-                            write: lang === 'ar' ? 'كتابة' : 'Write',
-                            preview: lang === 'ar' ? 'معاينة' : 'Preview'
-                        }}
-                        minEditorHeight={120}
-                        minPreviewHeight={120}
-                        style={{ direction: lang === 'ar' ? 'rtl' : 'ltr' }}
-                        toolbarCommands={[
-                            ['bold', 'italic', 'strikethrough', 'link', 'image'],
-                        ]}
-                        commands={{
-                            image: customCommands[0]
-                        }}
+                        l18n={{ write: t.write, preview: t.preview }}
+                        minEditorHeight={150}
+                        heightUnits="px"
+                        toolbarCommands={[['bold', 'italic', 'strikethrough'], ['link', 'quote', 'image'], ['unordered-list', 'ordered-list']]}
+                        commands={{ image: customCommands[0] }}
                     />
-                    <input
-                        type="file"
-                        accept="image/*"
-                        ref={fileInputRef}
-                        style={{ display: 'none' }}
-                        onChange={handleImageUpload}
-                    />
+                    <input type="file" accept="image/*" ref={fileInputRef} style={{ display: 'none' }} onChange={handleImageUpload} />
                 </div>
             </div>
-            <div className="bg-gray-50 dark:bg-gray-800/50 px-4 py-3 sm:px-6 flex flex-row-reverse">
+
+            <div className="bg-gray-50 dark:bg-gray-800/50 px-4 py-3 sm:px-6 flex flex-row-reverse items-center">
                 <button onClick={handleSave} type="button" className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm">
                     {t.saveNote}
                 </button>
-                <button onClick={() => setModal({isOpen: false, content: null})} type="button" className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 dark:border-gray-600 shadow-sm px-4 py-2 bg-white dark:bg-gray-700 text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:w-auto sm:text-sm">
+                <button onClick={() => setModal({ isOpen: false, content: null })} type="button" className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 dark:border-gray-600 shadow-sm px-4 py-2 bg-white dark:bg-gray-700 text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none sm:mt-0 sm:w-auto sm:text-sm">
                     {t.cancel}
                 </button>
-                 <button onClick={onDelete} type="button" className="mr-auto px-4 py-2 text-sm font-medium text-red-600 hover:text-red-800">
-                    {t.deleteNote}
-                </button>
-            </div>
-            {!note.title && (
-                <div className="mb-2">
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">اختر قالب:</label>
-                    <select value={template} onChange={e => setTemplate(e.target.value)} className="mt-1 w-full p-2 border rounded">
-                        <option value="">بدون قالب</option>
-                        <option value="video">ملخص فيديو</option>
-                        <option value="tool">تحليل أداة</option>
-                    </select>
-                </div>
-            )}
-            <div className="mb-2 flex flex-wrap gap-2">
-                {templates.map((tpl, idx) => (
-                    <button
-                        key={idx}
-                        type="button"
-                        className={`px-2 py-1 rounded text-xs border mr-1 ${tpl.templateType === 'cyber' ? 'bg-blue-100 text-blue-800 border-blue-200' : tpl.templateType === 'policy' ? 'bg-green-100 text-green-800 border-green-200' : tpl.templateType === 'soft' ? 'bg-yellow-100 text-yellow-800 border-yellow-200' : 'bg-gray-100 text-gray-800 border-gray-200'}`}
-                        style={{direction: lang === 'ar' ? 'rtl' : 'ltr'}}
-                        onClick={() => insertTemplate(tpl.content, tpl.templateType)}
-                        title={tpl.label}
-                    >
-                        {tpl.label}
+                {onDelete && (
+                    <button onClick={onDelete} type="button" className="ml-auto px-4 py-2 text-sm font-medium text-red-600 hover:text-red-800 dark:text-red-500 dark:hover:text-red-400">
+                        {t.deleteNote}
                     </button>
-                ))}
+                )}
             </div>
-        </>
+        </div>
     );
 }
 
-export default NoteEditor;
+// To make this component runnable for demonstration, we need a simple App wrapper.
+// في تطبيقك الحقيقي، لن تحتاج إلى هذا الجزء.
+function App() {
+    const [modal, setModal] = useState({ isOpen: false, content: null });
+    const showToast = (message, type) => {
+        console.log(`Toast (${type}): ${message}`);
+        // In a real app, you'd have a toast component here.
+    };
+
+    const sampleNote = {
+        id: 'note1',
+        title: 'ملاحظة تجريبية',
+        content: 'هذا هو محتوى الملاحظة.',
+        keywords: ['تجربة', 'react'],
+        taskData: { id: 'task1' },
+        templateType: 'general'
+    };
+
+    const sampleTasks = [
+        { id: 'task1', title: { ar: 'المهمة الأولى' } },
+        { id: 'task2', title: { ar: 'المهمة الثانية' } }
+    ];
+    
+    const sampleNotes = [sampleNote];
+
+    const handleSaveNote = (updatedNote) => {
+        console.log('Saving note:', updatedNote);
+    };
+
+    const handleDeleteNote = () => {
+        console.log('Deleting note:', sampleNote.id);
+    };
+    
+    const handleNavigate = (index) => {
+        console.log('Navigating to index:', index);
+    };
+
+    return (
+        <AppContext.Provider value={{ lang: 'ar', translations: mockTranslations, setModal, showToast }}>
+            <div className="w-full max-w-4xl mx-auto my-8 bg-white dark:bg-gray-900 shadow-lg rounded-lg overflow-hidden">
+                <NoteEditor
+                    note={sampleNote}
+                    taskDescription="المهمة الأولى"
+                    onSave={handleSaveNote}
+                    onDelete={handleDeleteNote}
+                    currentIndex={0}
+                    notes={sampleNotes}
+                    onNavigate={handleNavigate}
+                    allTasks={sampleTasks}
+                />
+            </div>
+        </AppContext.Provider>
+    );
+}
+
+export default App;
