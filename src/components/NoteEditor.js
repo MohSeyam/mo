@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useRef } from 'react';
 import TagInput from './components/TagInput';
 import ReactMde from 'react-mde';
 import Showdown from 'showdown';
@@ -14,6 +14,7 @@ function NoteEditor({ note, taskDescription, onSave, onDelete, currentIndex, not
     const [template, setTemplate] = useState('');
     const [selectedTaskId, setSelectedTaskId] = useState(note.taskData?.id || '');
     const [selectedTab, setSelectedTab] = useState('write');
+    const fileInputRef = useRef();
     const converter = new Showdown.Converter({tables: true, simplifiedAutoLink: true});
     useEffect(() => {
         if (!note.title && template) {
@@ -63,6 +64,29 @@ function NoteEditor({ note, taskDescription, onSave, onDelete, currentIndex, not
         const selectedTask = allTasks.find(t => t.id === selectedTaskId);
         onSave({ title, content, keywords: tags, taskId: selectedTaskId, taskData: selectedTask });
     };
+    // زر رفع صورة
+    const handleImageUpload = (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = () => {
+            const imageMarkdown = `![صورة](${reader.result})`;
+            setContent(prev => {
+                const textarea = document.querySelector('.mde-text');
+                const pos = textarea ? textarea.selectionStart : prev.length;
+                return prev.slice(0, pos) + imageMarkdown + prev.slice(pos);
+            });
+        };
+        reader.readAsDataURL(file);
+    };
+    // أمر مخصص للزر
+    const customCommands = [
+        {
+            name: 'image',
+            icon: () => <span role="img" aria-label="صورة">🖼️</span>,
+            execute: () => fileInputRef.current.click()
+        }
+    ];
     return (
         <>
             <div className="bg-white dark:bg-gray-800 px-4 pt-5 pb-4 sm:p-6 sm:pb-4 flex items-center justify-between">
@@ -135,6 +159,19 @@ function NoteEditor({ note, taskDescription, onSave, onDelete, currentIndex, not
                         minEditorHeight={120}
                         minPreviewHeight={120}
                         style={{ direction: lang === 'ar' ? 'rtl' : 'ltr' }}
+                        toolbarCommands={[
+                            ['bold', 'italic', 'strikethrough', 'link', 'image'],
+                        ]}
+                        commands={{
+                            image: customCommands[0]
+                        }}
+                    />
+                    <input
+                        type="file"
+                        accept="image/*"
+                        ref={fileInputRef}
+                        style={{ display: 'none' }}
+                        onChange={handleImageUpload}
                     />
                 </div>
             </div>
