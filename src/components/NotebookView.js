@@ -3,7 +3,12 @@ import { AppContext } from '../components/App';
 import NoteEditor from './components/NoteEditor';
 import TaskNotesList from './components/TaskNotesList';
 import JournalEntriesList from './components/JournalEntriesList';
+<<<<<<< HEAD
 import { useAppContext } from '../context/AppContext';<<<<<<< cursor/implement-and-detail-application-features-c882
+=======
+import { useAppContext } from '../context/AppContext';
+import { getStats, exportAllData, importAllData } from '../utils/noteUtils';
+>>>>>>> 7cf76a19 (Add export and import functionality for notebook data)
 
 function NotebookView() {
     const { lang, appState, setModal, planData, translations, updateNote, deleteNote, showToast } = useAppContext();
@@ -94,8 +99,45 @@ function NotebookView() {
         });
     };
 
+    const handleExportAll = () => {
+        const data = exportAllData(appState);
+        const blob = new Blob([data], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'backup.json';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        showToast('تم تصدير جميع البيانات بنجاح', 'success');
+    };
+    const handleImportAll = (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (evt) => {
+            try {
+                const importedData = JSON.parse(evt.target.result);
+                setAppState(prev => importAllData(prev, importedData));
+                showToast('تم الاستيراد ودمج البيانات بنجاح', 'success');
+            } catch {
+                showToast('فشل الاستيراد: ملف غير صالح', 'error');
+            }
+        };
+        reader.readAsText(file);
+    };
+
     return (
         <div className="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-2xl h-full flex flex-col border border-gray-100 dark:border-gray-800">
+            {/* أزرار التصدير والاستيراد */}
+            <div className="mb-4 flex gap-4">
+                <button onClick={handleExportAll} className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">تصدير الكل</button>
+                <label className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 cursor-pointer">
+                    استيراد
+                    <input type="file" accept="application/json" onChange={handleImportAll} className="hidden" />
+                </label>
+            </div>
             {/* لوحة الإحصائيات */}
             <div className="mb-6 flex flex-wrap gap-6 items-center justify-start">
                 <div className="bg-blue-50 dark:bg-blue-900/30 rounded-lg px-4 py-2 text-blue-900 dark:text-blue-100 font-semibold">
