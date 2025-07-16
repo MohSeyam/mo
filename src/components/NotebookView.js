@@ -3,8 +3,7 @@ import { AppContext } from '../components/App';
 import NoteEditor from './components/NoteEditor';
 import TaskNotesList from './components/TaskNotesList';
 import JournalEntriesList from './components/JournalEntriesList';
-import { useAppContext } from '../context/AppContext';
-import { getStats } from '../utils/noteUtils';
+import { useAppContext } from '../context/AppContext';<<<<<<< cursor/implement-and-detail-application-features-c882
 
 function NotebookView() {
     const { lang, appState, setModal, planData, translations, updateNote, deleteNote, showToast } = useAppContext();
