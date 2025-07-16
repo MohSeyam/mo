@@ -93,23 +93,67 @@ export default function MonthTemplate({
     },
   };
 
-  // رسم بياني دائري لتوزيع وقت البومودورو على المهام
+  // رسم بياني دائري لتوزيع وقت البومودورو على المهام مع اسم المهمة والقسم
   let pomodoroPieData = null;
-  if (stats.pomodoro && Object.keys(stats.pomodoro).length > 0) {
-    const labels = Object.keys(stats.pomodoro).map(id => id);
-    const data = Object.values(stats.pomodoro).map(v => Math.floor((v.totalSeconds || 0) / 60));
+  let pomodoroPieOptions = null;
+  if (stats.pomodoro && Object.keys(stats.pomodoro).length > 0 && stats.allTasks) {
+    // بناء قائمة المهام المنجزة مع القسم
+    const taskMap = {};
+    stats.allTasks.forEach(task => {
+      taskMap[task.id] = task;
+    });
+    const labels = Object.keys(stats.pomodoro).map(id => {
+      const task = taskMap[id];
+      if (!task) return id;
+      const name = (task.description?.[lang] || task.description?.en || '').slice(0, 30) + (task.description?.[lang]?.length > 30 ? '…' : '');
+      return `${name} (${task.type})`;
+    });
+    const data = Object.keys(stats.pomodoro).map(id => Math.floor((stats.pomodoro[id].totalSeconds || 0) / 60));
+    const sectionColors = {
+      'Blue Team': '#2563eb',
+      'Red Team': '#ef4444',
+      'Policies': '#a21caf',
+      'Practical': '#22c55e',
+      'Soft Skills': '#f59e42',
+    };
+    const bgColors = Object.keys(stats.pomodoro).map(id => {
+      const task = taskMap[id];
+      return sectionColors[task?.type] || '#6366F1';
+    });
     pomodoroPieData = {
       labels,
       datasets: [
         {
           label: lang === 'ar' ? 'دقائق بومودورو لكل مهمة' : 'Pomodoro Minutes per Task',
           data,
-          backgroundColor: [
-            '#3B82F6', '#10B981', '#F59E42', '#EF4444', '#8B5CF6', '#FBBF24', '#6366F1', '#14B8A6', '#F472B6', '#FCD34D', '#A3E635', '#F87171'
-          ],
+          backgroundColor: bgColors,
           borderWidth: 2,
         },
       ],
+    };
+    pomodoroPieOptions = {
+      responsive: true,
+      plugins: {
+        legend: { position: 'bottom', labels: { font: { size: 13 } } },
+        title: { display: true, text: lang==='ar'?'توزيع وقت بومودورو على المهام':'Pomodoro Time Distribution', font: { size: 16 } },
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              const idx = context.dataIndex;
+              const id = Object.keys(stats.pomodoro)[idx];
+              const task = taskMap[id];
+              const minutes = data[idx];
+              const sessions = stats.pomodoro[id]?.count || 0;
+              return [
+                `${lang==='ar'?'المهمة':'Task'}: ${task?.description?.[lang] || task?.description?.en || id}`,
+                `${lang==='ar'?'القسم':'Section'}: ${task?.type || ''}`,
+                `${lang==='ar'?'الجلسات':'Sessions'}: ${sessions}`,
+                `${lang==='ar'?'الدقائق':'Minutes'}: ${minutes}`
+              ];
+            }
+          }
+        }
+      }
     };
   }
 
@@ -170,7 +214,7 @@ export default function MonthTemplate({
           {Object.keys(stats.tagStats).length > 0 && <Pie data={pieData} options={pieOptions} />}
           {lineLabels.length > 1 && <Line data={lineData} options={lineOptions} />}
           {/* رسم بياني توزيع وقت البومودورو */}
-          {pomodoroPieData && <Pie data={pomodoroPieData} options={{responsive:true, plugins:{legend:{position:'bottom'}, title:{display:true, text:lang==='ar'?'توزيع وقت بومودورو على المهام':'Pomodoro Time Distribution'}}}} />}
+          {pomodoroPieData && <Pie data={pomodoroPieData} options={pomodoroPieOptions} />}
         </div>
       </div>
       <div className="mb-4">
