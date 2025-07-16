@@ -27,7 +27,26 @@ function DayView({
   const [showTemplate, setShowTemplate] = useState(false);
   const templateRef = useRef();
   const [pomodoroModal, setPomodoroModal] = useState({ open: false, task: null });
-  const [pomodoroSessions, setPomodoroSessions] = useState({}); // {taskId: count}
+  // استخدم appState لحفظ الجلسات والمدة
+  const [pomodoroSessions, setPomodoroSessions] = useState(() => {
+    // استرجاع من localStorage إذا وجد
+    try {
+      return JSON.parse(localStorage.getItem('pomodoroSessions') || '{}');
+    } catch {
+      return {};
+    }
+  });
+
+  // حفظ تلقائي في localStorage عند التغيير
+  useEffect(() => {
+    localStorage.setItem('pomodoroSessions', JSON.stringify(pomodoroSessions));
+    // تحديث appState (يمكنك تخصيص مكان الحفظ حسب بنية appState)
+    setAppState(prev => {
+      const newState = { ...prev };
+      newState.pomodoro = pomodoroSessions;
+      return newState;
+    });
+  }, [pomodoroSessions, setAppState]);
 
   // حساب التقدم اليومي
   const totalTasks = dayData.tasks.length;
@@ -177,9 +196,18 @@ function DayView({
     }
   }
 
-  function handlePomodoroSessionComplete(taskId) {
-    setPomodoroSessions(prev => ({ ...prev, [taskId]: (prev[taskId] || 0) + 1 }));
-    // يمكن هنا أيضًا تحديث appState إذا أردت حفظ عدد الجلسات في الحالة العامة
+  function handlePomodoroSessionComplete(taskId, sessionSeconds = 25*60) {
+    setPomodoroSessions(prev => {
+      const prevCount = prev[taskId]?.count || 0;
+      const prevTotal = prev[taskId]?.totalSeconds || 0;
+      return {
+        ...prev,
+        [taskId]: {
+          count: prevCount + 1,
+          totalSeconds: prevTotal + sessionSeconds,
+        },
+      };
+    });
   }
 
   return (
@@ -286,7 +314,11 @@ function DayView({
                         </div>
                         {/* عرض عدد الجلسات المنجزة لهذه المهمة */}
                         {pomodoroSessions[task.id] && (
-                          <div className="mt-2 text-xs text-orange-600 font-bold">{i18n.language === 'ar' ? `جلسات بومودورو: ${pomodoroSessions[task.id]}` : `Pomodoro Sessions: ${pomodoroSessions[task.id]}`}</div>
+                          <div className="mt-2 text-xs text-orange-600 font-bold">
+                            {i18n.language === 'ar' ? `جلسات بومودورو: ${pomodoroSessions[task.id].count}` : `Pomodoro Sessions: ${pomodoroSessions[task.id].count}`}
+                            <br />
+                            {i18n.language === 'ar' ? `المدة الإجمالية: ${Math.floor((pomodoroSessions[task.id].totalSeconds||0)/60)} دقيقة` : `Total: ${Math.floor((pomodoroSessions[task.id].totalSeconds||0)/60)} min`}
+                          </div>
                         )}
                         {expandedTask === idx && (
                           <div className="mt-3 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg text-sm text-gray-700 dark:text-gray-300 animate-fade-in">
@@ -313,7 +345,7 @@ function DayView({
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
           <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-2xl max-w-md w-full p-6 relative animate-fade-in">
             <button onClick={() => setPomodoroModal({ open: false, task: null })} className="absolute top-2 end-2 text-2xl text-gray-400 hover:text-red-500">&times;</button>
-            <PomodoroTimer task={pomodoroModal.task} onSessionComplete={handlePomodoroSessionComplete} rtl={rtl} />
+            <PomodoroTimer task={pomodoroModal.task} onSessionComplete={id => handlePomodoroSessionComplete(id)} rtl={rtl} />
           </div>
         </div>
       )}
