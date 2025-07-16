@@ -49,6 +49,23 @@ function NotebookView() {
         return entriesList.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
     }, [appState.journal, planData]);
 
+    // استخراج جميع المهام المتاحة من planData
+    const allTasks = useMemo(() => {
+        const tasks = [];
+        planData.forEach(week => {
+            week.days.forEach(day => {
+                day.tasks.forEach(task => {
+                    tasks.push({
+                        ...task,
+                        week,
+                        day,
+                    });
+                });
+            });
+        });
+        return tasks;
+    }, [planData]);
+
     const openNoteModal = (note) => {
         const currentIndex = allTaskNotes.findIndex(n => n.updatedAt === note.updatedAt);
         setModal({
@@ -70,6 +87,7 @@ function NotebookView() {
                             const nextNote = allTaskNotes[idx];
                             if (nextNote) openNoteModal(nextNote);
                         }}
+                        allTasks={allTasks}
                     />
         });
     };
