@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
-import TagInput from './components/TagInput';
-import SimpleEditor from './components/SimpleEditor';
+import TagInput from '../components/TagInput';
+import SimpleEditor from '../components/SimpleEditor';
 import { AppContext } from '../components/App';
 
 function NoteEditor({ note, taskDescription, onSave, onDelete }) {

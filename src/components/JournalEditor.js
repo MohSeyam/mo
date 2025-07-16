@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import SimpleEditor from './components/SimpleEditor';
+import SimpleEditor from '../components/SimpleEditor';
 import { AppContext } from '../components/App';
 import { updateJournalEntry } from '../utils/stateUtils';
 

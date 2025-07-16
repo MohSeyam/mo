@@ -1,8 +1,8 @@
 import React, { useState, useMemo, useContext } from 'react';
 import { AppContext } from '../components/App';
-import NoteEditor from './components/NoteEditor';
-import TaskNotesList from './components/TaskNotesList';
-import JournalEntriesList from './components/JournalEntriesList';
+import NoteEditor from '../components/NoteEditor';
+import TaskNotesList from '../components/TaskNotesList';
+import JournalEntriesList from '../components/JournalEntriesList';
 import { extractAllTaskNotes, extractAllJournalEntries } from '../utils/noteUtils';
 import { updateNoteInState, deleteNoteInState } from '../utils/stateUtils';
 
