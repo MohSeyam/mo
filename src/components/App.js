@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useMemo } from 'react';
 import SkillMatrix from './components/SkillMatrix';
 import WeekCard from './components/WeekCard';
 import AchievementsView from './components/AchievementsView';
@@ -12,6 +12,7 @@ import PhaseTemplate from './components/PhaseTemplate';
 import PlanTemplate from './components/PlanTemplate';
 import { useTranslation } from 'react-i18next';
 import './index.css';
+import { AppContext } from './components/App';
 
 // --- DATA & CONFIGURATION (FULL 50 WEEKS) ---
 const planData = [
@@ -38,6 +39,7 @@ function App() {
   const [rtl, setRtl] = useState(i18n.language === 'ar');
   const [view, setView] = useState('plan'); // plan | achievements | notebook
   const [modal, setModal] = useState({ open: false, content: null });
+  const { appState } = useContext(AppContext);
 
   // تغيير اتجاه الصفحة عند تغيير اللغة
   React.useEffect(() => {
@@ -45,17 +47,30 @@ function App() {
     document.documentElement.dir = i18n.language === 'ar' ? 'rtl' : 'ltr';
   }, [i18n.language]);
 
-  // حساب الإحصائيات العامة للخطة (مثال مبسط)
-  const stats = {
-    totalTasks: 10, // احسبها من البيانات الحقيقية
-    completedTasks: 8,
-    totalTime: 500,
-    notesCount: 5,
-    journalCount: 3,
-    resourcesCount: 4,
-    sectionStats: { 'Blue Team': 5, 'Red Team': 5 },
-    tagStats: { tag1: 2, tag2: 3 },
-  };
+  const stats = useMemo(() => {
+    let totalTasks = 0, completedTasks = 0, totalTime = 0, notesCount = 0, journalCount = 0, resourcesCount = 0;
+    const sectionStats = {};
+    const tagStats = {};
+    planData.forEach(week => {
+      week.days.forEach((day, dayIndex) => {
+        day.tasks.forEach((task, taskIndex) => {
+          totalTasks++;
+          totalTime += task.duration || 0;
+          if (!sectionStats[task.type]) sectionStats[task.type] = 0;
+          sectionStats[task.type]++;
+          if (task.keywords) task.keywords.forEach(tag => { tagStats[tag] = (tagStats[tag] || 0) + 1; });
+          const dayState = appState?.progress?.[week.week]?.days?.[dayIndex];
+          if (dayState?.tasks?.[taskIndex] === 'completed') completedTasks++;
+        });
+        resourcesCount += (day.resources?.length || 0);
+        const dayNotes = appState?.notes?.[week.week]?.days?.[dayIndex];
+        if(dayNotes) notesCount += Object.keys(dayNotes).length;
+        const dayJournal = appState?.journal?.[week.week]?.days?.[dayIndex];
+        if(dayJournal) journalCount++;
+      });
+    });
+    return { totalTasks, completedTasks, totalTime, notesCount, journalCount, resourcesCount, sectionStats, tagStats };
+  }, [appState, planData]);
   const isAllComplete = stats.totalTasks === stats.completedTasks;
   const logo = i18n.language === 'ar' ? <LogoArabic size="2xl" /> : <Logo size="2xl" />;
   const charts = null; // ضع هنا رسم بياني مناسب

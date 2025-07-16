@@ -1,13 +1,44 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useContext, useMemo, useState } from 'react';
 import { AppContext } from '../App';
 import StatsSummary from './StatsSummary';
 import SkillBarChart from './SkillBarChart';
 import PhaseDoughnutChart from './PhaseDoughnutChart';
+import PhaseTemplate from './PhaseTemplate';
 
 function AchievementsView() {
     const { lang, setView, appState, planData, phases, translations } = useContext(AppContext);
     const t = translations[lang];
     const theme = useContext(AppContext).theme;
+    const [modal, setModal] = useState({ open: false, content: null });
+
+    function handlePrint(ref) {
+        if (ref && ref.current) {
+            const printContents = ref.current.innerHTML;
+            const printWindow = window.open('', '', 'height=600,width=800');
+            printWindow.document.write('<html><head><title>Print</title></head><body>' + printContents + '</body></html>');
+            printWindow.document.close();
+            printWindow.focus();
+            printWindow.print();
+            printWindow.close();
+        }
+    }
+    function openPhaseTemplate() {
+        setModal({
+            open: true,
+            content: <PhaseTemplate logo={null} stats={stats} charts={<PhaseDoughnutChart doughnutData={doughnutData} doughnutOptions={doughnutOptions} />} isAllComplete={overallProgress === 100} rtl={lang === 'ar'} lang={lang} onPrint={handlePrint} />
+        });
+    }
+    function Modal({ open, content, onClose }) {
+        if (!open) return null;
+        return (
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
+                <div className="bg-white rounded-lg shadow-lg p-6 max-w-3xl w-full relative">
+                    <button onClick={onClose} className="absolute top-2 left-2 text-gray-500 hover:text-gray-700">&times;</button>
+                    {content}
+                </div>
+            </div>
+        );
+    }
 
     const stats = useMemo(() => {
         if (!appState) return { totalTasks: 0, completedTasks: 0, learningHours: 0, skillStats: {}, totalNotes: 0 };
@@ -109,6 +140,8 @@ function AchievementsView() {
                     <PhaseDoughnutChart doughnutData={doughnutData} doughnutOptions={doughnutOptions} />
                 </div>
             </div>
+            <button onClick={openPhaseTemplate} className="bg-green-100 text-green-800 px-4 py-2 rounded hover:bg-green-200 mb-4">{lang === 'ar' ? 'عرض قالب المرحلة' : 'Show Phase Template'}</button>
+            <Modal open={modal.open} content={modal.content} onClose={() => setModal({ open: false, content: null })} />
         </div>
     );
 }
