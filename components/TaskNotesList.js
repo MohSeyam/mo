@@ -1,17 +1,12 @@
 import React, { useState, useMemo } from 'react';
 import NoteCard from './NoteCard';
+import { getAllTags, filterNotes } from '../utils/noteUtils';
 
 function TaskNotesList({ notes, lang, onEdit }) {
   const [search, setSearch] = useState('');
   const [tagFilter, setTagFilter] = useState('');
-  const allTags = useMemo(() => Array.from(new Set(notes.flatMap(n => n.keywords || []))), [notes]);
-
-  const filteredNotes = useMemo(() => {
-    return notes.filter(note =>
-      (!search || note.title.toLowerCase().includes(search.toLowerCase()) || (note.content && note.content.toLowerCase().includes(search.toLowerCase()))) &&
-      (!tagFilter || (note.keywords && note.keywords.includes(tagFilter)))
-    );
-  }, [notes, search, tagFilter]);
+  const allTags = useMemo(() => getAllTags(notes), [notes]);
+  const filteredNotes = useMemo(() => filterNotes(notes, search, tagFilter), [notes, search, tagFilter]);
 
   return (
     <div>

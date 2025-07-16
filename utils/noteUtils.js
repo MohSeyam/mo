@@ -36,3 +36,14 @@ export function extractAllJournalEntries(appState, planData) {
     });
     return entriesList.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
 }
+
+export function getAllTags(notes) {
+    return Array.from(new Set(notes.flatMap(n => n.keywords || [])));
+}
+
+export function filterNotes(notes, search, tagFilter) {
+    return notes.filter(note =>
+        (!search || note.title.toLowerCase().includes(search.toLowerCase()) || (note.content && note.content.toLowerCase().includes(search.toLowerCase()))) &&
+        (!tagFilter || (note.keywords && note.keywords.includes(tagFilter)))
+    );
+}

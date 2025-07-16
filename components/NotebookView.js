@@ -4,9 +4,10 @@ import NoteEditor from './components/NoteEditor';
 import TaskNotesList from './components/TaskNotesList';
 import JournalEntriesList from './components/JournalEntriesList';
 import { extractAllTaskNotes, extractAllJournalEntries } from '../utils/noteUtils';
+import { updateNoteInState, deleteNoteInState } from '../utils/stateUtils';
 
 function NotebookView() {
-    const { lang, appState, setModal, planData, translations, showToast } = useContext(AppContext);
+    const { lang, appState, setModal, planData, translations, showToast, setAppState } = useContext(AppContext);
     const t = translations[lang];
     const [activeTab, setActiveTab] = useState('tasks');
     const [showGraph, setShowGraph] = useState(false);
@@ -21,21 +22,11 @@ function NotebookView() {
                         note={note} 
                         taskDescription={note.taskData.description[lang]}
                         onSave={(newNoteData) => {
-                            setAppState(prev => {
-                                const newState = JSON.parse(JSON.stringify(prev));
-                                const dayIndex = planData.find(w => w.week === note.weekData.week).days.findIndex(d => d.key === note.dayData.key);
-                                newState.notes[note.weekData.week].days[dayIndex][note.taskData.id] = { ...newNoteData, updatedAt: new Date().toISOString() };
-                                return newState;
-                            });
+                            setAppState(prev => updateNoteInState(prev, planData, note, newNoteData));
                             setModal({ isOpen: false, content: null });
                         }}
                         onDelete={() => {
-                             setAppState(prev => {
-                                const newState = JSON.parse(JSON.stringify(prev));
-                                const dayIndex = planData.find(w => w.week === note.weekData.week).days.findIndex(d => d.key === note.dayData.key);
-                                delete newState.notes[note.weekData.week].days[dayIndex][note.taskData.id];
-                                return newState;
-                            });
+                            setAppState(prev => deleteNoteInState(prev, planData, note));
                             setModal({ isOpen: false, content: null });
                         }}
                     />
