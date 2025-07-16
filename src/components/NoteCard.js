@@ -2,7 +2,7 @@ import React from 'react';
 import { exportNoteAsMarkdown } from '../utils/noteUtils';
 import { useState } from 'react';
 
-function NoteCard({ note, lang, onClick }) {
+function NoteCard({ note, lang, onClick, onDelete, onEdit }) {
   const typeColors = {
     cyber: 'bg-blue-100 text-blue-800 border-blue-300',
     policy: 'bg-green-100 text-green-800 border-green-300',
@@ -56,20 +56,6 @@ function NoteCard({ note, lang, onClick }) {
         <span className="text-xs text-gray-500 dark:text-gray-400" title={note.updatedAt ? new Date(note.updatedAt).toLocaleString() : ''}>
           🗓️ {note.updatedAt ? new Date(note.updatedAt).toLocaleDateString() : ''}
         </span>
-        <button
-          onClick={handleExport}
-          title={lang === 'ar' ? 'تصدير' : 'Export'}
-          className="ml-2 text-blue-500 hover:text-blue-700 text-lg"
-        >
-          ⬇️
-        </button>
-        <button
-          onClick={handleCopy}
-          title={lang === 'ar' ? 'نسخ المحتوى' : 'Copy'}
-          className="ml-1 text-gray-500 hover:text-gray-700 text-lg"
-        >
-          📋
-        </button>
       </div>
       <div className="prose prose-sm dark:prose-invert max-h-32 overflow-y-auto relative" style={{ direction: 'rtl' }}>
         <div dangerouslySetInnerHTML={{ __html: showFull ? note.content : preview.replace(/\n/g, '<br/>') }} />
@@ -106,6 +92,37 @@ function NoteCard({ note, lang, onClick }) {
           ))}
         </div>
       )}
+      {/* شريط الإجراءات السريع */}
+      <div className="flex gap-2 mt-3 border-t pt-2 border-gray-200 dark:border-gray-700">
+        <button
+          onClick={e => { e.stopPropagation(); onEdit && onEdit(note); }}
+          title="تعديل"
+          className="flex items-center gap-1 px-2 py-1 rounded bg-yellow-50 hover:bg-yellow-100 text-yellow-800 text-xs border border-yellow-200"
+        >
+          ✏️ <span>تعديل</span>
+        </button>
+        <button
+          onClick={e => { e.stopPropagation(); onDelete && onDelete(note); }}
+          title="حذف"
+          className="flex items-center gap-1 px-2 py-1 rounded bg-red-50 hover:bg-red-100 text-red-800 text-xs border border-red-200"
+        >
+          🗑️ <span>حذف</span>
+        </button>
+        <button
+          onClick={handleExport}
+          title="تصدير"
+          className="flex items-center gap-1 px-2 py-1 rounded bg-blue-50 hover:bg-blue-100 text-blue-800 text-xs border border-blue-200"
+        >
+          ⬇️ <span>تصدير</span>
+        </button>
+        <button
+          onClick={handleCopy}
+          title="نسخ"
+          className="flex items-center gap-1 px-2 py-1 rounded bg-gray-50 hover:bg-gray-100 text-gray-800 text-xs border border-gray-200"
+        >
+          📋 <span>نسخ</span>
+        </button>
+      </div>
     </div>
   );
 }

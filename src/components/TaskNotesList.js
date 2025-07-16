@@ -4,7 +4,7 @@ import { getAllTags, filterNotes } from '../utils/noteUtils';
 import { FixedSizeList as List } from 'react-window';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
-function TaskNotesList({ notes, lang, onEdit, onReorder }) {
+function TaskNotesList({ notes, lang, onEdit, onReorder, onDelete }) {
   const [search, setSearch] = useState('');
   const [tagFilters, setTagFilters] = useState([]);
   const [templateTypeFilter, setTemplateTypeFilter] = useState('all');
@@ -26,7 +26,7 @@ function TaskNotesList({ notes, lang, onEdit, onReorder }) {
 
   const Row = ({ index, style }) => (
     <div style={style} className="pr-2 pb-4">
-      <NoteCard note={filteredNotes[index]} lang={lang} onClick={() => onEdit(filteredNotes[index])} />
+      <NoteCard note={filteredNotes[index]} lang={lang} onClick={() => onEdit(filteredNotes[index])} onEdit={onEdit} onDelete={onDelete} />
     </div>
   );
 
@@ -97,7 +97,7 @@ function TaskNotesList({ notes, lang, onEdit, onReorder }) {
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
                       >
-                        <NoteCard note={note} lang={lang} onClick={() => onEdit(note)} />
+                        <NoteCard note={note} lang={lang} onClick={() => onEdit(note)} onEdit={onEdit} onDelete={onDelete} />
                       </div>
                     )}
                   </Draggable>
