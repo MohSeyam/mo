@@ -1,17 +1,12 @@
-import React, { useState, useMemo, useContext } from 'react';
-import { AppContext } from '../components/App';
+import React, { useState, useMemo } from 'react';
 import NoteEditor from './components/NoteEditor';
 import TaskNotesList from './components/TaskNotesList';
 import JournalEntriesList from './components/JournalEntriesList';
-<<<<<<< HEAD
-import { useAppContext } from '../context/AppContext';<<<<<<< cursor/implement-and-detail-application-features-c882
-=======
 import { useAppContext } from '../context/AppContext';
 import { getStats, exportAllData, importAllData } from '../utils/noteUtils';
->>>>>>> 7cf76a19 (Add export and import functionality for notebook data)
 
 function NotebookView() {
-    const { lang, appState, setModal, planData, translations, updateNote, deleteNote, showToast } = useAppContext();
+    const { lang, appState, setAppState, setModal, planData, translations, updateNote, deleteNote, showToast } = useAppContext();
     const t = translations[lang];
     const [activeTab, setActiveTab] = useState('tasks');
     const [showGraph, setShowGraph] = useState(false);
@@ -33,7 +28,8 @@ function NotebookView() {
                 });
             });
         });
-        return notesList.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
+        // ترتيب حسب خاصية order إذا وجدت، وإلا حسب updatedAt
+        return notesList.sort((a, b) => (a.order ?? 0) - (b.order ?? 0) || new Date(b.updatedAt) - new Date(a.updatedAt));
     }, [appState.notes, planData]);
     
     const allJournalEntries = useMemo(() => {
@@ -97,6 +93,24 @@ function NotebookView() {
                         allTasks={allTasks}
                     />
         });
+    };
+
+    // دالة إعادة ترتيب الملاحظات في الحالة
+    const handleReorderNotes = (reorderedNotes) => {
+        setAppState(prev => {
+            const newState = JSON.parse(JSON.stringify(prev));
+            reorderedNotes.forEach((note, idx) => {
+                const weekKey = note.weekData.week;
+                const dayIdx = note.dayData.key;
+                const taskId = note.taskData.id;
+                const week = newState.notes[weekKey];
+                if (week && week.days[dayIdx] && week.days[dayIdx][taskId]) {
+                    newState.notes[weekKey].days[dayIdx][taskId].order = idx;
+                }
+            });
+            return newState;
+        });
+        showToast('تم تحديث ترتيب الملاحظات', 'success');
     };
 
     const handleExportAll = () => {
@@ -169,7 +183,7 @@ function NotebookView() {
             {/* Graph view and notes rendering would go here, omitted for brevity */}
             <div className="overflow-y-auto flex-grow mt-6">
                 {activeTab === 'tasks' && (
-                    <TaskNotesList notes={allTaskNotes} lang={lang} onEdit={openNoteModal} />
+                    <TaskNotesList notes={allTaskNotes} lang={lang} onEdit={openNoteModal} onReorder={handleReorderNotes} />
                 )}
                 {activeTab === 'journal' && (
                     <JournalEntriesList entries={allJournalEntries} lang={lang} />
