@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
-import TagInput from './TagInput';
-import SimpleEditor from './SimpleEditor';
-import { AppContext } from '../App';
+import TagInput from './components/TagInput';
+import SimpleEditor from './components/SimpleEditor';
+import { AppContext } from '../components/App';
 
 function NoteEditor({ note, taskDescription, onSave, onDelete }) {
     const { lang, translations, setModal, showToast } = useContext(AppContext);

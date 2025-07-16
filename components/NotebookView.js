@@ -1,8 +1,8 @@
 import React, { useState, useMemo, useContext } from 'react';
-import { AppContext } from '../App';
-import NoteEditor from './NoteEditor';
-import TaskNotesList from './TaskNotesList';
-import JournalEntriesList from './JournalEntriesList';
+import { AppContext } from '../components/App';
+import NoteEditor from './components/NoteEditor';
+import TaskNotesList from './components/TaskNotesList';
+import JournalEntriesList from './components/JournalEntriesList';
 
 function NotebookView() {
     const { lang, appState, setModal, planData, translations, showToast } = useContext(AppContext);

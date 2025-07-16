@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext, useMemo } from 'react';
-import { AppContext } from '../App';
-import SkillSearchBar from './SkillSearchBar';
-import CategoryProgressBar from './CategoryProgressBar';
-import SkillTable from './SkillTable';
+import { AppContext } from '../components/App';
+import SkillSearchBar from './components/SkillSearchBar';
+import CategoryProgressBar from './components/CategoryProgressBar';
+import SkillTable from './components/SkillTable';
 
 function SkillMatrix() {
   const { lang, planData, translations } = useContext(AppContext);
