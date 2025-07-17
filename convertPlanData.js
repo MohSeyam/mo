@@ -1,14 +1,10 @@
 const fs = require('fs');
 
-// اقرأ محتوى ملف 2.md
-const raw = fs.readFileSync('2.md', 'utf8');
+// اقرأ محتوى ملف 2_clean.json
+const raw = fs.readFileSync('2_clean.json', 'utf8');
 
-// حاول تصحيح الأقواس إذا كان هناك \[ أو \] أو اقتباسات زائدة
-let json = raw
-  .replace(/\\n/g, '') // إزالة newlines الزائدة
-  .replace(/\\"/g, '"') // تصحيح الاقتباسات
-  .replace(/\\\[/g, '[').replace(/\\\]/g, ']') // تصحيح الأقواس المربعة
-  .replace(/\\\{/g, '{').replace(/\\\}/g, '}'); // تصحيح الأقواس المعقوفة
+// لا حاجة الآن لتنظيف إضافي
+let json = raw;
 
 // حاول تحويل النص إلى كائن جافاسكريبت
 let planData;
