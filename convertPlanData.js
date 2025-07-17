@@ -1,7 +1,7 @@
 const fs = require('fs');
 
-// اقرأ محتوى ملف 2_array.json
-const raw = fs.readFileSync('2_array.json', 'utf8');
+// اقرأ محتوى ملف 2_final.json
+const raw = fs.readFileSync('2_final.json', 'utf8');
 
 let planData;
 try {
