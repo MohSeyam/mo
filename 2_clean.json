@@ -42,11 +42,11 @@
         },  
         {  
           "type": "article",  
-          "title": "What is the CIA Triad \- Fortinet",  
+          "title": "What is the CIA Triad - Fortinet",  
           "url": "https://www.fortinet.com/resources/cyberglossary/cia-triad"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -100,16 +100,16 @@
       "resources": [  
         {  
           "type": "article",  
-          "title": "Common cyber attack types \- IBM",  
+          "title": "Common cyber attack types - IBM",  
           "url": "https://www.ibm.com/topics/cyberattacks"  
         },  
         {  
           "type": "article",  
-          "title": "Who are the threat actors? \- CrowdStrike",  
+          "title": "Who are the threat actors? - CrowdStrike",  
           "url": "https://www.crowdstrike.com/cybersecurity-101/threat-actors/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -163,7 +163,7 @@
           "url": "https://www.sans.org/blog/understanding-soc-roles/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -213,7 +213,7 @@
           "url": "https://www.sans.org/cyber-security-courses/cybersecurity-career-pathways/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -260,10 +260,10 @@
         {  
           "type": "guide",  
           "title": "Wireshark Quickstart Guide – Wireshark Docs",  
-          "url": "https://www.wireshark.org/docs/wsug\_html\_chunked/"  
+          "url": "https://www.wireshark.org/docs/wsug_html_chunked/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -313,7 +313,7 @@
           "url": "https://thehackernews.com/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -343,7 +343,7 @@
         }  
       ],  
       "resources": [],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -399,16 +399,16 @@
       "resources": [  
         {  
           "type": "video",  
-          "title": "OSI Model Explained \- Professor Messer",  
-          "url": "https://www.youtube.com/watch?v=vv4y\_uOneC0"  
+          "title": "OSI Model Explained - Professor Messer",  
+          "url": "https://www.youtube.com/watch?v=vv4y_uOneC0"  
         },  
         {  
           "type": "article",  
-          "title": "What is the OSI Model \- Cloudflare",  
+          "title": "What is the OSI Model - Cloudflare",  
           "url": "https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -458,7 +458,7 @@
           "url": "https://www.youtube.com/watch?v=xrN2yPzhu6A"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -513,7 +513,7 @@
           "url": "https://who.is/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -563,7 +563,7 @@
           "url": "https://www.youtube.com/watch?v=TkCSr30UojM"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -604,7 +604,7 @@
           "url": "https://cheatography.com/ashlyn-black/cheat-sheets/wireshark-display-filters/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -654,7 +654,7 @@
           "url": "https://www.imperva.com/learn/application-security/arp-spoofing/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -674,7 +674,7 @@
       "topic": {"en": "Rest and Preparation", "ar": "راحة واستعداد"},  
       "tasks": [],  
       "resources": [],  
-      "notes\_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
+      "notes_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
     }  
   ]  
 }  
@@ -727,7 +727,7 @@
             "url": "https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf/"  
           }  
         ],  
-        "notes\_prompt": {  
+        "notes_prompt": {  
           "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
           "points": [  
             {  
@@ -777,7 +777,7 @@
             "url": "https://www.geeksforgeeks.org/signature-based-vs-anomaly-based-ids/"  
           }  
         ],  
-        "notes\_prompt": {  
+        "notes_prompt": {  
           "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
           "points": [  
             {  
@@ -827,7 +827,7 @@
             "url": "https://www.first.org/cvss/v3-1/"  
           }  
         ],  
-        "notes\_prompt": {  
+        "notes_prompt": {  
           "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
           "points": [  
             {  
@@ -882,7 +882,7 @@
             "url": "https://www.youtube.com/watch?v=6p5j3QG6nEw"  
           }  
         ],  
-        "notes\_prompt": {  
+        "notes_prompt": {  
           "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
           "points": [  
             {  
@@ -907,7 +907,7 @@
             "duration": 120,  
             "description": {  
               "en": "On your Ubuntu VM, use ufw to enable firewall, deny all incoming, allow SSH (22) and HTTP (80) only.",  
-              "ar": "على جهازك الافتراضي (Ubuntu)، استخدم ufw لتفعيل جدار الحماية، رفض جميع الاتصالات القادمة، والسماح باتصالات SSH (منفذ 22\) و HTTP (منفذ 80\) فقط."  
+              "ar": "على جهازك الافتراضي (Ubuntu)، استخدم ufw لتفعيل جدار الحماية، رفض جميع الاتصالات القادمة، والسماح باتصالات SSH (منفذ 22) و HTTP (منفذ 80) فقط."  
             }  
           }  
         ],  
@@ -918,7 +918,7 @@
             "url": "https://www.digitalocean.com/community/tutorials/ufw-essentials-common-firewall-rules-and-commands"  
           }  
         ],  
-        "notes\_prompt": {  
+        "notes_prompt": {  
           "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
           "points": [  
             {  
@@ -963,7 +963,7 @@
             "url": "https://www.varonis.com/blog/ids-evasion"  
           }  
         ],  
-        "notes\_prompt": {  
+        "notes_prompt": {  
           "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
           "points": [  
             {  
@@ -983,7 +983,7 @@
         "topic": {"en": "Rest and Preparation", "ar": "راحة واستعداد"},  
         "tasks": [],  
         "resources": [],  
-        "notes\_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
+        "notes_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
       }  
     ]  
   },  
@@ -1035,7 +1035,7 @@
             "url": "https://www.cloudflare.com/learning/dns/dns-over-https/"  
           }  
         ],  
-        "notes\_prompt": {  
+        "notes_prompt": {  
           "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
           "points": [  
             {  
@@ -1077,7 +1077,7 @@
           {  
             "type": "video",  
             "title": "How VPNs Work",  
-            "url": "https://www.youtube.com/watch?v=\_wQTRMBAvzg"  
+            "url": "https://www.youtube.com/watch?v=_wQTRMBAvzg"  
           },  
           {  
             "type": "guide",  
@@ -1085,7 +1085,7 @@
             "url": "https://www.techradar.com/vpn/best-free-vpn"  
           }  
         ],  
-        "notes\_prompt": {  
+        "notes_prompt": {  
           "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
           "points": [  
             {  
@@ -1131,7 +1131,7 @@
             "url": "https://www.torproject.org/download/"  
           }  
         ],  
-        "notes\_prompt": {  
+        "notes_prompt": {  
           "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
           "points": [  
             {  
@@ -1172,7 +1172,7 @@
             "url": "https://restoreprivacy.com/tools/vpn-vs-tor-vs-proxy/"  
           }  
         ],  
-        "notes\_prompt": {  
+        "notes_prompt": {  
           "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
           "points": [  
             {  
@@ -1204,7 +1204,7 @@
             "url": "https://www.privacyguides.org/browsers/"  
           }  
         ],  
-        "notes\_prompt": {  
+        "notes_prompt": {  
           "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
           "points": [  
             {  
@@ -1245,7 +1245,7 @@
             "url": "https://www.kaspersky.com/blog/vpn-vulnerabilities/44547/"  
           }  
         ],  
-        "notes\_prompt": {  
+        "notes_prompt": {  
           "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
           "points": [  
             {  
@@ -1261,7 +1261,7 @@
         "topic": {"en": "Rest and Preparation", "ar": "راحة واستعداد"},  
         "tasks": [],  
         "resources": [],  
-        "notes\_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
+        "notes_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
       }  
     ]  
   }  
@@ -1305,7 +1305,7 @@
       "resources": [  
         {  
           "type": "video",  
-          "title": "What is Linux? \- freeCodeCamp",  
+          "title": "What is Linux? - freeCodeCamp",  
           "url": "https://www.youtube.com/watch?v=yz7nYlnXLfE"  
         },  
         {  
@@ -1314,7 +1314,7 @@
           "url": "https://itsfoss.com/linux-distros-explained/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -1356,11 +1356,11 @@
         },  
         {  
           "type": "video",  
-          "title": "Linux File System/Directory Structure Explained\!",  
+          "title": "Linux File System/Directory Structure Explained!",  
           "url": "https://www.youtube.com/watch?v=HbgzrKJvDRw"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -1406,7 +1406,7 @@
           "url": "https://www.youtube.com/watch?v=oxuRxtrO2Ag"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -1452,7 +1452,7 @@
           "url": "https://www.youtube.com/watch?v=Vf8R9lC5Q8M"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -1498,7 +1498,7 @@
           "url": "https://www.digitalocean.com/community/tutorials/how-to-use-systemctl-to-manage-systemd-services-and-units"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -1539,7 +1539,7 @@
           "url": "https://www.cyberciti.biz/tips/linux-security.html"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -1555,7 +1555,7 @@
       "topic": {"en": "Rest and Preparation", "ar": "راحة واستعداد"},  
       "tasks": [],  
       "resources": [],  
-      "notes\_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
+      "notes_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
     }  
   ]  
 }
@@ -1608,7 +1608,7 @@
           "url": "https://www.youtube.com/watch?v=8g8tQ2uGJ8k"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -1654,7 +1654,7 @@
           "url": "https://www.youtube.com/watch?v=8J9p6w4j1vE"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -1700,7 +1700,7 @@
           "url": "https://learn.microsoft.com/en-us/windows-server/administration/windows-server-update-services/get-started/windows-server-update-services-wsus"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -1746,7 +1746,7 @@
           "url": "https://support.microsoft.com/en-us/windows/turn-microsoft-defender-firewall-on-or-off-ec0844f7-aebd-0583-67fe-601ecf5d774f"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -1792,7 +1792,7 @@
           "url": "https://www.csoonline.com/article/2124681/how-to-create-a-strong-password-policy.html"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -1838,7 +1838,7 @@
           "url": "https://www.youtube.com/watch?v=0J1R1gk4Q1c"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -1854,7 +1854,7 @@
       "topic": {"en": "Rest and Preparation", "ar": "راحة واستعداد"},  
       "tasks": [],  
       "resources": [],  
-      "notes\_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
+      "notes_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
     }  
   ]  
 }
@@ -1898,8 +1898,8 @@
       "resources": [  
         {  
           "type": "video",  
-          "title": "What is Cryptography? \- Computerphile",  
-          "url": "https://www.youtube.com/watch?v=6gk\_1kmpEGs"  
+          "title": "What is Cryptography? - Computerphile",  
+          "url": "https://www.youtube.com/watch?v=6gk_1kmpEGs"  
         },  
         {  
           "type": "article",  
@@ -1907,7 +1907,7 @@
           "url": "https://www.khanacademy.org/computing/computer-science/cryptography"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -1949,11 +1949,11 @@
         },  
         {  
           "type": "video",  
-          "title": "Public Key Cryptography \- Computerphile",  
-          "url": "https://www.youtube.com/watch?v=GSIDS\_lvRv4"  
+          "title": "Public Key Cryptography - Computerphile",  
+          "url": "https://www.youtube.com/watch?v=GSIDS_lvRv4"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -1999,7 +1999,7 @@
           "url": "https://emn178.github.io/online-tools/sha256.html"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -2045,7 +2045,7 @@
           "url": "https://www.thesslstore.com/blog/view-ssl-certificate-details-in-every-browser/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -2091,7 +2091,7 @@
           "url": "https://www.geeksforgeeks.org/cryptography-attacks/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -2132,7 +2132,7 @@
           "url": "https://csrc.nist.gov/publications/sp"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -2148,7 +2148,7 @@
       "topic": {"en": "Rest and Preparation", "ar": "راحة واستعداد"},  
       "tasks": [],  
       "resources": [],  
-      "notes\_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
+      "notes_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
     }  
   ]  
 }
@@ -2192,7 +2192,7 @@
       "resources": [  
         {  
           "type": "article",  
-          "title": "How TLS/SSL Works \- Cloudflare",  
+          "title": "How TLS/SSL Works - Cloudflare",  
           "url": "https://www.cloudflare.com/learning/ssl/how-tls-ssl-works/"  
         },  
         {  
@@ -2201,7 +2201,7 @@
           "url": "https://www.youtube.com/watch?v=NEpLmq6wGmg"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -2247,7 +2247,7 @@
           "url": "https://www.geeksforgeeks.org/scp-command-in-linux-with-examples/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -2284,7 +2284,7 @@
       "resources": [  
         {  
           "type": "article",  
-          "title": "What is PKI? \- DigiCert",  
+          "title": "What is PKI? - DigiCert",  
           "url": "https://www.digicert.com/what-is-pki"  
         },  
         {  
@@ -2293,7 +2293,7 @@
           "url": "https://www.thesslstore.com/blog/view-ssl-certificate-details-in-every-browser/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -2330,7 +2330,7 @@
       "resources": [  
         {  
           "type": "article",  
-          "title": "What is a Container? \- Docker",  
+          "title": "What is a Container? - Docker",  
           "url": "https://www.docker.com/resources/what-container/"  
         },  
         {  
@@ -2339,7 +2339,7 @@
           "url": "https://docs.docker.com/get-started/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -2385,7 +2385,7 @@
           "url": "https://docs.docker.com/engine/scan/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -2426,7 +2426,7 @@
           "url": "https://csrc.nist.gov/publications/detail/sp/800-52/rev-2/final"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -2442,7 +2442,7 @@
       "topic": {"en": "Rest and Preparation", "ar": "راحة واستعداد"},  
       "tasks": [],  
       "resources": [],  
-      "notes\_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
+      "notes_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
     }  
   ]  
 }
@@ -2452,7 +2452,7 @@
   "phase": 1,  
   "title": {  
     "en": "Attacker Perspective: Breaking In & Gaining Access",  
-    "ar": "منظور المهاجم \- كسر الحماية والوصول"  
+    "ar": "منظور المهاجم - كسر الحماية والوصول"  
   },  
   "objective": {  
     "en": "Understand how attackers think, the phases of an attack, and basic exploitation techniques.",  
@@ -2495,7 +2495,7 @@
           "url": "https://www.youtube.com/watch?v=2ze2QGqI6DI"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -2541,7 +2541,7 @@
           "url": "https://www.shodan.io/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -2587,7 +2587,7 @@
           "url": "https://nmap.org/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -2632,7 +2632,7 @@
           "url": "https://sourceforge.net/projects/metasploitable/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -2678,7 +2678,7 @@
           "url": "https://book.hacktricks.xyz/linux-hardening/privilege-escalation"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -2719,7 +2719,7 @@
           "url": "https://www.sans.org/blog/the-cyber-kill-chain/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -2735,7 +2735,7 @@
       "topic": {"en": "Rest and Preparation", "ar": "راحة واستعداد"},  
       "tasks": [],  
       "resources": [],  
-      "notes\_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
+      "notes_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
     }  
   ]  
 }
@@ -2779,7 +2779,7 @@
       "resources": [  
         {  
           "type": "article",  
-          "title": "What is Threat Intelligence? \- CrowdStrike",  
+          "title": "What is Threat Intelligence? - CrowdStrike",  
           "url": "https://www.crowdstrike.com/cybersecurity-101/threat-intelligence/"  
         },  
         {  
@@ -2788,7 +2788,7 @@
           "url": "https://www.youtube.com/watch?v=8nGd36NhmTE"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -2825,11 +2825,11 @@
       "resources": [  
         {  
           "type": "article",  
-          "title": "Types of Threat Intelligence \- Recorded Future",  
+          "title": "Types of Threat Intelligence - Recorded Future",  
           "url": "https://www.recordedfuture.com/types-of-threat-intelligence"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -2875,7 +2875,7 @@
           "url": "https://otx.alienvault.com/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -2912,7 +2912,7 @@
       "resources": [  
         {  
           "type": "article",  
-          "title": "What is an IOC? \- Palo Alto Networks",  
+          "title": "What is an IOC? - Palo Alto Networks",  
           "url": "https://www.paloaltonetworks.com/cyberpedia/what-is-an-indicator-of-compromise-ioc"  
         },  
         {  
@@ -2921,7 +2921,7 @@
           "url": "https://www.virustotal.com/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -2967,7 +2967,7 @@
           "url": "https://www.misp-project.org/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -3005,10 +3005,10 @@
         {  
           "type": "article",  
           "title": "How to Use Threat Intelligence",  
-          "url": "https://www.splunk.com/en\_us/blog/security/how-to-use-threat-intelligence.html"  
+          "url": "https://www.splunk.com/en_us/blog/security/how-to-use-threat-intelligence.html"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -3024,7 +3024,7 @@
       "topic": {"en": "Rest and Preparation", "ar": "راحة واستعداد"},  
       "tasks": [],  
       "resources": [],  
-      "notes\_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
+      "notes_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
     }  
   ]  
 }  
@@ -3067,7 +3067,7 @@
       "resources": [  
         {  
           "type": "article",  
-          "title": "What is SIEM? \- IBM",  
+          "title": "What is SIEM? - IBM",  
           "url": "https://www.ibm.com/topics/siem"  
         },  
         {  
@@ -3076,7 +3076,7 @@
           "url": "https://www.youtube.com/watch?v=5g0cuKqkDkM"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -3114,7 +3114,7 @@
         {  
           "type": "article",  
           "title": "Types of Log Data for SIEM",  
-          "url": "https://www.splunk.com/en\_us/data-insider/what-is-log-data.html"  
+          "url": "https://www.splunk.com/en_us/data-insider/what-is-log-data.html"  
         },  
         {  
           "type": "guide",  
@@ -3122,7 +3122,7 @@
           "url": "https://www.geeksforgeeks.org/log-files-in-linux/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -3159,7 +3159,7 @@
       "resources": [  
         {  
           "type": "article",  
-          "title": "What is Syslog? \- Cloudflare",  
+          "title": "What is Syslog? - Cloudflare",  
           "url": "https://www.cloudflare.com/learning/ddos/glossary/syslog/"  
         },  
         {  
@@ -3168,7 +3168,7 @@
           "url": "https://www.tecmint.com/install-rsyslog-centralized-logging-in-linux/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -3197,8 +3197,8 @@
           "type": "Practical",  
           "duration": 60,  
           "description": {  
-            "en": "Review example correlation rules (e.g., failed logins \+ privilege escalation).",  
-            "ar": "راجع أمثلة على قواعد الارتباط مثل (محاولات دخول فاشلة متكررة \+ تصعيد صلاحيات)."  
+            "en": "Review example correlation rules (e.g., failed logins + privilege escalation).",  
+            "ar": "راجع أمثلة على قواعد الارتباط مثل (محاولات دخول فاشلة متكررة + تصعيد صلاحيات)."  
           }  
         }  
       ],  
@@ -3209,7 +3209,7 @@
           "url": "https://www.varonis.com/blog/siem-correlation"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -3246,7 +3246,7 @@
           "url": "https://www.techtarget.com/searchsecurity/feature/Top-free-SIEM-tools"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -3284,10 +3284,10 @@
         {  
           "type": "article",  
           "title": "SIEM Use Cases Examples",  
-          "url": "https://www.splunk.com/en\_us/blog/security/siem-use-cases.html"  
+          "url": "https://www.splunk.com/en_us/blog/security/siem-use-cases.html"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -3303,7 +3303,7 @@
       "topic": {"en": "Rest and Preparation", "ar": "راحة واستعداد"},  
       "tasks": [],  
       "resources": [],  
-      "notes\_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
+      "notes_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
     }  
   ]  
 }
@@ -3347,7 +3347,7 @@
       "resources": [  
         {  
           "type": "article",  
-          "title": "What is Incident Response? \- CrowdStrike",  
+          "title": "What is Incident Response? - CrowdStrike",  
           "url": "https://www.crowdstrike.com/cybersecurity-101/incident-response/"  
         },  
         {  
@@ -3356,7 +3356,7 @@
           "url": "https://www.youtube.com/watch?v=9gLrJ6lQkq8"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -3397,7 +3397,7 @@
           "url": "https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -3438,7 +3438,7 @@
           "url": "https://www.csoonline.com/article/3530778/incident-response-team-roles-and-responsibilities.html"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -3479,7 +3479,7 @@
           "url": "https://www.sans.org/blog/incident-detection-and-response-best-practices/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -3520,7 +3520,7 @@
           "url": "https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -3561,7 +3561,7 @@
           "url": "https://www.sans.org/blog/post-incident-review-best-practices/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -3577,7 +3577,7 @@
       "topic": {"en": "Rest and Preparation", "ar": "راحة واستعداد"},  
       "tasks": [],  
       "resources": [],  
-      "notes\_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
+      "notes_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
     }  
   ]  
 }
@@ -3621,7 +3621,7 @@
       "resources": [  
         {  
           "type": "article",  
-          "title": "What is GRC? \- IBM",  
+          "title": "What is GRC? - IBM",  
           "url": "https://www.ibm.com/topics/grc"  
         },  
         {  
@@ -3630,7 +3630,7 @@
           "url": "https://www.youtube.com/watch?v=6XcL6U9qQfE"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -3676,7 +3676,7 @@
           "url": "https://www.nist.gov/cyberframework"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -3722,7 +3722,7 @@
           "url": "https://www.youtube.com/watch?v=V6vFjJ5e6wA"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -3765,10 +3765,10 @@
         {  
           "type": "article",  
           "title": "What is PCI DSS?",  
-          "url": "https://www.pcisecuritystandards.org/pci\_security/"  
+          "url": "https://www.pcisecuritystandards.org/pci_security/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -3800,7 +3800,7 @@
           "url": "https://reciprocity.com/resources/grc-case-study/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -3841,7 +3841,7 @@
           "url": "https://www.isaca.org/resources/news-and-trends/newsletters/atisaca/2021/volume-6/integrating-grc-and-cybersecurity"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -3857,7 +3857,7 @@
       "topic": {"en": "Rest and Preparation", "ar": "راحة واستعداد"},  
       "tasks": [],  
       "resources": [],  
-      "notes\_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
+      "notes_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
     }  
   ]  
 }
@@ -3910,7 +3910,7 @@
           "url": "https://www.sans.org/blog/sans-2021-mobile-security-checklist/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -3956,7 +3956,7 @@
           "url": "https://www.cisa.gov/news-events/news/how-enable-multifactor-authentication"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -4002,7 +4002,7 @@
           "url": "https://www.consumerreports.org/privacy/how-to-protect-your-privacy-on-social-media-a1117769179/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -4048,7 +4048,7 @@
           "url": "https://www.kaspersky.com/resource-center/preemptive-safety/encrypt-your-data"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -4094,7 +4094,7 @@
           "url": "https://www.identitytheft.gov/steps"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -4135,7 +4135,7 @@
           "url": "https://securityplanner.consumerreports.org/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -4151,7 +4151,7 @@
       "topic": {"en": "Rest and Preparation", "ar": "راحة واستعداد"},  
       "tasks": [],  
       "resources": [],  
-      "notes\_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
+      "notes_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
     }  
   ]  
 }
@@ -4195,7 +4195,7 @@
       "resources": [  
         {  
           "type": "article",  
-          "title": "What is Physical Security? \- IBM",  
+          "title": "What is Physical Security? - IBM",  
           "url": "https://www.ibm.com/topics/physical-security"  
         },  
         {  
@@ -4204,7 +4204,7 @@
           "url": "https://www.youtube.com/watch?v=R8UQxXQp8gA"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -4245,7 +4245,7 @@
           "url": "https://www.csoonline.com/article/2125140/physical-security-controls.html"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -4286,7 +4286,7 @@
           "url": "https://www.securitymagazine.com/articles/92774-top-physical-security-threats-in-2021"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -4327,7 +4327,7 @@
           "url": "https://www.sans.org/blog/converging-physical-and-cybersecurity/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -4368,7 +4368,7 @@
           "url": "https://www.sans.org/information-security-policy/physical-security-policy/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -4406,10 +4406,10 @@
         {  
           "type": "guide",  
           "title": "Physical Security Checklist",  
-          "url": "https://www.ready.gov/sites/default/files/2021-02/ready\_checklist-physical-security.pdf"  
+          "url": "https://www.ready.gov/sites/default/files/2021-02/ready_checklist-physical-security.pdf"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -4425,7 +4425,7 @@
       "topic": {"en": "Rest and Preparation", "ar": "راحة واستعداد"},  
       "tasks": [],  
       "resources": [],  
-      "notes\_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
+      "notes_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
     }  
   ]  
 }
@@ -4478,7 +4478,7 @@
           "url": "https://www.youtube.com/watch?v=F2Qb6v9Q1qQ"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -4524,7 +4524,7 @@
           "url": "https://www.youtube.com/watch?v=lc7scxvKQOo"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -4565,7 +4565,7 @@
           "url": "https://www.sans.org/blog/communication-skills-for-cybersecurity-professionals/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -4611,7 +4611,7 @@
           "url": "https://ctftime.org/event/list/upcoming"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -4652,7 +4652,7 @@
           "url": "https://www.sans.org/blog/building-a-security-culture/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -4693,7 +4693,7 @@
           "url": "https://www.sans.org/security-awareness-training/success-plan/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -4709,7 +4709,7 @@
       "topic": {"en": "Rest and Preparation", "ar": "راحة واستعداد"},  
       "tasks": [],  
       "resources": [],  
-      "notes\_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
+      "notes_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
     }  
   ]  
 }
@@ -4748,7 +4748,7 @@
           "url": "https://www.sans.org/blog/incident-response-tabletop-exercise-scenarios/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -4780,7 +4780,7 @@
           "url": "https://www.varonis.com/blog/incident-response-timeline"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -4812,7 +4812,7 @@
           "url": "https://www.crowdstrike.com/cybersecurity-101/root-cause-analysis/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -4844,7 +4844,7 @@
           "url": "https://www.sans.org/blog/best-practices-for-incident-containment/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -4876,7 +4876,7 @@
           "url": "https://www.sans.org/blog/how-to-write-an-incident-report/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -4908,7 +4908,7 @@
           "url": "https://www.csoonline.com/article/3530789/how-to-present-incident-response-findings.html"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -4924,7 +4924,7 @@
       "topic": {"en": "Rest and Reflection", "ar": "راحة وتأمل"},  
       "tasks": [],  
       "resources": [],  
-      "notes\_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
+      "notes_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
     }  
   ]  
 }
@@ -4968,7 +4968,7 @@
       "resources": [  
         {  
           "type": "article",  
-          "title": "What is Endpoint Security? \- CrowdStrike",  
+          "title": "What is Endpoint Security? - CrowdStrike",  
           "url": "https://www.crowdstrike.com/cybersecurity-101/endpoint-security/"  
         },  
         {  
@@ -4977,7 +4977,7 @@
           "url": "https://www.youtube.com/watch?v=E2w8gBz2wz0"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -5018,7 +5018,7 @@
           "url": "https://www.csoonline.com/article/3563632/top-endpoint-security-threats.html"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -5064,7 +5064,7 @@
           "url": "https://www.techradar.com/best/best-free-antivirus"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -5105,7 +5105,7 @@
           "url": "https://www.cisecurity.org/insights/blog/endpoint-hardening-best-practices"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -5146,7 +5146,7 @@
           "url": "https://www.crowdstrike.com/cybersecurity-101/incident-response/endpoint-incident-response/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -5187,7 +5187,7 @@
           "url": "https://www.sans.org/information-security-policy/endpoint-security-policy/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -5203,7 +5203,7 @@
       "topic": {"en": "Rest and Preparation", "ar": "راحة واستعداد"},  
       "tasks": [],  
       "resources": [],  
-      "notes\_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
+      "notes_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
     }  
   ]  
 }
@@ -5256,7 +5256,7 @@
           "url": "https://www.youtube.com/watch?v=U2cKywEw2kE"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -5302,7 +5302,7 @@
           "url": "https://www.knowbe4.com/phishing-security-test-offer"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -5348,7 +5348,7 @@
           "url": "https://mxtoolbox.com/public/content/emailheaders/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -5389,7 +5389,7 @@
           "url": "https://www.proofpoint.com/us/threat-reference/secure-email-gateway"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -5430,7 +5430,7 @@
           "url": "https://www.phishing.org/how-to-report-phishing"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -5471,7 +5471,7 @@
           "url": "https://www.sans.org/information-security-policy/email-policy/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -5487,7 +5487,7 @@
       "topic": {"en": "Rest and Preparation", "ar": "راحة واستعداد"},  
       "tasks": [],  
       "resources": [],  
-      "notes\_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
+      "notes_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
     }  
   ]  
 }
@@ -5540,7 +5540,7 @@
           "url": "https://www.youtube.com/watch?v=Zf7R1u9gO2E"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -5586,7 +5586,7 @@
           "url": "https://www.geeksforgeeks.org/openvas-introduction-and-usage/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -5632,7 +5632,7 @@
           "url": "https://www.first.org/cvss/calculator/3.1"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -5673,7 +5673,7 @@
           "url": "https://www.sans.org/blog/patch-management-best-practices/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -5719,7 +5719,7 @@
           "url": "https://hackerone.com/hacktivity"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -5760,7 +5760,7 @@
           "url": "https://www.sans.org/information-security-policy/vulnerability-management-policy/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -5776,7 +5776,7 @@
       "topic": {"en": "Rest and Preparation", "ar": "راحة واستعداد"},  
       "tasks": [],  
       "resources": [],  
-      "notes\_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
+      "notes_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
     }  
   ]  
 }
@@ -5820,7 +5820,7 @@
       "resources": [  
         {  
           "type": "article",  
-          "title": "What is Malware Analysis? \- CrowdStrike",  
+          "title": "What is Malware Analysis? - CrowdStrike",  
           "url": "https://www.crowdstrike.com/cybersecurity-101/malware-analysis/"  
         },  
         {  
@@ -5829,7 +5829,7 @@
           "url": "https://www.youtube.com/watch?v=H2E1t3yLqFA"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -5866,7 +5866,7 @@
           "url": "https://github.com/mandiant/flare-vm"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -5912,7 +5912,7 @@
           "url": "https://www.winitor.com/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -5958,7 +5958,7 @@
           "url": "https://learn.microsoft.com/en-us/sysinternals/downloads/procmon"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -5999,7 +5999,7 @@
           "url": "https://any.run/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -6040,7 +6040,7 @@
           "url": "https://www.sans.org/blog/how-to-write-a-malware-analysis-report/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -6056,7 +6056,7 @@
       "topic": {"en": "Rest and Preparation", "ar": "راحة واستعداد"},  
       "tasks": [],  
       "resources": [],  
-      "notes\_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
+      "notes_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
     }  
   ]  
 }
@@ -6100,7 +6100,7 @@
       "resources": [  
         {  
           "type": "article",  
-          "title": "What is Reverse Engineering? \- Kaspersky",  
+          "title": "What is Reverse Engineering? - Kaspersky",  
           "url": "https://www.kaspersky.com/resource-center/definitions/reverse-engineering"  
         },  
         {  
@@ -6109,7 +6109,7 @@
           "url": "https://www.youtube.com/watch?v=F7W3s7N7f5I"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -6155,7 +6155,7 @@
           "url": "https://hex-rays.com/ida-free/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -6196,7 +6196,7 @@
           "url": "https://www.winitor.com/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -6242,7 +6242,7 @@
           "url": "https://www.fosshub.com/OllyDbg.html"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -6283,7 +6283,7 @@
           "url": "https://www.mandiant.com/resources/blog/reverse-engineering-malware"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -6324,7 +6324,7 @@
           "url": "https://crackmes.one/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -6340,7 +6340,7 @@
       "topic": {"en": "Rest and Preparation", "ar": "راحة واستعداد"},  
       "tasks": [],  
       "resources": [],  
-      "notes\_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
+      "notes_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
     }  
   ]  
 }
@@ -6390,10 +6390,10 @@
         {  
           "type": "video",  
           "title": "Digital Forensics Fundamentals",  
-          "url": "https://www.youtube.com/watch?v=sF\_Wm3gGmFo"  
+          "url": "https://www.youtube.com/watch?v=sF_Wm3gGmFo"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -6434,7 +6434,7 @@
           "url": "https://www.forensicfocus.com/articles/chain-of-custody-in-digital-forensics/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -6480,7 +6480,7 @@
           "url": "https://accessdata.com/product-download/ftk-imager-version-4-5"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -6521,7 +6521,7 @@
           "url": "https://exiftool.org/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -6562,7 +6562,7 @@
           "url": "https://www.sans.org/blog/timeline-analysis-in-digital-forensics/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -6603,7 +6603,7 @@
           "url": "https://www.sans.org/blog/tips-for-creating-reports-from-digital-forensic-investigations/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -6619,7 +6619,7 @@
       "topic": {"en": "Rest and Preparation", "ar": "راحة واستعداد"},  
       "tasks": [],  
       "resources": [],  
-      "notes\_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
+      "notes_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
     }  
   ]  
 }
@@ -6663,7 +6663,7 @@
       "resources": [  
         {  
           "type": "article",  
-          "title": "What is Memory Forensics? \- SANS",  
+          "title": "What is Memory Forensics? - SANS",  
           "url": "https://www.sans.org/blog/memory-forensics-101/"  
         },  
         {  
@@ -6672,7 +6672,7 @@
           "url": "https://www.youtube.com/watch?v=Q7bA0NnL5xw"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -6718,7 +6718,7 @@
           "url": "https://accessdata.com/product-download/ftk-imager-version-4-5"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -6764,7 +6764,7 @@
           "url": "https://www.rekall-forensic.com/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -6805,7 +6805,7 @@
           "url": "https://volatility3.readthedocs.io/en/latest/volatility3.plugins.html"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -6846,7 +6846,7 @@
           "url": "https://www.sans.org/blog/memory-forensics-malfind-plugin/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -6887,7 +6887,7 @@
           "url": "https://www.sans.org/blog/tips-for-creating-reports-from-digital-forensic-investigations/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -6903,7 +6903,7 @@
       "topic": {"en": "Rest and Preparation", "ar": "راحة واستعداد"},  
       "tasks": [],  
       "resources": [],  
-      "notes\_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
+      "notes_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
     }  
   ]  
 }
@@ -6947,7 +6947,7 @@
       "resources": [  
         {  
           "type": "article",  
-          "title": "What is UEBA? \- CrowdStrike",  
+          "title": "What is UEBA? - CrowdStrike",  
           "url": "https://www.crowdstrike.com/cybersecurity-101/ueba/"  
         },  
         {  
@@ -6956,7 +6956,7 @@
           "url": "https://www.youtube.com/watch?v=V7K3vM2y4nQ"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -6997,7 +6997,7 @@
           "url": "https://www.varonis.com/blog/ueba"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -7035,10 +7035,10 @@
         {  
           "type": "article",  
           "title": "UEBA Data Sources and SIEM Integration",  
-          "url": "https://www.splunk.com/en\_us/blog/security/ueba-and-siem-better-together.html"  
+          "url": "https://www.splunk.com/en_us/blog/security/ueba-and-siem-better-together.html"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -7079,7 +7079,7 @@
           "url": "https://www.csoonline.com/article/3533227/ueba-use-cases.html"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -7120,7 +7120,7 @@
           "url": "https://www.varonis.com/blog/ueba"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -7158,10 +7158,10 @@
         {  
           "type": "article",  
           "title": "How UEBA Enhances SOC Operations",  
-          "url": "https://www.splunk.com/en\_us/blog/security/ueba-and-siem-better-together.html"  
+          "url": "https://www.splunk.com/en_us/blog/security/ueba-and-siem-better-together.html"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -7177,7 +7177,7 @@
       "topic": {"en": "Rest and Preparation", "ar": "راحة واستعداد"},  
       "tasks": [],  
       "resources": [],  
-      "notes\_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
+      "notes_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
     }  
   ]  
 }
@@ -7230,7 +7230,7 @@
           "url": "https://www.youtube.com/watch?v=rfscVS0vtbw"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -7271,7 +7271,7 @@
           "url": "https://www.geeksforgeeks.org/parsing-log-files-using-python/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -7317,7 +7317,7 @@
           "url": "https://scapy.readthedocs.io/en/latest/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -7358,7 +7358,7 @@
           "url": "https://docs.python.org/3/library/hashlib.html"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -7404,7 +7404,7 @@
           "url": "https://docs.python-requests.org/en/latest/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -7445,7 +7445,7 @@
           "url": "https://www.geeksforgeeks.org/python-projects-for-cybersecurity/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -7461,7 +7461,7 @@
       "topic": {"en": "Rest and Preparation", "ar": "راحة واستعداد"},  
       "tasks": [],  
       "resources": [],  
-      "notes\_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
+      "notes_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
     }  
   ]  
 }  
@@ -7504,7 +7504,7 @@
       "resources": [  
         {  
           "type": "article",  
-          "title": "What is Security Automation? \- IBM",  
+          "title": "What is Security Automation? - IBM",  
           "url": "https://www.ibm.com/topics/security-automation"  
         },  
         {  
@@ -7513,7 +7513,7 @@
           "url": "https://www.youtube.com/watch?v=4VZJQ6Xw2rQ"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -7550,7 +7550,7 @@
       "resources": [  
         {  
           "type": "article",  
-          "title": "What is SOAR? \- Palo Alto Networks",  
+          "title": "What is SOAR? - Palo Alto Networks",  
           "url": "https://www.paloaltonetworks.com/cyberpedia/what-is-soar"  
         },  
         {  
@@ -7559,7 +7559,7 @@
           "url": "https://github.com/meirwah/awesome-soar"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -7600,7 +7600,7 @@
           "url": "https://otx.alienvault.com/api"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -7638,10 +7638,10 @@
         {  
           "type": "guide",  
           "title": "SOAR Playbook Examples",  
-          "url": "https://www.splunk.com/en\_us/blog/security/soar-playbooks.html"  
+          "url": "https://www.splunk.com/en_us/blog/security/soar-playbooks.html"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -7682,7 +7682,7 @@
           "url": "https://www.geeksforgeeks.org/python-for-cybersecurity/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -7720,10 +7720,10 @@
         {  
           "type": "guide",  
           "title": "Security Automation Project Ideas",  
-          "url": "https://www.splunk.com/en\_us/blog/security/security-automation-ideas.html"  
+          "url": "https://www.splunk.com/en_us/blog/security/security-automation-ideas.html"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -7739,7 +7739,7 @@
       "topic": {"en": "Rest and Preparation", "ar": "راحة واستعداد"},  
       "tasks": [],  
       "resources": [],  
-      "notes\_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
+      "notes_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
     }  
   ]  
 }
@@ -7788,11 +7788,11 @@
         },  
         {  
           "type": "article",  
-          "title": "Shared Responsibility Model \- AWS",  
+          "title": "Shared Responsibility Model - AWS",  
           "url": "https://aws.amazon.com/compliance/shared-responsibility-model/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -7829,11 +7829,11 @@
       "resources": [  
         {  
           "type": "article",  
-          "title": "Top Cloud Security Threats \- CSA",  
+          "title": "Top Cloud Security Threats - CSA",  
           "url": "https://cloudsecurityalliance.org/research/top-threats/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -7874,7 +7874,7 @@
           "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -7915,7 +7915,7 @@
           "url": "https://www.csoonline.com/article/3532100/cloud-encryption-best-practices.html"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -7956,7 +7956,7 @@
           "url": "https://docs.aws.amazon.com/whitepapers/latest/logging-monitoring-aws/logging-monitoring-aws.pdf"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -7997,7 +7997,7 @@
           "url": "https://www.sans.org/information-security-policy/cloud-computing-policy/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -8013,7 +8013,7 @@
       "topic": {"en": "Rest and Preparation", "ar": "راحة واستعداد"},  
       "tasks": [],  
       "resources": [],  
-      "notes\_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
+      "notes_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
     }  
   ]  
 }
@@ -8064,7 +8064,7 @@
           "url": "https://www.networkworld.com/article/2693411/wi-fi-standards-explained.html"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -8113,7 +8113,7 @@
           "url": "https://www.aircrack-ng.org/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -8157,7 +8157,7 @@
           "url": "https://www.cisa.gov/news-events/news/protecting-your-mobile-device"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -8201,7 +8201,7 @@
           "url": "https://www.kaspersky.com/resource-center/threats/mobile-malware"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -8245,7 +8245,7 @@
           "url": "https://www.cisa.gov/news-events/news/secure-wifi-and-mobile-devices"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -8289,7 +8289,7 @@
           "url": "https://www.sans.org/security-awareness-training/resources/wireless-security-awareness-poster/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -8308,7 +8308,7 @@
       },  
       "tasks": [],  
       "resources": [],  
-      "notes\_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
+      "notes_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
     }  
   ]  
 }
@@ -8359,7 +8359,7 @@
           "url": "https://owasp.org/www-project-secure-coding-practices/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -8400,10 +8400,10 @@
         {  
           "type": "article",  
           "title": "Input Validation Best Practices",  
-          "url": "https://cheatsheetseries.owasp.org/cheatsheets/Input\_Validation\_Cheat\_Sheet.html"  
+          "url": "https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -8444,10 +8444,10 @@
         {  
           "type": "guide",  
           "title": "OWASP Authentication Cheat Sheet",  
-          "url": "https://cheatsheetseries.owasp.org/cheatsheets/Authentication\_Cheat\_Sheet.html"  
+          "url": "https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -8488,10 +8488,10 @@
         {  
           "type": "article",  
           "title": "Secure Error Handling",  
-          "url": "https://cheatsheetseries.owasp.org/cheatsheets/Error\_Handling\_Cheat\_Sheet.html"  
+          "url": "https://cheatsheetseries.owasp.org/cheatsheets/Error_Handling_Cheat_Sheet.html"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -8535,7 +8535,7 @@
           "url": "https://owasp.org/www-project-secure-coding-practices/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -8579,7 +8579,7 @@
           "url": "https://www.geeksforgeeks.org/secure-coding-practices/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -8598,7 +8598,7 @@
       },  
       "tasks": [],  
       "resources": [],  
-      "notes\_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
+      "notes_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
     }  
   ]  
 }
@@ -8649,7 +8649,7 @@
           "url": "https://www.redhat.com/en/topics/devops/what-is-devsecops"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -8693,7 +8693,7 @@
           "url": "https://owasp.org/www-project-top-10-ci-cd-security-risks/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -8737,7 +8737,7 @@
           "url": "https://www.snyk.io/learn/ci-cd-security/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -8778,10 +8778,10 @@
         {  
           "type": "guide",  
           "title": "OWASP SAST & DAST Guide",  
-          "url": "https://owasp.org/www-community/Source\_Code\_Analysis\_Tools"  
+          "url": "https://owasp.org/www-community/Source_Code_Analysis_Tools"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -8825,7 +8825,7 @@
           "url": "https://www.snyk.io/blog/devsecops-culture/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -8869,7 +8869,7 @@
           "url": "https://www.redhat.com/en/topics/devops/what-is-devsecops"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -8888,7 +8888,7 @@
       },  
       "tasks": [],  
       "resources": [],  
-      "notes\_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
+      "notes_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
     }  
   ]  
 }
@@ -8939,7 +8939,7 @@
           "url": "https://www.redhat.com/en/topics/api/what-is-api-security"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -8983,7 +8983,7 @@
           "url": "https://owasp.org/www-project-api-security/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -9027,7 +9027,7 @@
           "url": "https://auth0.com/learn/api-security/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -9076,7 +9076,7 @@
           "url": "https://www.zaproxy.org/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -9117,10 +9117,10 @@
         {  
           "type": "guide",  
           "title": "API Security Best Practices",  
-          "url": "https://cheatsheetseries.owasp.org/cheatsheets/REST\_Security\_Cheat\_Sheet.html"  
+          "url": "https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -9164,7 +9164,7 @@
           "url": "https://owasp.org/www-project-api-security/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -9183,7 +9183,7 @@
       },  
       "tasks": [],  
       "resources": [],  
-      "notes\_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
+      "notes_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
     }  
   ]  
 }
@@ -9377,7 +9377,7 @@
       },  
       "tasks": [],  
       "resources": [],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "", "ar": ""},  
         "points": []  
       }  
@@ -9389,8 +9389,8 @@
   "week": 34,  
   "phase": 2,  
   "title": {  
-    "en": "Web Application Penetration Testing \- Part 1 (Reconnaissance & Enumeration)",  
-    "ar": "اختبار اختراق تطبيقات الويب \- الجزء الأول (الاستطلاع والتعداد)"  
+    "en": "Web Application Penetration Testing - Part 1 (Reconnaissance & Enumeration)",  
+    "ar": "اختبار اختراق تطبيقات الويب - الجزء الأول (الاستطلاع والتعداد)"  
   },  
   "objective": {  
     "en": "Master the reconnaissance and enumeration phases of web application penetration testing using practical tools and methodologies.",  
@@ -9436,7 +9436,7 @@
           "url": "https://github.com/owasp-amass/amass"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -9480,7 +9480,7 @@
           "url": "https://github.com/maurosoria/dirsearch"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -9529,7 +9529,7 @@
           "url": "https://www.wappalyzer.com/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -9570,10 +9570,10 @@
         {  
           "type": "guide",  
           "title": "OWASP User Enumeration Guide",  
-          "url": "https://owasp.org/www-community/attacks/Username\_enumeration"  
+          "url": "https://owasp.org/www-community/attacks/Username_enumeration"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -9614,10 +9614,10 @@
         {  
           "type": "guide",  
           "title": "Web App Recon & Enum Checklist",  
-          "url": "https://owasp.org/www-project-web-security-testing-guide/stable/4-Web\_Application\_Security\_Testing\_Cheat\_Sheet.html"  
+          "url": "https://owasp.org/www-project-web-security-testing-guide/stable/4-Web_Application_Security_Testing_Cheat_Sheet.html"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -9652,7 +9652,7 @@
           "url": "https://owasp.org/www-project-juice-shop/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -9671,7 +9671,7 @@
       },  
       "tasks": [],  
       "resources": [],  
-      "notes\_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
+      "notes_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
     }  
   ]  
 }
@@ -9681,7 +9681,7 @@
   "phase": 2,  
   "title": {  
     "en": "Web Application Penetration Testing – Part 2 (Exploitation)",  
-    "ar": "اختبار اختراق تطبيقات الويب \- الجزء الثاني (الاستغلال)"  
+    "ar": "اختبار اختراق تطبيقات الويب - الجزء الثاني (الاستغلال)"  
   },  
   "objective": {  
     "en": "Master the exploitation phase of web application penetration testing, focusing on exploiting common vulnerabilities and writing effective reports.",  
@@ -9722,7 +9722,7 @@
           "url": "http://www.dvwa.co.uk/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -9766,7 +9766,7 @@
           "url": "https://owasp.org/www-project-juice-shop/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -9810,7 +9810,7 @@
           "url": "https://owasp.org/www-community/attacks/csrf"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -9854,7 +9854,7 @@
           "url": "https://owasp.org/www-project-top-ten/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -9898,7 +9898,7 @@
           "url": "https://www.hackerone.com/knowledge-center/how-write-good-vulnerability-report"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -9939,10 +9939,10 @@
         {  
           "type": "guide",  
           "title": "Web Application Exploitation Checklist",  
-          "url": "https://owasp.org/www-project-web-security-testing-guide/stable/4-Web\_Application\_Security\_Testing\_Cheat\_Sheet.html"  
+          "url": "https://owasp.org/www-project-web-security-testing-guide/stable/4-Web_Application_Security_Testing_Cheat_Sheet.html"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -9961,7 +9961,7 @@
       },  
       "tasks": [],  
       "resources": [],  
-      "notes\_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
+      "notes_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
     }  
   ]  
 }  
@@ -10011,7 +10011,7 @@
           "url": "https://www.hackerone.com/ethical-hacker/getting-started"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -10055,7 +10055,7 @@
           "url": "https://www.hacker101.com/lesson/recon"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -10099,7 +10099,7 @@
           "url": "https://portswigger.net/research/bug-bounty-tips"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -10143,7 +10143,7 @@
           "url": "https://www.hackerone.com/knowledge-center/how-write-good-vulnerability-report"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -10187,7 +10187,7 @@
           "url": "https://www.cisa.gov/news-events/news/vulnerability-disclosure-policy-template"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -10231,7 +10231,7 @@
           "url": "https://github.com/EdOverflow/bugbounty-cheatsheet"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -10250,7 +10250,7 @@
       },  
       "tasks": [],  
       "resources": [],  
-      "notes\_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
+      "notes_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
     }  
   ]  
 }
@@ -10306,7 +10306,7 @@
           "url": "https://www.mandiant.com/resources/blog/red-team-evasion-techniques"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -10350,7 +10350,7 @@
           "url": "https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -10394,7 +10394,7 @@
           "url": "https://github.com/gentilkiwi/mimikatz"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -10443,7 +10443,7 @@
           "url": "https://attack.mitre.org/techniques/T1041/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -10478,7 +10478,7 @@
           "url": "https://tryhackme.com/module/red-team-fundamentals"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -10522,7 +10522,7 @@
           "url": "https://github.com/0x4D31/red-team-engagement-checklist"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -10541,7 +10541,7 @@
       },  
       "tasks": [],  
       "resources": [],  
-      "notes\_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
+      "notes_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
     }  
   ]  
 }
@@ -10580,8 +10580,8 @@
           "type": "Practical",  
           "duration": 60,  
           "description": {  
-            "en": "Map out a simple purple team exercise scenario (attack \+ detection \+ response).",  
-            "ar": "صمم سيناريو مبسط لتمرين فريق أرجواني (هجوم \+ اكتشاف \+ استجابة)."  
+            "en": "Map out a simple purple team exercise scenario (attack + detection + response).",  
+            "ar": "صمم سيناريو مبسط لتمرين فريق أرجواني (هجوم + اكتشاف + استجابة)."  
           }  
         }  
       ],  
@@ -10592,7 +10592,7 @@
           "url": "https://www.sans.org/blog/what-is-purple-teaming/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -10606,8 +10606,8 @@
       "key": "sun",  
       "day": {"en": "Sunday", "ar": "الأحد"},  
       "topic": {  
-        "en": "Threat Emulation & MITRE ATT\&CK",  
-        "ar": "محاكاة التهديدات ومصفوفة MITRE ATT\&CK"  
+        "en": "Threat Emulation & MITRE ATT&CK",  
+        "ar": "محاكاة التهديدات ومصفوفة MITRE ATT&CK"  
       },  
       "tasks": [  
         {  
@@ -10615,8 +10615,8 @@
           "type": "Purple Team",  
           "duration": 60,  
           "description": {  
-            "en": "Learn about threat emulation, using MITRE ATT\&CK to model adversary behavior.",  
-            "ar": "تعرف على محاكاة التهديدات واستخدام مصفوفة MITRE ATT\&CK لنمذجة سلوك الخصوم."  
+            "en": "Learn about threat emulation, using MITRE ATT&CK to model adversary behavior.",  
+            "ar": "تعرف على محاكاة التهديدات واستخدام مصفوفة MITRE ATT&CK لنمذجة سلوك الخصوم."  
           }  
         },  
         {  
@@ -10624,19 +10624,19 @@
           "type": "Practical",  
           "duration": 60,  
           "description": {  
-            "en": "Select a real-world threat group from MITRE ATT\&CK and map their techniques.",  
-            "ar": "اختر مجموعة تهديد حقيقية من مصفوفة MITRE ATT\&CK وحدد تقنياتها."  
+            "en": "Select a real-world threat group from MITRE ATT&CK and map their techniques.",  
+            "ar": "اختر مجموعة تهديد حقيقية من مصفوفة MITRE ATT&CK وحدد تقنياتها."  
           }  
         }  
       ],  
       "resources": [  
         {  
           "type": "guide",  
-          "title": "MITRE ATT\&CK Framework",  
+          "title": "MITRE ATT&CK Framework",  
           "url": "https://attack.mitre.org/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -10668,8 +10668,8 @@
           "type": "Practical",  
           "duration": 60,  
           "description": {  
-            "en": "Write a simple detection rule for one ATT\&CK technique in a SIEM or log tool.",  
-            "ar": "اكتب قاعدة اكتشاف بسيطة لإحدى تقنيات ATT\&CK في أداة SIEM أو سجل أحداث."  
+            "en": "Write a simple detection rule for one ATT&CK technique in a SIEM or log tool.",  
+            "ar": "اكتب قاعدة اكتشاف بسيطة لإحدى تقنيات ATT&CK في أداة SIEM أو سجل أحداث."  
           }  
         }  
       ],  
@@ -10680,7 +10680,7 @@
           "url": "https://detectionengineering.net/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -10715,7 +10715,7 @@
           "url": "https://github.com/redcanaryco/atomic-red-team"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -10759,7 +10759,7 @@
           "url": "https://www.crowdstrike.com/cybersecurity-101/purple-teaming/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -10803,7 +10803,7 @@
           "url": "https://www.sans.org/white-papers/40195/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -10822,7 +10822,7 @@
       },  
       "tasks": [],  
       "resources": [],  
-      "notes\_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
+      "notes_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
     }  
   ]  
 }
@@ -10873,7 +10873,7 @@
           "url": "https://www.cisa.gov/resources-tools/resources/ics-training-resources"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -10917,7 +10917,7 @@
           "url": "https://www.dragos.com/resource/ics-cybersecurity-threats/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -10961,7 +10961,7 @@
           "url": "https://www.sans.org/white-papers/ics-security-best-practices/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -11005,7 +11005,7 @@
           "url": "https://www.cisa.gov/resources-tools/resources/ics-monitoring"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -11049,7 +11049,7 @@
           "url": "https://www.sans.org/white-papers/ics-incident-response/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -11090,10 +11090,10 @@
         {  
           "type": "guide",  
           "title": "ICS Security Checklist",  
-          "url": "https://ics-cert.us-cert.gov/sites/default/files/recommended\_practices/NCCIC\_ICS-CERT\_Recommended\_Practices\_Security\_Checklist\_S508C.pdf"  
+          "url": "https://ics-cert.us-cert.gov/sites/default/files/recommended_practices/NCCIC_ICS-CERT_Recommended_Practices_Security_Checklist_S508C.pdf"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -11112,7 +11112,7 @@
       },  
       "tasks": [],  
       "resources": [],  
-      "notes\_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
+      "notes_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
     }  
   ]  
 }
@@ -11122,7 +11122,7 @@
   "phase": 3,  
   "title": {  
     "en": "Practical Project 1 – Building a SIEM Use Case",  
-    "ar": "مشروع عملي 1 \- بناء حالة استخدام SIEM"  
+    "ar": "مشروع عملي 1 - بناء حالة استخدام SIEM"  
   },  
   "objective": {  
     "en": "Apply your knowledge by designing and implementing a real-world SIEM use case, including log collection, detection logic, and alerting.",  
@@ -11160,10 +11160,10 @@
         {  
           "type": "guide",  
           "title": "How to Build SIEM Use Cases",  
-          "url": "https://www.splunk.com/en\_us/blog/security/how-to-build-siem-use-cases.html"  
+          "url": "https://www.splunk.com/en_us/blog/security/how-to-build-siem-use-cases.html"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -11207,7 +11207,7 @@
           "url": "https://www.elastic.co/guide/en/security/current/log-collection.html"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -11248,10 +11248,10 @@
         {  
           "type": "guide",  
           "title": "Writing SIEM Detection Rules",  
-          "url": "https://www.splunk.com/en\_us/blog/security/writing-effective-detection-rules.html"  
+          "url": "https://www.splunk.com/en_us/blog/security/writing-effective-detection-rules.html"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -11295,7 +11295,7 @@
           "url": "https://www.crowdstrike.com/cybersecurity-101/siem/siem-alerts/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -11327,10 +11327,10 @@
         {  
           "type": "guide",  
           "title": "How to Document SIEM Use Cases",  
-          "url": "https://www.splunk.com/en\_us/blog/security/how-to-document-use-cases.html"  
+          "url": "https://www.splunk.com/en_us/blog/security/how-to-document-use-cases.html"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -11374,7 +11374,7 @@
           "url": "https://www.csoonline.com/article/3563623/how-to-present-cybersecurity-findings-to-the-board.html"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -11393,7 +11393,7 @@
       },  
       "tasks": [],  
       "resources": [],  
-      "notes\_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
+      "notes_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
     }  
   ]  
 }
@@ -11403,7 +11403,7 @@
   "phase": 3,  
   "title": {  
     "en": "Practical Project 2 – Developing a Security Automation Tool",  
-    "ar": "مشروع عملي 2 \- تطوير أداة أتمتة أمنية"  
+    "ar": "مشروع عملي 2 - تطوير أداة أتمتة أمنية"  
   },  
   "objective": {  
     "en": "Design and implement a Python-based security automation tool that solves a real-world security problem (e.g., log analysis, vulnerability scanning, alerting, or reporting).",  
@@ -11444,7 +11444,7 @@
           "url": "https://github.com/OWASP/OWASP-Testing-Guide-v5/wiki/Security-Automation-Tools"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -11488,7 +11488,7 @@
           "url": "https://realpython.com/python-automation-scripts/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -11523,7 +11523,7 @@
           "url": "https://realpython.com/python-command-line-arguments/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -11567,7 +11567,7 @@
           "url": "https://www.makeareadme.com/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -11611,7 +11611,7 @@
           "url": "https://realpython.com/python-code-reviews/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -11655,7 +11655,7 @@
           "url": "https://www.freecodecamp.org/news/how-to-give-a-great-technical-presentation/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -11674,7 +11674,7 @@
       },  
       "tasks": [],  
       "resources": [],  
-      "notes\_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
+      "notes_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
     }  
   ]  
 }
@@ -11725,7 +11725,7 @@
           "url": "https://www.csoonline.com/article/3532536/cybersecurity-capstone-project-ideas.html"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -11769,7 +11769,7 @@
           "url": "https://github.com/OWASP/owasp-summit-2017/blob/master/Documentation/Cybersecurity-Project-Template.md"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -11813,7 +11813,7 @@
           "url": "https://www.smartsheet.com/free-gantt-chart-templates"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -11848,7 +11848,7 @@
           "url": "https://www.cyberseek.org/pathway.html"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -11892,7 +11892,7 @@
           "url": "https://opensource.com/article/19/7/documentation"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -11936,7 +11936,7 @@
           "url": "https://www.atlassian.com/team-playbook/plays/feedback"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -11955,7 +11955,7 @@
       },  
       "tasks": [],  
       "resources": [],  
-      "notes\_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
+      "notes_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
     }  
   ]  
 }
@@ -11997,7 +11997,7 @@
           "url": "https://opensource.com/article/18/6/manage-software-projects"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -12032,7 +12032,7 @@
           "url": "https://www.freecodecamp.org/news/how-to-structure-a-software-project/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -12067,7 +12067,7 @@
           "url": "https://realpython.com/python-testing/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -12102,7 +12102,7 @@
           "url": "https://www.makeuseof.com/tag/write-good-user-manual/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -12137,7 +12137,7 @@
           "url": "https://www.atlassian.com/team-playbook/plays/feedback"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -12172,7 +12172,7 @@
           "url": "https://www.coursera.org/articles/software-development-project"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -12191,7 +12191,7 @@
       },  
       "tasks": [],  
       "resources": [],  
-      "notes\_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
+      "notes_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
     }  
   ]  
 }
@@ -12233,7 +12233,7 @@
           "url": "https://realpython.com/python-testing/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -12268,7 +12268,7 @@
           "url": "https://opensource.com/article/19/7/documentation"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -12303,7 +12303,7 @@
           "url": "https://www.freecodecamp.org/news/how-to-give-a-great-technical-presentation/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -12338,7 +12338,7 @@
           "url": "https://www.coursera.org/articles/presentation-feedback"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -12373,7 +12373,7 @@
           "url": "https://www.coursera.org/articles/capstone-project"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -12396,8 +12396,8 @@
           "type": "Project",  
           "duration": 120,  
           "description": {  
-            "en": "Celebrate your achievement\! Review your portfolio, update your CV/LinkedIn, and set new career goals.",  
-            "ar": "احتفل بإنجازك\! راجع ملف أعمالك، حدث سيرتك الذاتية/لينكدإن، وضع أهدافًا مهنية جديدة."  
+            "en": "Celebrate your achievement! Review your portfolio, update your CV/LinkedIn, and set new career goals.",  
+            "ar": "احتفل بإنجازك! راجع ملف أعمالك، حدث سيرتك الذاتية/لينكدإن، وضع أهدافًا مهنية جديدة."  
           }  
         }  
       ],  
@@ -12408,7 +12408,7 @@
           "url": "https://www.sans.org/cyber-security-courses/cybersecurity-career-pathways/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -12427,7 +12427,7 @@
       },  
       "tasks": [],  
       "resources": [],  
-      "notes\_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
+      "notes_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
     }  
   ]  
 }
@@ -12469,7 +12469,7 @@
           "url": "https://www.freecodecamp.org/news/how-to-give-a-great-technical-presentation/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -12504,7 +12504,7 @@
           "url": "https://www.atlassian.com/team-playbook/plays/feedback"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -12539,7 +12539,7 @@
           "url": "https://www.sans.org/cyber-security-courses/cybersecurity-career-pathways/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -12574,7 +12574,7 @@
           "url": "https://www.cyberseek.org/pathway.html"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -12597,8 +12597,8 @@
           "type": "Project",  
           "duration": 120,  
           "description": {  
-            "en": "Celebrate your achievement\! Connect with peers, mentors, and professionals in the field. Join at least one cybersecurity community or event.",  
-            "ar": "احتفل بإنجازك\! تواصل مع الزملاء والمشرفين والمحترفين في المجال. انضم إلى مجتمع أو فعالية أمن سيبراني واحدة على الأقل."  
+            "en": "Celebrate your achievement! Connect with peers, mentors, and professionals in the field. Join at least one cybersecurity community or event.",  
+            "ar": "احتفل بإنجازك! تواصل مع الزملاء والمشرفين والمحترفين في المجال. انضم إلى مجتمع أو فعالية أمن سيبراني واحدة على الأقل."  
           }  
         }  
       ],  
@@ -12609,7 +12609,7 @@
           "url": "https://www.csoonline.com/article/3542626/how-to-network-in-cybersecurity.html"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -12628,7 +12628,7 @@
       },  
       "tasks": [],  
       "resources": [],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Open Reflection", "ar": "تأمل مفتوح"},  
         "points": [  
           {  
@@ -12647,7 +12647,7 @@
       },  
       "tasks": [],  
       "resources": [],  
-      "notes\_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
+      "notes_prompt": {"title": {"en": "", "ar": ""}, "points": []}  
     }  
   ]  
 }  
@@ -12697,7 +12697,7 @@
           "url": "https://www.sans.org/cyber-security-courses/cybersecurity-career-pathways/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -12741,7 +12741,7 @@
           "url": "https://www.cyberseek.org/pathway.html"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -12785,7 +12785,7 @@
           "url": "https://www.springboard.com/blog/cybersecurity/cybersecurity-interview-questions/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -12829,7 +12829,7 @@
           "url": "https://pauljerimy.com/security-certification-roadmap/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -12873,7 +12873,7 @@
           "url": "https://www.csoonline.com/article/3542626/how-to-network-in-cybersecurity.html"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -12908,7 +12908,7 @@
           "url": "https://www.cyberseek.org/pathway.html"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -12927,7 +12927,7 @@
       },  
       "tasks": [],  
       "resources": [],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Celebration & Reflection", "ar": "احتفال وتأمل"},  
         "points": [  
           {  
@@ -12986,7 +12986,7 @@
           "url": "https://www.cyberseek.org/pathway.html"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -13030,7 +13030,7 @@
           "url": "https://www.cyberseek.org/pathway.html"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -13079,7 +13079,7 @@
           "url": "https://thehackernews.com/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -13128,7 +13128,7 @@
           "url": "https://discord.gg/tryhackme"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -13168,7 +13168,7 @@
           "url": "https://tryhackme.com/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -13212,7 +13212,7 @@
           "url": "https://www.sans.org/blog/cybersecurity-mentoring/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -13256,7 +13256,7 @@
           "url": "https://www.csoonline.com/article/3542626/how-to-network-in-cybersecurity.html"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -13275,7 +13275,7 @@
       },  
       "tasks": [],  
       "resources": [],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Mindful Reflection", "ar": "تأمل ذهني"},  
         "points": [  
           {  
@@ -13334,7 +13334,7 @@
           "url": "https://www.coursera.org/articles/cybersecurity-careers-specializations"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -13369,7 +13369,7 @@
           "url": "https://pauljerimy.com/security-certification-roadmap/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -13413,7 +13413,7 @@
           "url": "https://www.csoonline.com/article/3532536/cybersecurity-capstone-project-ideas.html"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -13457,7 +13457,7 @@
           "url": "https://www.sans.org/blog/cybersecurity-mentoring/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -13492,7 +13492,7 @@
           "url": "https://tryhackme.com/paths"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -13527,7 +13527,7 @@
           "url": "https://www.cyberseek.org/pathway.html"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -13546,7 +13546,7 @@
       },  
       "tasks": [],  
       "resources": [],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Personal Reflection", "ar": "تأمل شخصي"},  
         "points": [  
           {  
@@ -13605,7 +13605,7 @@
           "url": "https://pauljerimy.com/security-certification-roadmap/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -13649,7 +13649,7 @@
           "url": "https://www.cyberseek.org/pathway.html"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -13684,7 +13684,7 @@
           "url": "https://tryhackme.com/paths"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -13719,7 +13719,7 @@
           "url": "https://www.cybrary.it/catalog/certifications/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -13754,7 +13754,7 @@
           "url": "https://www.reddit.com/r/cybersecurity/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -13789,7 +13789,7 @@
           "url": "https://www.cyberseek.org/pathway.html"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -13808,7 +13808,7 @@
       },  
       "tasks": [],  
       "resources": [],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Personal Motivation", "ar": "تحفيز شخصي"},  
         "points": [  
           {  
@@ -13858,7 +13858,7 @@
           "url": "https://www.cyberseek.org/pathway.html"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -13893,7 +13893,7 @@
           "url": "https://www.sans.org/cyber-security-courses/cybersecurity-career-pathways/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -13928,7 +13928,7 @@
           "url": "https://www.cyberseek.org/pathway.html"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -13963,7 +13963,7 @@
           "url": "https://www.sans.org/blog/cybersecurity-mentoring/"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -13986,8 +13986,8 @@
           "type": "Career",  
           "duration": 120,  
           "description": {  
-            "en": "Celebrate your 50-week achievement\! Reflect on your transformation, write a letter to your future self, and share your story with peers.",  
-            "ar": "احتفل بإنجازك في 50 أسبوعًا\! تأمل في تحولك، واكتب رسالة لنفسك المستقبلية، وشارك قصتك مع الزملاء."  
+            "en": "Celebrate your 50-week achievement! Reflect on your transformation, write a letter to your future self, and share your story with peers.",  
+            "ar": "احتفل بإنجازك في 50 أسبوعًا! تأمل في تحولك، واكتب رسالة لنفسك المستقبلية، وشارك قصتك مع الزملاء."  
           }  
         }  
       ],  
@@ -13998,7 +13998,7 @@
           "url": "https://www.coursera.org/articles/capstone-project"  
         }  
       ],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Evening Journaling Task", "ar": "مهمة التدوين المسائية"},  
         "points": [  
           {  
@@ -14017,7 +14017,7 @@
       },  
       "tasks": [],  
       "resources": [],  
-      "notes\_prompt": {  
+      "notes_prompt": {  
         "title": {"en": "Open Reflection", "ar": "تأمل مفتوح"},  
         "points": [  
           {  
@@ -14036,8 +14036,8 @@
       },  
       "tasks": [],  
       "resources": [],  
-      "notes\_prompt": {  
-        "title": {"en": "Congratulations\!", "ar": "مبروك\!"},  
+      "notes_prompt": {  
+        "title": {"en": "Congratulations!", "ar": "مبروك!"},  
         "points": [  
           {  
             "en": "Congratulate yourself on completing the 50-week plan and set your intention for the next chapter.",  
