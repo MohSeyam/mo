@@ -9,10 +9,7 @@ const objects = raw
   .map(obj => obj.trim())
   .filter(obj => obj.length > 0);
 
-const arrayText = '[
-' + objects.join(',
-') + '
-]';
+const arrayText = '[\n' + objects.join(',\n') + '\n]';
 
 fs.writeFileSync('2_array.json', arrayText, 'utf8');
 console.log('تم جمع جميع الكائنات في مصفوفة وحفظها في 2_array.json');
