@@ -1,3 +1,3 @@
-const planData = require('../data/planData.json');
+import planData from '../data/planData.json';
 
 export default planData;
