@@ -5,7 +5,8 @@ import App from './components/App';
 import { ToastProvider } from './context/ToastContext';
 import { AppProvider } from './context/AppContext';
 // import { planData } from './components/App';
-import planData from '../data/planData.json';
+import planData from './components/planData';
+// import planData from '../data/planData.json';
 
 ReactDOM.render(
   <ToastProvider>
