@@ -1,6 +1,0 @@
-total 264K
--rw-r--r--   1 ubuntu ubuntu  189 Jul 15 10:23 build_file_list.txt
--rw-r--r--   1 ubuntu ubuntu  694 Jul 15 08:11 package.json
--rw-r--r--   1 ubuntu ubuntu 224K Jul 15 08:11 package-lock.json
--rw-r--r--   1 ubuntu ubuntu    0 Jul 15 10:23 root_file_list.txt
--rw-r--r--   1 ubuntu ubuntu  745 Jul 15 08:11 webpack.config.js
