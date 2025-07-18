@@ -1,8 +1,9 @@
+
 import React, { useState, useEffect, useContext, useRef, useCallback } from 'react';
 import ReactMde from 'react-mde';
 import Showdown from 'showdown';
 import 'react-mde/lib/styles/css/react-mde-all.css';
-import { AppContext } from '../components/App';
+import { AppContext } from '../context/AppContext';
 import noteTemplates from './NoteTemplates';
 
 const NoteEditor = React.memo(function NoteEditor({ note, taskDescription, onSave, onDelete, currentIndex, notes, onNavigate, allTasks }) {

@@ -138,4 +138,5 @@ function PomodoroTimer({ task, onSessionComplete, rtl, onTaskDone, onClose }) {
         </div>
       )}
       <div className="text-sm text-gray-500 dark:text-gray-400 mt-2">
-        {i18n.language === 'ar' ? `عدد الجلسات: ${sessionCount}` : `
+  {i18n.language === 'ar' ? `عدد الجلسات: ${sessionCount}` : `Sessions: ${sessionCount}`}
+</div>
