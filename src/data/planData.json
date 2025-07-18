@@ -678,7 +678,7 @@
     }  
   ]  
 }  
-[  
+,[  
   {  
     "week": 3,  
     "phase": 1,  
@@ -2595,7 +2595,8 @@
     },  
     {  
       "key": "tue",  
-      "day": {"en": "Tuesday", "ar": "الثغرات والاستغلال الأساسي", "ar": "Vulnerabilities & Basic Exploitation"},  
+      "day": {"en": "Tuesday", "ar":"الثلاثاء"},
+      "topic":{"ar": "الثغرات والاستغلال الأساسي", "en": "Vulnerabilities & Basic Exploitation"},  
       "tasks": [  
         {  
           "id": "w9d4t1",  
@@ -12977,7 +12978,7 @@
         },  
         {  
           "id": "w47d2t2",  
-          ""type": "Career",  
+          "type": "Career",  
           "duration": 60,  
           "description": {  
             "en": "Reflect on your progress and write a short action plan for one area of improvement.",  
