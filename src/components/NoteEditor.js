@@ -5,7 +5,7 @@ import 'react-mde/lib/styles/css/react-mde-all.css';
 import { AppContext } from '../components/App';
 import noteTemplates from './NoteTemplates';
 
-function NoteEditor({ note, taskDescription, onSave, onDelete, currentIndex, notes, onNavigate, allTasks }) {
+const NoteEditor = React.memo(function NoteEditor({ note, taskDescription, onSave, onDelete, currentIndex, notes, onNavigate, allTasks }) {
     // --- Context and State Hooks ---
     const { lang, translations, setModal, showToast } = useContext(AppContext);
     const t = translations[lang];
@@ -21,7 +21,7 @@ function NoteEditor({ note, taskDescription, onSave, onDelete, currentIndex, not
 
     // --- Handlers and Logic ---
 
-    const handleAddTag = (e) => {
+    const handleAddTag = useCallback((e) => {
         if (e.key === 'Enter' && e.target.value.trim()) {
             e.preventDefault();
             const newTag = e.target.value.trim();
@@ -30,11 +30,11 @@ function NoteEditor({ note, taskDescription, onSave, onDelete, currentIndex, not
             }
             e.target.value = '';
         }
-    };
+    }, [tags]);
 
-    const handleRemoveTag = (tagToRemove) => {
+    const handleRemoveTag = useCallback((tagToRemove) => {
         setTags(tags.filter(tag => tag !== tagToRemove));
-    };
+    }, [tags]);
 
     /**
      * [FIXED] `handleSave` is wrapped in `useCallback`.
@@ -86,7 +86,7 @@ function NoteEditor({ note, taskDescription, onSave, onDelete, currentIndex, not
     }, [handleSave, setModal, onNavigate, currentIndex, notes]);
 
 
-    const handleImageUpload = (e) => {
+    const handleImageUpload = useCallback((e) => {
         const file = e.target.files[0];
         if (!file) return;
         const reader = new FileReader();
@@ -99,11 +99,11 @@ function NoteEditor({ note, taskDescription, onSave, onDelete, currentIndex, not
             });
         };
         reader.readAsDataURL(file);
-    };
+    }, []);
     // القوالب أصبحت في ملف منفصل
     const templates = noteTemplates;
     // إدراج القالب في مكان المؤشر أو استبدال النص إذا كان فارغًا، وتعيين نوع القالب
-    const insertTemplate = (templateContent, templateType) => {
+    const insertTemplate = useCallback((templateContent, templateType) => {
         setContent(prev => {
             const textarea = document.querySelector('.mde-text');
             if (textarea && textarea.selectionStart !== undefined) {
@@ -115,13 +115,13 @@ function NoteEditor({ note, taskDescription, onSave, onDelete, currentIndex, not
             return templateContent;
         });
         setTemplate(templateType); // Keep track of the template type used
-    };
+    }, []);
     
     /**
      * [FIXED] Logic for initial templates is now handled directly in the `onChange`
      * of the select dropdown, preventing conflicts with professional templates.
      */
-    const handleInitialTemplateChange = (e) => {
+    const handleInitialTemplateChange = useCallback((e) => {
         const selectedValue = e.target.value;
         setTemplate(selectedValue);
         if (selectedValue === 'video') {
@@ -135,7 +135,7 @@ function NoteEditor({ note, taskDescription, onSave, onDelete, currentIndex, not
             setTitle('');
             setContent('');
         }
-    };
+    }, [t]);
 
     // --- Custom Command for ReactMde ---
     const customCommands = [
@@ -243,7 +243,7 @@ function NoteEditor({ note, taskDescription, onSave, onDelete, currentIndex, not
             </div>
         </div>
     );
-}
+});
 
 // To make this component runnable for demonstration, we need a simple App wrapper.
 // في تطبيقك الحقيقي، لن تحتاج إلى هذا الجزء.
