@@ -1,25 +1,15 @@
-import React, { useRef } from 'react';
+
+import React, { useRef, useContext } from 'react';
 import ReactQuill, { Quill } from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import { useAppContext } from '../context/AppContext';
+import { AppContext } from '../context/AppContext';
 
 // إضافة دعم RTL في Quill
 const Direction = Quill.import('attributors/style/direction');
 Quill.register(Direction, true);
 
-const customToolbar = [
-  [{ 'header': [1, 2, 3, false] }],
-  [{ 'color': [] }, { 'background': [] }],
-  [{ 'align': [] }, { 'direction': 'rtl' }],
-  ['bold', 'italic', 'underline', 'strike'],
-  ['blockquote', 'code-block'],
-  [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-  ['link', 'image'],
-  ['clean']
-];
-
 function JournalEditor({ weekId, dayIndex, prompt }) {
-  const { lang, appState, updateJournalEntryContext, translations, showToast } = useAppContext();
+  const { lang, appState, updateJournalEntryContext, translations, showToast } = useContext(AppContext);
   const journalEntry = appState.journal[weekId]?.days[dayIndex];
   const quillRef = useRef();
 
