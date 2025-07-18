@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import ProgressCircle from './ProgressCircle';
 import NoteEditor from './NoteEditor';
 import JournalEditor from './JournalEditor';
@@ -7,7 +7,7 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import DayTemplate from './DayTemplate';
 import PomodoroTimer from './PomodoroTimer';
 
-function DayView({
+const DayView = React.memo(function DayView({
   weekId,
   dayIndex,
   dayData,
@@ -79,8 +79,7 @@ function DayView({
     };
   }, [activeTimer]);
 
-  // مؤقت Pomodoro
-  const startTimer = () => {
+  const startTimer = useCallback(() => {
     if (activeTimer) clearInterval(activeTimer);
     const timer = setInterval(() => {
       setRemainingTime(prev => {
@@ -101,20 +100,19 @@ function DayView({
       });
     }, 1000);
     setActiveTimer(timer);
-  };
+  }, [activeTimer, isWorkSession, showToast, t, timerSettings]);
 
-  const stopTimer = () => {
+  const stopTimer = useCallback(() => {
     if (activeTimer) clearInterval(activeTimer);
     setActiveTimer(null);
-  };
+  }, [activeTimer]);
 
-  const resetTimer = () => {
+  const resetTimer = useCallback(() => {
     stopTimer();
     setRemainingTime(isWorkSession ? timerSettings.work * 60 : timerSettings.break * 60);
-  };
+  }, [isWorkSession, stopTimer, timerSettings]);
 
-  // تبديل حالة المهمة
-  const toggleTask = (taskIndex) => {
+  const toggleTask = useCallback((taskIndex) => {
     setAppState(prev => {
       const newState = JSON.parse(JSON.stringify(prev));
       const currentStatus = newState.progress[weekId].days[dayIndex].tasks[taskIndex];
@@ -122,10 +120,9 @@ function DayView({
         currentStatus === 'completed' ? 'pending' : 'completed';
       return newState;
     });
-  };
+  }, [setAppState, weekId, dayIndex]);
 
-  // تحديث ترتيب المهام عند السحب والإفلات
-  const onDragEnd = (result) => {
+  const onDragEnd = useCallback((result) => {
     if (!result.destination) return;
     const newTasks = Array.from(dayData.tasks);
     const [removed] = newTasks.splice(result.source.index, 1);
@@ -135,10 +132,9 @@ function DayView({
       newState.plan[weekId].days[dayIndex].tasks = newTasks;
       return newState;
     });
-  };
+  }, [dayData.tasks, setAppState, weekId, dayIndex]);
 
-  // فتح محرر الملاحظات
-  const openNoteModal = (taskId, taskDescription) => {
+  const openNoteModal = useCallback((taskId, taskDescription) => {
     const note = appState.notes[weekId]?.days[dayIndex]?.[taskId] || { title: '', content: '', keywords: [] };
     setModal({
       isOpen: true,
@@ -166,24 +162,22 @@ function DayView({
         }}
       />
     });
-  };
+  }, [appState.notes, dayIndex, setAppState, setModal, weekId]);
 
-  // إضافة إلى التقويم
-  const addToCalendar = (task) => {
+  const addToCalendar = useCallback((task) => {
     const title = encodeURIComponent(task.description[i18n.language]);
     const details = encodeURIComponent(t('From Cybersecurity Plan App'));
     const start = new Date().toISOString().replace(/[-:]|\.\d{3}/g, '');
     const end = new Date(Date.now() + task.duration * 60000).toISOString().replace(/[-:]|\.\d{3}/g, '');
     const url = `https://www.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}&dates=${start}/${end}`;
     window.open(url, '_blank');
-  };
+  }, [i18n.language, t]);
 
-  // تنسيق الوقت
-  const formatTime = (seconds) => {
+  const formatTime = useCallback((seconds) => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
     return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
-  };
+  }, []);
 
   function handlePrint() {
     if (templateRef.current) {
@@ -424,6 +418,6 @@ function DayView({
       </div>
     </div>
   );
-}
+});
 
 export default DayView;
