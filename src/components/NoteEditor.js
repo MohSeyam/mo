@@ -1,7 +1,6 @@
-
 import React, { useState, useEffect, useContext, useRef, useCallback } from 'react';
+// --- FIX: Named import for ReactMde ---
 import { ReactMde } from 'react-mde';
-// import ReactMde from 'react-mde';
 import Showdown from 'showdown';
 import 'react-mde/lib/styles/css/react-mde-all.css';
 import { AppContext } from '../context/AppContext';
@@ -37,12 +36,7 @@ const NoteEditor = React.memo(function NoteEditor({ note, taskDescription, onSav
     const handleRemoveTag = useCallback((tagToRemove) => {
         setTags(tags.filter(tag => tag !== tagToRemove));
     }, [tags]);
-
-    /**
-     * [FIXED] `handleSave` is wrapped in `useCallback`.
-     * This ensures the function has access to the latest state (title, content, tags, etc.)
-     * when called from the `useEffect` keyboard shortcut, preventing "stale closures".
-     */
+    
     const handleSave = useCallback(() => {
         if (!title.trim()) {
             showToast(t.titleRequired, 'error');
@@ -65,11 +59,6 @@ const NoteEditor = React.memo(function NoteEditor({ note, taskDescription, onSav
         showToast('تم الحفظ بنجاح!', 'success');
     }, [title, content, tags, selectedTaskId, allTasks, onSave, showToast, t, template, note]);
 
-    /**
-     * [FIXED] The dependency array for this `useEffect` now includes `handleSave`.
-     * Because `handleSave` is memoized with `useCallback`, this effect won't re-run unnecessarily,
-     * but it will always have the correct version of the `handleSave` function.
-     */
     useEffect(() => {
         const handleKeyDown = (e) => {
             if ((e.ctrlKey || e.metaKey) && e.key === 's') {
@@ -102,9 +91,9 @@ const NoteEditor = React.memo(function NoteEditor({ note, taskDescription, onSav
         };
         reader.readAsDataURL(file);
     }, []);
-    // القوالب أصبحت في ملف منفصل
+    
     const templates = noteTemplates;
-    // إدراج القالب في مكان المؤشر أو استبدال النص إذا كان فارغًا، وتعيين نوع القالب
+
     const insertTemplate = useCallback((templateContent, templateType) => {
         setContent(prev => {
             const textarea = document.querySelector('.mde-text');
@@ -113,16 +102,11 @@ const NoteEditor = React.memo(function NoteEditor({ note, taskDescription, onSav
                 const end = textarea.selectionEnd;
                 return prev.slice(0, start) + templateContent + prev.slice(end);
             }
-            // If no selection, or for new notes, replace content
             return templateContent;
         });
-        setTemplate(templateType); // Keep track of the template type used
+        setTemplate(templateType);
     }, []);
     
-    /**
-     * [FIXED] Logic for initial templates is now handled directly in the `onChange`
-     * of the select dropdown, preventing conflicts with professional templates.
-     */
     const handleInitialTemplateChange = useCallback((e) => {
         const selectedValue = e.target.value;
         setTemplate(selectedValue);
@@ -133,13 +117,11 @@ const NoteEditor = React.memo(function NoteEditor({ note, taskDescription, onSav
             setTitle(t.toolAnalysis);
             setContent('الغرض من الأداة:\n\nأهم الأوامر:\n\nبدائل:');
         } else {
-            // Optionally clear content if "no template" is chosen
             setTitle('');
             setContent('');
         }
     }, [t]);
 
-    // --- Custom Command for ReactMde ---
     const customCommands = [
         {
             name: 'image',
@@ -148,7 +130,6 @@ const NoteEditor = React.memo(function NoteEditor({ note, taskDescription, onSav
         }
     ];
 
-    // --- Render JSX ---
     return (
         <div className="flex flex-col h-full">
             <div className="bg-white dark:bg-gray-800 px-4 pt-5 pb-4 sm:p-6 sm:pb-4 flex items-center justify-between border-b border-gray-200 dark:border-gray-700">
@@ -163,7 +144,6 @@ const NoteEditor = React.memo(function NoteEditor({ note, taskDescription, onSav
             </div>
 
             <div className="px-4 sm:px-6 py-4 space-y-4 overflow-y-auto flex-grow">
-                {/* Initial Template Selector for New Notes */}
                 {!note?.id && (
                     <div>
                         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">{t.chooseTemplate}</label>
@@ -247,59 +227,5 @@ const NoteEditor = React.memo(function NoteEditor({ note, taskDescription, onSav
     );
 });
 
-// To make this component runnable for demonstration, we need a simple App wrapper.
-// في تطبيقك الحقيقي، لن تحتاج إلى هذا الجزء.
-function App() {
-    const [modal, setModal] = useState({ isOpen: false, content: null });
-    const showToast = (message, type) => {
-        console.log(`Toast (${type}): ${message}`);
-        // In a real app, you'd have a toast component here.
-    };
-
-    const sampleNote = {
-        id: 'note1',
-        title: 'ملاحظة تجريبية',
-        content: 'هذا هو محتوى الملاحظة.',
-        keywords: ['تجربة', 'react'],
-        taskData: { id: 'task1' },
-        templateType: 'general'
-    };
-
-    const sampleTasks = [
-        { id: 'task1', title: { ar: 'المهمة الأولى' } },
-        { id: 'task2', title: { ar: 'المهمة الثانية' } }
-    ];
-    
-    const sampleNotes = [sampleNote];
-
-    const handleSaveNote = (updatedNote) => {
-        console.log('Saving note:', updatedNote);
-    };
-
-    const handleDeleteNote = () => {
-        console.log('Deleting note:', sampleNote.id);
-    };
-    
-    const handleNavigate = (index) => {
-        console.log('Navigating to index:', index);
-    };
-
-    return (
-        <AppContext.Provider value={{ lang: 'ar', translations: { ar: { editNote: 'تعديل الملاحظة', noteOnTask: 'ملاحظة على المهمة:', previous: 'السابق', next: 'التالي', noteTitle: 'عنوان الملاحظة', keywords: 'الكلمات المفتاحية', addNewTag: 'أضف تاجًا جديدًا', linkedTask: 'المهمة المرتبطة', noteContent: 'محتوى الملاحظة', saveNote: 'حفظ الملاحظة', cancel: 'إلغاء', deleteNote: 'حذف الملاحظة', chooseTemplate: 'اختر قالب:', noTemplate: 'بدون قالب', videoSummary: 'ملخص فيديو', toolAnalysis: 'تحليل أداة', titleRequired: 'العنوان مطلوب.', contentRequired: 'المحتوى مطلوب.', write: 'كتابة', preview: 'معاينة' } }, setModal, showToast }}>
-            <div className="w-full max-w-4xl mx-auto my-8 bg-white dark:bg-gray-900 shadow-lg rounded-lg overflow-hidden">
-                <NoteEditor
-                    note={sampleNote}
-                    taskDescription="المهمة الأولى"
-                    onSave={handleSaveNote}
-                    onDelete={handleDeleteNote}
-                    currentIndex={0}
-                    notes={sampleNotes}
-                    onNavigate={handleNavigate}
-                    allTasks={sampleTasks}
-                />
-            </div>
-        </AppContext.Provider>
-    );
-}
-
-export default App;
+// The demo App part is removed for brevity, but the component itself is corrected.
+export default NoteEditor;
