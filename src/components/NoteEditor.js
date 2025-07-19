@@ -2,7 +2,8 @@ import React, { useState, useEffect, useContext, useRef, useCallback } from 'rea
 // --- FIX: Named import for ReactMde ---
 import { ReactMde } from 'react-mde';
 import Showdown from 'showdown';
-import 'react-mde/lib/styles/css/react-mde-all.css';
+import 'react-mde/lib/styles/css/react-mde.css';
+// import 'react-mde/lib/styles/css/react-mde-all.css';
 import { AppContext } from '../context/AppContext';
 import noteTemplates from './NoteTemplates';
 
